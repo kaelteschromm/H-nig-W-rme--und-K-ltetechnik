@@ -4,186 +4,162 @@
   <meta charset="UTF-8">
   <title>Wärmepumpen | Hünig Wärme- und Kältetechnik</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Informationen zu Wärmepumpen: Arten, Eignung, Wartung und Vorteile. Hünig Wärme- und Kältetechnik aus Heidelberg.">
   <style>
     :root{
-      --bg:#f7f7f7; --card:#fff; --text:#1a2433; --primary:#14365e;
-      --muted:#5b6b82; --ring:rgba(0,0,0,.08); --accent:#e63a2e; --cool:#2e7bd9;
+      --bg:#f7f7f7; --card:#fff; --text:#1a2433; --primary:#14365e; --muted:#5b6b82;
+      --accent:#e63a2e; --cool:#2e7bd9; --ring:rgba(0,0,0,.08);
     }
-    *{box-sizing:border-box}
-    body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:var(--text); display:flex; flex-direction:column; min-height:100vh}
-    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-    
-    /* Header */
-    header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e6e8eb;box-shadow:0 2px 6px rgba(0,0,0,.05)}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--primary);text-decoration:none}
-    .brand img{height:52px;width:auto} /* Logo größer */
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:1000px;margin:0 auto;padding:20px}
+    .card{background:var(--card);border-radius:16px;box-shadow:0 6px 24px var(--ring);padding:24px;margin-bottom:20px}
+    h1,h2{color:var(--primary)}
 
-    /* Menü */
-    nav a{color:var(--muted);text-decoration:none;margin-left:18px}
-    nav a:hover{color:var(--primary)}
-    .menu-btn{display:none}
-    @media (max-width: 900px){
-      nav{display:none}
-      .menu-btn{display:flex;flex-direction:column;gap:6px;width:46px;height:46px;border:0;background:transparent;cursor:pointer;align-items:center;justify-content:center}
-      .menu-btn span{display:block;background:var(--primary);height:3px;width:26px;border-radius:2px}
-      .menu-overlay{position:fixed;inset:0;background:rgba(20,54,94,.98);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.35s}
-      .menu-overlay.open{opacity:1;pointer-events:auto}
-      .menu-overlay a{color:#fff;font-size:1.3rem;margin:.8rem 0;text-decoration:none}
-    }
+    /* HEADER */
+    header{position:sticky;top:0;z-index:50;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.05);padding:0 16px;height:64px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--primary);text-decoration:none}
+    .brand img{height:44px;width:auto}
 
-    /* Sections */
-    .section{padding:48px 0}
-    h1,h2,h3{color:var(--primary);margin-top:0}
-    .card{background:var(--card);border-radius:16px;box-shadow:0 6px 24px var(--ring);padding:28px;margin-bottom:20px}
+    /* BURGER */
+    .menu-btn{border:none;background:transparent;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center}
+    .menu-btn span,.menu-btn span::before,.menu-btn span::after{display:block;background:var(--primary);height:3px;width:26px;border-radius:2px;position:relative;transition:.3s}
+    .menu-btn span::before,.menu-btn span::after{content:'';position:absolute;left:0;width:26px}
+    .menu-btn span::before{top:-8px}
+    .menu-btn span::after{top:8px}
 
-    /* Hersteller-Laufband */
-    .brandbar{overflow:hidden;border-radius:12px;background:#fff;box-shadow:0 6px 24px rgba(0,0,0,.08);padding:14px;margin-top:20px}
-    .marquee{display:flex;gap:48px;align-items:center;animation:marq 20s linear infinite;will-change:transform}
-    .marquee img{height:40px;filter:grayscale(100%);opacity:.85;transition:.2s}
+    /* OVERLAY MENU */
+    .menu-overlay{position:fixed;inset:0;background:rgba(20,54,94,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.35s;z-index:1000}
+    .menu-overlay.open{opacity:1;pointer-events:auto}
+    .menu-overlay a{color:#fff;font-size:1.3rem;margin:.7rem 0;text-decoration:none;transform:translateX(100px);opacity:0}
+    .menu-overlay.open a{animation:slideIn .5s forwards}
+    .menu-overlay a:nth-child(1){animation-delay:.1s}
+    .menu-overlay a:nth-child(2){animation-delay:.2s}
+    .menu-overlay a:nth-child(3){animation-delay:.3s}
+    .menu-overlay a:nth-child(4){animation-delay:.4s}
+    .menu-overlay a:nth-child(5){animation-delay:.5s}
+    .menu-overlay a:nth-child(6){animation-delay:.6s}
+    .menu-overlay a:nth-child(7){animation-delay:.7s}
+    .menu-overlay a:nth-child(8){animation-delay:.8s}
+    .menu-overlay a:nth-child(9){animation-delay:.9s}
+    @keyframes slideIn{to{transform:translateX(0);opacity:1}}
+
+    /* BRAND BAR */
+    .brandbar{overflow:hidden;border-radius:12px;background:#fff;box-shadow:0 6px 24px var(--ring);padding:12px;margin:24px 0}
+    .marquee{display:flex;gap:48px;align-items:center;animation:marq 22s linear infinite}
+    .marquee img{height:34px;filter:grayscale(100%);opacity:.85;transition:.2s}
     .marquee img:hover{filter:none;opacity:1;transform:scale(1.05)}
     @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-    /* Footer */
-    footer{margin-top:auto;border-top:1px solid #e6e8eb;background:#fff}
-    .foot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:12px 20px;color:var(--muted);font-size:.95rem}
-    .foot a{color:var(--muted);text-decoration:none;margin-right:14px}
-    .foot a:hover{color:var(--primary)}
+    .btn{display:inline-block;background:var(--primary);color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;margin-top:12px}
+    .btn.alt{background:linear-gradient(90deg,var(--accent),var(--cool))}
+
+    /* FOOTER */
+    footer{margin-top:40px;padding:12px;text-align:center;font-size:.9rem;color:#666;background:#fff;border-top:1px solid #ddd}
+    footer a{color:#666;text-decoration:none;margin:0 8px}
+    footer a:hover{color:var(--primary)}
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- HEADER -->
   <header>
-    <div class="wrap nav">
-      <a class="brand" href="index.html"><img src="assets/logo-huenig.png" alt="Hünig Logo"><span>Hünig • Wärme- und Kältetechnik</span></a>
-      <nav>
-        <a href="index.html">Startseite</a>
-        <a href="waermepumpen.html">Wärmepumpen</a>
-        <a href="klimaanlagen.html">Klimaanlagen</a>
-        <a href="lueftung.html">Lüftung</a>
-        <a href="trinkwasserinstallationen.html">Trinkwasser</a>
-        <a href="referenzen.html">Referenzen</a>
-        <a href="service.html">Service & Wartung</a>
-        <a href="ueber-uns.html">Über uns</a>
-        <a href="kontakt.html">Kontakt</a>
-      </nav>
-      <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
-    </div>
-    <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
-      <a href="index.html">Startseite</a>
-      <a href="waermepumpen.html">Wärmepumpen</a>
-      <a href="klimaanlagen.html">Klimaanlagen</a>
-      <a href="lueftung.html">Lüftung</a>
-      <a href="trinkwasserinstallationen.html">Trinkwasser</a>
-      <a href="referenzen.html">Referenzen</a>
-      <a href="service.html">Service & Wartung</a>
-      <a href="ueber-uns.html">Über uns</a>
-      <a href="kontakt.html">Kontakt</a>
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
-    </div>
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="Hünig Logo">
+      <span>Hünig • Wärme- und Kältetechnik</span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen"><span></span></button>
   </header>
 
+  <!-- MENU OVERLAY -->
+  <nav class="menu-overlay" id="menuOverlay">
+    <a href="index.html">Startseite</a>
+    <a href="waermepumpen.html">Wärmepumpen</a>
+    <a href="klimaanlagen.html">Klimaanlagen</a>
+    <a href="lueftung.html">Lüftung</a>
+    <a href="trinkwasserinstallationen.html">Trinkwasser</a>
+    <a href="referenzen.html">Referenzen</a>
+    <a href="service.html">Service & Wartung</a>
+    <a href="ueber-uns.html">Über uns</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </nav>
+
+  <!-- CONTENT -->
   <main class="wrap">
-    <h1>Wärmepumpen – Zukunft der Heizung</h1>
+    <div class="card">
+      <h1>Wärmepumpen</h1>
+      <p>Wärmepumpen sind eine der effizientesten Lösungen, um Gebäude nachhaltig zu beheizen und zu kühlen. Sie nutzen Energie aus Luft, Wasser oder Erdreich und wandeln diese in nutzbare Wärme um.</p>
+      <a href="kontakt-neubau.html" class="btn alt">Anfrage stellen (Neubau/Erneuerung)</a>
+    </div>
 
     <div class="card">
       <h2>Welche Arten von Wärmepumpen gibt es?</h2>
-      <p>
-        Wärmepumpen nutzen Umweltenergie aus Luft, Erde oder Wasser. Die gängigsten Typen sind:
-      </p>
       <ul>
-        <li><b>Luft/Wasser-Wärmepumpe:</b> am häufigsten, flexibel nachrüstbar, geeignet für Neubau & Sanierung.</li>
-        <li><b>Sole/Wasser-Wärmepumpe (Erdwärme):</b> hohe Effizienz, benötigt Erdsonden oder Flächenkollektor.</li>
-        <li><b>Wasser/Wasser-Wärmepumpe:</b> nutzt Grundwasser, sehr effizient, Genehmigungspflichtig.</li>
+        <li><b>Luft-Wasser-Wärmepumpe</b> – nutzt Außenluft, einfach zu installieren, ideal für Sanierungen und Neubauten.</li>
+        <li><b>Sole-Wasser-Wärmepumpe</b> – nutzt Erdreich über Sonden/Kollektoren, sehr effizient, höhere Investition.</li>
+        <li><b>Wasser-Wasser-Wärmepumpe</b> – nutzt Grundwasser, hohe Effizienz, Genehmigung erforderlich.</li>
       </ul>
     </div>
 
     <div class="card">
       <h2>Für wen ist eine Wärmepumpe geeignet?</h2>
-      <p>
-        Wärmepumpen eignen sich für Neubauten, aber auch für modernisierte Bestandsgebäude. Besonders sinnvoll sind sie:
-      </p>
-      <ul>
-        <li>Bei Gebäuden mit Fußbodenheizung oder großen Heizflächen.</li>
-        <li>Wenn eine Sanierung (Fenster, Dämmung) erfolgt ist.</li>
-        <li>Für Eigentümer, die Wert auf Nachhaltigkeit und niedrige Heizkosten legen.</li>
-      </ul>
+      <p>Eine Wärmepumpe eignet sich sowohl für Neubauten als auch für Bestandsgebäude. Wichtig sind die Dämmung, Heizflächen (Fußbodenheizung oder große Heizkörper) und der Wärmebedarf. Auch für Mehrfamilienhäuser und Gewerbe sind Wärmepumpen geeignet.</p>
     </div>
 
     <div class="card">
-      <h2>Ist eine Wartung notwendig?</h2>
-      <p>
-        Ja, auch Wärmepumpen sollten regelmäßig gewartet werden. Dadurch wird:
-      </p>
-      <ul>
-        <li>die Lebensdauer verlängert,</li>
-        <li>der Energieverbrauch minimiert,</li>
-        <li>die Betriebssicherheit erhöht.</li>
-      </ul>
-      <p>
-        In der Regel genügt eine jährliche Wartung durch einen Fachbetrieb.
-      </p>
+      <h2>Muss ich eine Wartung durchführen?</h2>
+      <p>Ja. Auch wenn Wärmepumpen sehr zuverlässig arbeiten, ist eine regelmäßige Wartung sinnvoll. Sie stellt die Effizienz sicher, verlängert die Lebensdauer und beugt Ausfällen vor. Empfohlen ist eine Inspektion einmal jährlich.</p>
     </div>
 
     <div class="card">
-      <h2>Weitere wichtige Themen</h2>
+      <h2>Vorteile einer Wärmepumpe</h2>
       <ul>
-        <li><b>Förderungen:</b> Staatliche Zuschüsse und KfW-Kredite können die Investition deutlich reduzieren.</li>
-        <li><b>Stromverbrauch:</b> In Kombination mit Photovoltaik besonders effizient.</li>
-        <li><b>Umwelt:</b> Reduziert den CO₂-Ausstoß und macht unabhängig von fossilen Brennstoffen.</li>
+        <li>Sehr effizient und umweltfreundlich</li>
+        <li>Unabhängig von fossilen Energieträgern</li>
+        <li>Kombinierbar mit Photovoltaik</li>
+        <li>Förderfähig durch BAFA & KfW</li>
       </ul>
     </div>
 
-    <div class="card" style="text-align:center">
-      <h2>Jetzt Angebot anfordern</h2>
-      <p>Planen Sie eine Erneuerung oder einen Neubau? Stellen Sie Ihre Anfrage direkt online.</p>
-      <a class="btn alt" href="kontakt-neubau.html">Zum Kontaktformular (Erneuerung/Neubau)</a>
+    <!-- Hersteller Laufband -->
+    <div class="brandbar">
+      <div class="marquee">
+        <img src="assets/logo-viessmann.svg" alt="Viessmann Logo">
+        <img src="assets/logo-daikin.svg" alt="Daikin Logo">
+        <img src="assets/logo-buderus.svg" alt="Buderus Logo">
+        <img src="assets/logo-bosch.svg" alt="Bosch Logo">
+        <img src="assets/logo-mitsubishi.svg" alt="Mitsubishi Logo">
+        <img src="assets/logo-panasonic.svg" alt="Panasonic Logo">
+        <img src="assets/logo-samsung.svg" alt="Samsung Logo">
+
+        <!-- zweite Runde für Endlosschleife -->
+        <img src="assets/logo-viessmann.svg" alt="Viessmann Logo">
+        <img src="assets/logo-daikin.svg" alt="Daikin Logo">
+        <img src="assets/logo-buderus.svg" alt="Buderus Logo">
+        <img src="assets/logo-bosch.svg" alt="Bosch Logo">
+        <img src="assets/logo-mitsubishi.svg" alt="Mitsubishi Logo">
+        <img src="assets/logo-panasonic.svg" alt="Panasonic Logo">
+        <img src="assets/logo-samsung.svg" alt="Samsung Logo">
+      </div>
     </div>
   </main>
 
-  <!-- Hersteller-Laufband -->
-  <section class="wrap brandbar">
-    <div class="marquee">
-      <img src="assets/logo-viessmann.svg" alt="Viessmann">
-      <img src="assets/logo-daikin.svg" alt="Daikin">
-      <img src="assets/logo-buderus.svg" alt="Buderus">
-      <img src="assets/logo-bosch.svg" alt="Bosch">
-      <img src="assets/logo-mitsubishi.svg" alt="Mitsubishi">
-      <img src="assets/logo-panasonic.svg" alt="Panasonic">
-      <img src="assets/logo-samsung.svg" alt="Samsung">
-      <!-- zweite Runde -->
-      <img src="assets/logo-viessmann.svg" alt="Viessmann">
-      <img src="assets/logo-daikin.svg" alt="Daikin">
-      <img src="assets/logo-buderus.svg" alt="Buderus">
-      <img src="assets/logo-bosch.svg" alt="Bosch">
-      <img src="assets/logo-mitsubishi.svg" alt="Mitsubishi">
-      <img src="assets/logo-panasonic.svg" alt="Panasonic">
-      <img src="assets/logo-samsung.svg" alt="Samsung">
-    </div>
-  </section>
-
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
-    <div class="wrap foot">
-      <div>© <span id="y"></span> Hünig Wärme- und Kältetechnik</div>
-      <div class="legal">
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
-        <a href="agb.html">AGB</a>
-        <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
-        <a href="kontakt.html">Kontakt</a>
-      </div>
-    </div>
+    © <span id="y"></span> Hünig Wärme- und Kältetechnik · 
+    <a href="impressum.html">Impressum</a> · 
+    <a href="datenschutz.html">Datenschutz</a> · 
+    <a href="agb.html">AGB</a> · 
+    <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a> · 
+    <a href="kontakt.html">Kontakt</a>
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-    const btn = document.getElementById('menuBtn');
-    const overlay = document.getElementById('menuOverlay');
-    btn.onclick = () => overlay.classList.toggle('open');
-    overlay.querySelectorAll('a').forEach(a => a.onclick = () => overlay.classList.remove('open'));
+    document.getElementById("y").textContent = new Date().getFullYear();
+    const btn=document.getElementById('menuBtn');const overlay=document.getElementById('menuOverlay');
+    btn.addEventListener('click',()=>overlay.classList.toggle('open'));
+    overlay.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>overlay.classList.remove('open')));
   </script>
 </body>
 </html>
