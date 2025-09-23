@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kontakt & Angebots-Assistent | Hünig Wärme- und Kältetechnik</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Kontakt und Angebots-Assistent: Service, Wartung, Störung, Erneuerung oder Neubau. Geführter Fragebogen für ein passgenaues Angebot.">
+  <style>
+    :root{
+      --bg:#f7f7f7; --card:#fff; --text:#1a2433; --primary:#14365e; --muted:#5b6b82; --ring:rgba(0,0,0,.08);
+      --accent:#e63a2e; --cool:#2e7bd9; --ok:#0d7a3a; --warn:#b45309;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100vh; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg); color:var(--text); display:flex; flex-direction:column;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);border-bottom:1px solid #e6e8eb}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--primary)}
+    .brand img{height:36px;width:auto}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px}
+    nav a:hover{color:var(--primary)}
+    .menu-btn{display:none}
+    @media (max-width:900px){
+      nav{display:none}
+      .menu-btn{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border:0;background:transparent;cursor:pointer}
+      .menu-btn span,.menu-btn span:before,.menu-btn span:after{display:block;background:var(--primary);height:3px;width:26px;border-radius:2px;position:relative;transition:.3s}
+      .menu-btn span:before,.menu-btn span:after{content:'';position:absolute;left:0;width:26px}
+      .menu-btn span:before{top:-8px}.menu-btn span:after{top:8px}
+      .menu-overlay{position:fixed;inset:0;background:rgba(20,54,94,.98);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.35s}
+      .menu-overlay.open{opacity:1;pointer-events:auto}
+      .menu-overlay a{color:#fff;font-size:1.25rem;margin:.8rem 0;text-decoration:none}
+      .menu-overlay a:hover{color:#a9d6ff}
+    }
+
+    /* Hero */
+    .hero{padding:42px 0}
+    .hero-grid{display:grid;gap:20px;align-items:center}
+    @media (min-width:900px){.hero-grid{grid-template-columns:1.1fr .9fr}}
+    .card{background:var(--card);border-radius:16px;box-shadow:0 6px 24px var(--ring);padding:24px}
+    h1{margin:0 0 8px;color:var(--primary);font-size:2rem}
+    .subtitle{color:var(--muted);margin:6px 0 12px}
+    .hero img{width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 6px 24px var(--ring)}
+    .btn{display:inline-block;background:var(--primary);color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;border:0;cursor:pointer}
+    .btn.alt{background:linear-gradient(90deg,var(--accent),var(--cool))}
+    .btn.ghost{background:#fff;color:var(--primary);border:1px solid #d4d9df}
+
+    /* Wizard */
+    .section{padding:36px 0}
+    h2{color:var(--primary);margin:0 0 12px}
+    .grid{display:grid;gap:18px}
+    @media (min-width:900px){.cols-2{grid-template-columns:1fr 1fr}}
+    .choice{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid #e6e8eb;border-radius:12px;padding:12px;cursor:pointer;box-shadow:0 2px 10px var(--ring)}
+    .choice img{height:44px;width:44px;border-radius:10px;object-fit:cover}
+    .choice input{margin-left:auto;accent-color:var(--primary)}
+    .choice:hover{border-color:#c9d0d8}
+    .row{display:grid;gap:12px}
+    @media (min-width:700px){.row.cols-3{grid-template-columns:1fr 1fr 1fr}}
+    label{font-weight:600;font-size:.95rem}
+    input[type="text"], input[type="number"], input[type="email"], input[type="tel"], select, textarea{
+      width:100%;padding:10px 12px;border:1px solid #d4d9df;border-radius:10px;font:inherit
+    }
+    textarea{min-height:110px}
+    .muted{color:var(--muted);font-size:.95rem}
+    .progress{height:6px;background:#e6e8eb;border-radius:999px;overflow:hidden}
+    .progress .bar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--cool))}
+    .nav-rows{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .hidden{display:none}
+
+    /* Summary */
+    .summary{background:#fff;border-radius:12px;border:1px solid #e6e8eb;padding:16px}
+    .summary dt{font-weight:600;color:var(--primary)}
+    .summary dd{margin:0 0 10px}
+
+    /* Footer */
+    footer{margin-top:auto;border-top:1px solid #e6e8eb;background:#fff}
+    .foot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:12px 20px;color:var(--muted);font-size:.95rem}
+    .foot a{color:var(--muted);text-decoration:none;margin-right:14px}
+    .foot a:hover{color:var(--primary)}
+    .legal{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="Zur Startseite">
+        <img src="assets/logo-huenig.png" alt="Hünig Logo">
+        <span>Hünig • Wärme- und Kältetechnik</span>
+      </a>
+      <nav aria-label="Hauptnavigation">
+        <a href="index.html">Startseite</a>
+        <a href="waermepumpen.html">Wärmepumpen</a>
+        <a href="klimaanlagen.html">Klimaanlagen</a>
+        <a href="lueftung.html">Lüftung</a>
+        <a href="trinkwasserinstallationen.html">Trinkwasser</a>
+        <a href="referenzen.html">Referenzen</a>
+        <a href="service.html">Service & Wartung</a>
+        <a href="ueber-uns.html">Über uns</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen"><span></span></button>
+    </div>
+    <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+      <a href="index.html">Startseite</a>
+      <a href="waermepumpen.html">Wärmepumpen</a>
+      <a href="klimaanlagen.html">Klimaanlagen</a>
+      <a href="lueftung.html">Lüftung</a>
+      <a href="trinkwasserinstallationen.html">Trinkwasser</a>
+      <a href="referenzen.html">Referenzen</a>
+      <a href="service.html">Service & Wartung</a>
+      <a href="ueber-uns.html">Über uns</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="agb.html">AGB</a>
+      <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+      <a href="kontakt.html">Kontakt</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="card">
+        <h1>Kontakt & Angebots-Assistent</h1>
+        <p class="subtitle">Wähle zuerst dein Anliegen – der Assistent stellt die passenden Fragen und erstellt eine saubere Zusammenfassung für dein Angebot.</p>
+        <a class="btn alt" href="#assistent">Assistent starten</a>
+      </div>
+      <img src="assets/contact-hero.jpg" alt="Techniker bei der Anlage – Kontakt Hero (Platzhalter)">
+    </div>
+  </section>
+
+  <!-- ASSISTENT -->
+  <section id="assistent" class="section">
+    <div class="wrap">
+      <div class="card">
+        <!-- Progress -->
+        <div class="progress" aria-hidden="true"><div class="bar" id="progressBar"></div></div>
+
+        <!-- Step 1: Anliegen -->
+        <div class="step" data-step="1">
+          <h2>1) Was möchtest du erledigen?</h2>
+          <p class="muted">Bitte wähle eine Option. Du kannst danach weitere Details angeben.</p>
+          <div class="grid cols-2" role="group" aria-label="Anliegen wählen">
+            <label class="choice">
+              <img src="assets/icon-service.jpg" alt="Icon Service (Platzhalter)">
+              <div>
+                <div><strong>Service buchen</strong></div>
+                <div class="muted">Allgemeiner Service / Check / Optimierung</div>
+              </div>
+              <input type="radio" name="anliegen" value="Service buchen" required>
+            </label>
+            <label class="choice">
+              <img src="assets/icon-maintenance.jpg" alt="Icon Wartung (Platzhalter)">
+              <div>
+                <div><strong>Wartung</strong></div>
+                <div class="muted">Regelmäßige Inspektion & Pflege</div>
+              </div>
+              <input type="radio" name="anliegen" value="Wartung">
+            </label>
+            <label class="choice">
+              <img src="assets/icon-outage.jpg" alt="Icon Störung (Platzhalter)">
+              <div>
+                <div><strong>Störung</strong></div>
+                <div class="muted">Fehler, Ausfall oder ungewöhnliches Verhalten</div>
+              </div>
+              <input type="radio" name="anliegen" value="Störung">
+            </label>
+            <label class="choice">
+              <img src="assets/icon-renew.jpg" alt="Icon Erneuerung (Platzhalter)">
+              <div>
+                <div><strong>Erneuerung / Sanierung</strong></div>
+                <div class="muted">Bestehendes System modernisieren</div>
+              </div>
+              <input type="radio" name="anliegen" value="Erneuerung">
+            </label>
+            <label class="choice">
+              <img src="assets/icon-newbuild.jpg" alt="Icon Neubau (Platzhalter)">
+              <div>
+                <div><strong>Neubau</strong></div>
+                <div class="muted">Komplett neues System planen</div>
+              </div>
+              <input type="radio" name="anliegen" value="Neubau">
+            </label>
+          </div>
+          <div class="nav-rows">
+            <button class="btn" data-next>Nächster Schritt</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Objekt -->
+        <div class="step hidden" data-step="2">
+          <h2>2) Objektangaben</h2>
+          <div class="grid cols-2">
+            <div class="row">
+              <label>Wohnfläche (m²)</label>
+              <input type="number" id="wohnflaeche" min="10" max="2000" placeholder="z. B. 120" required>
+            </div>
+            <div class="row">
+              <label>Baujahr des Hauses</label>
+              <input type="number" id="baujahr" min="1850" max="2025" placeholder="z. B. 1995" required>
+            </div>
+            <div class="row">
+              <label>Sanierungen erfolgt?</label>
+              <select id="sanierungen" required>
+                <option value="">Bitte wählen</option>
+                <option>keine</option>
+                <option>Dämmung</option>
+                <option>Fenster</option>
+                <option>Dach</option>
+                <option>Heizung</option>
+                <option>Mehrere / umfassend</option>
+              </select>
+            </div>
+            <div class="row">
+              <label>Heizflächen</label>
+              <select id="heizflaechen" required>
+                <option value="">Bitte wählen</option>
+                <option>Heizkörper</option>
+                <option>Fußbodenheizung</option>
+                <option>Heizkörper + Fußbodenheizung</option>
+              </select>
+            </div>
+            <div class="row">
+              <label>Bisheriges System</label>
+              <select id="altanlage" required>
+                <option value="">Bitte wählen</option>
+                <option>Öl</option>
+                <option>Gas</option>
+                <option>Pellet/Holz</option>
+                <option>Nachtspeicher</option>
+                <option>Wärmepumpe</option>
+                <option>Unbekannt</option>
+              </select>
+            </div>
+            <div class="row">
+              <label>Warmwasser</label>
+              <select id="warmwasser" required>
+                <option value="">Bitte wählen</option>
+                <option>über Heizung</option>
+                <option>elektrisch</option>
+                <option>Durchlauferhitzer</option>
+                <option>Solarthermie</option>
+              </select>
+            </div>
+            <div class="row">
+              <label>Anzahl Bewohner</label>
+              <input type="number" id="bewohner" min="1" max="30" placeholder="z. B. 3" required>
+            </div>
+            <div class="row">
+              <label>PLZ / Ort</label>
+              <input type="text" id="ort" placeholder="z. B. 69120 Heidelberg" required>
+            </div>
+          </div>
+          <p class="muted">Optional: Notizen oder besondere Wünsche</p>
+          <textarea id="notizen" placeholder="z. B. Außeneinheit möglichst leise, Aufstellort Hof, vorhandener Zählerkasten..."></textarea>
+
+          <div class="nav-rows">
+            <button class="btn ghost" data-prev>Zurück</button>
+            <button class="btn" data-next>Nächster Schritt</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Bilderhinweise -->
+        <div class="step hidden" data-step="3">
+          <h2>3) Bilder (optional)</h2>
+          <p class="muted">Du kannst uns später per E-Mail Fotos senden (z. B. Aufstellort, Zähler, Heizraum). Das beschleunigt das Angebot.</p>
+          <div class="grid cols-2">
+            <div class="card">
+              <img src="assets/placeholder-aufstellort.jpg" alt="Aufstellort Außeneinheit – Platzhalter" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:10px;background:#eaeef3">
+              <div class="muted">Platzhalter: Aufstellort Außeneinheit</div>
+            </div>
+            <div class="card">
+              <img src="assets/placeholder-heizraum.jpg" alt="Heizraum / Verteilung – Platzhalter" style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:10px;background:#eaeef3">
+              <div class="muted">Platzhalter: Heizraum / Verteilung</div>
+            </div>
+          </div>
+          <div class="nav-rows">
+            <button class="btn ghost" data-prev>Zurück</button>
+            <button class="btn" data-next>Zusammenfassung</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Zusammenfassung -->
+        <div class="step hidden" data-step="4">
+          <h2>4) Zusammenfassung</h2>
+          <dl class="summary" id="summary"></dl>
+          <div class="nav-rows">
+            <button class="btn ghost" data-prev>Zurück</button>
+            <button class="btn" data-next>Kontaktdaten eingeben</button>
+          </div>
+        </div>
+
+        <!-- Step 5: Kontakt -->
+        <div class="step hidden" data-step="5">
+          <h2>5) Kontaktdaten</h2>
+          <div class="grid cols-2">
+            <div class="row">
+              <label>Vor- und Nachname</label>
+              <input type="text" id="k_name" required placeholder="Max Mustermann">
+            </div>
+            <div class="row">
+              <label>E-Mail</label>
+              <input type="email" id="k_mail" required placeholder="max@beispiel.de">
+            </div>
+            <div class="row">
+              <label>Telefon</label>
+              <input type="tel" id="k_tel" placeholder="+49 ...">
+            </div>
+            <div class="row">
+              <label>Bevorzugter Rückrufzeitraum</label>
+              <select id="k_zeit">
+                <option>Morgens</option>
+                <option>Mittags</option>
+                <option>Nachmittags</option>
+                <option>Abends</option>
+              </select>
+            </div>
+          </div>
+          <p class="muted">Mit Absenden stimmst du zu, dass wir dich zur Angebotserstellung kontaktieren. Weitere Infos in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+          <div class="nav-rows">
+            <button class="btn ghost" data-prev>Zurück</button>
+            <button class="btn alt" id="submitBtn">Anfrage senden</button>
+          </div>
+          <p id="submitNote" class="muted" style="margin-top:8px;"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap foot">
+      <div>© <span id="y"></span> Hünig Wärme- und Kältetechnik</div>
+      <div class="legal" aria-label="Rechtliche Links">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+        <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Footer-Jahr
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Mobile Menü
+    const btn = document.getElementById('menuBtn');
+    const overlay = document.getElementById('menuOverlay');
+    if (btn && overlay){
+      btn.onclick = () => overlay.classList.toggle('open');
+      overlay.querySelectorAll('a').forEach(a => a.onclick = () => overlay.classList.remove('open'));
+    }
+
+    // Wizard
+    const steps = Array.from(document.querySelectorAll('.step'));
+    const progressBar = document.getElementById('progressBar');
+    let current = 0;
+
+    function showStep(i){
+      steps.forEach((s,idx)=> s.classList.toggle('hidden', idx!==i));
+      progressBar.style.width = ((i)/(steps.length-1))*100 + '%';
+      current = i;
+      if(i===3){ buildSummary(); }
+    }
+
+    document.querySelectorAll('[data-next]').forEach(b=> b.addEventListener('click', ()=>{
+      // basic validation for required in current step
+      if(!validateStep(current)) return;
+      showStep(Math.min(current+1, steps.length-1));
+      window.scrollTo({top: document.querySelector('#assistent').offsetTop-20, behavior:'smooth'});
+    }));
+    document.querySelectorAll('[data-prev]').forEach(b=> b.addEventListener('click', ()=>{
+      showStep(Math.max(current-1, 0));
+      window.scrollTo({top: document.querySelector('#assistent').offsetTop-20, behavior:'smooth'});
+    }));
+
+    function validateStep(i){
+      const container = steps[i];
+      const required = Array.from(container.querySelectorAll('[required]'));
+      for(const el of required){
+        if(el.type==='radio'){
+          const group = container.querySelectorAll('input[type="radio"][name="'+el.name+'"]');
+          if(!Array.from(group).some(r=>r.checked)){
+            alert('Bitte Option auswählen.');
+            return false;
+          }
+        } else if(!el.value){
+          el.focus();
+          el.scrollIntoView({block:'center'});
+          alert('Bitte fülle das Feld aus: ' + (container.querySelector('label[for="'+el.id+'"]')?.innerText || el.placeholder || el.name));
+          return false;
+        }
+      }
+      return true;
+    }
+
+    // Data getters
+    const getVal = (sel) => document.querySelector(sel)?.value?.trim() || '';
+    const getRadio = (name) => {
+      const r = document.querySelector('input[name="'+name+'"]:checked');
+      return r ? r.value : '';
+    };
+
+    function buildSummary(){
+      const data = collectData();
+      const s = document.getElementById('summary');
+      s.innerHTML = `
+        <dt>Anliegen</dt><dd>${data.anliegen || '-'}</dd>
+        <dt>Wohnfläche</dt><dd>${data.wohnflaeche} m²</dd>
+        <dt>Baujahr</dt><dd>${data.baujahr}</dd>
+        <dt>Sanierungen</dt><dd>${data.sanierungen}</dd>
+        <dt>Heizflächen</dt><dd>${data.heizflaechen}</dd>
+        <dt>Bisheriges System</dt><dd>${data.altanlage}</dd>
+        <dt>Warmwasser</dt><dd>${data.warmwasser}</dd>
+        <dt>Bewohner</dt><dd>${data.bewohner}</dd>
+        <dt>PLZ / Ort</dt><dd>${data.ort}</dd>
+        <dt>Notizen</dt><dd>${(data.notizen||'-').replace(/\n/g,'<br>')}</dd>
+      `;
+    }
+
+    function collectData(){
+      return {
+        anliegen: getRadio('anliegen'),
+        wohnflaeche: getVal('#wohnflaeche'),
+        baujahr: getVal('#baujahr'),
+        sanierungen: getVal('#sanierungen'),
+        heizflaechen: getVal('#heizflaechen'),
+        altanlage: getVal('#altanlage'),
+        warmwasser: getVal('#warmwasser'),
+        bewohner: getVal('#bewohner'),
+        ort: getVal('#ort'),
+        notizen: getVal('#notizen'),
+        k_name: getVal('#k_name'),
+        k_mail: getVal('#k_mail'),
+        k_tel: getVal('#k_tel'),
+        k_zeit: getVal('#k_zeit'),
+      };
+    }
+
+    // Submit
+    document.getElementById('submitBtn').addEventListener('click', ()=>{
+      if(!validateStep(current)) return;
+      const d = collectData();
+
+      // Nachricht zusammenbauen
+      const msg = [
+        'Anliegen: ' + d.anliegen,
+        'Wohnfläche: ' + d.wohnflaeche + ' m²',
+        'Baujahr: ' + d.baujahr,
+        'Sanierungen: ' + d.sanierungen,
+        'Heizflächen: ' + d.heizflaechen,
+        'Bisheriges System: ' + d.altanlage,
+        'Warmwasser: ' + d.warmwasser,
+        'Bewohner: ' + d.bewohner,
+        'PLZ/Ort: ' + d.ort,
+        'Notizen: ' + (d.notizen||'-'),
+        '',
+        'Kontakt:',
+        'Name: ' + d.k_name,
+        'E-Mail: ' + d.k_mail,
+        'Telefon: ' + (d.k_tel||'-'),
+        'Rückrufzeit: ' + (d.k_zeit||'-')
+      ].join('\n');
+
+      // Variante A: mailto (einfach, kann bei sehr langen Texten limitiert sein)
+      const mailto = 'mailto:info@huenig.com'
+        + '?subject=' + encodeURIComponent('Anfrage über Angebots-Assistent')
+        + '&body=' + encodeURIComponent(msg);
+
+      // Hinweis anzeigen + Mailclient öffnen
+      document.getElementById('submitNote').textContent = 'Es öffnet sich dein Mail-Programm mit der Anfrage. Wenn nichts passiert, schreibe an info@huenig.com.';
+      window.location.href = mailto;
+
+      // Variante B (empfohlen, wenn du später Formspree/Resend nutzt):
+      // -> Formspree Endpoint anlegen und per fetch() POSTen.
+      // fetch('https://formspree.io/f/DEIN-ENDPOINT', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(d)})
+      //   .then(()=> document.getElementById('submitNote').textContent = 'Anfrage gesendet. Wir melden uns zeitnah.')
+      //   .catch(()=> document.getElementById('submitNote').textContent = 'Senden fehlgeschlagen. Bitte E-Mail an info@huenig.com schicken.');
+    });
+
+    // Init
+    showStep(0);
+  </script>
+</body>
+</html>
