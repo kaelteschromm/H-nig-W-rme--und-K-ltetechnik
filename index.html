@@ -13,7 +13,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
     }
     .logo {
       display: block;
@@ -21,36 +21,124 @@
       max-width: 350px;
       width: 90vw;
       height: auto;
-      border-radius: 20px;
-      box-shadow: 0 6px 32px rgba(0,0,0,0.10);
-      background: #fff;
-      padding: 1.2rem;
-      transition: box-shadow 0.3s;
     }
     h1 {
       text-align: center;
       color: #14365e;
       font-size: 2.4rem;
-      margin-bottom: 15px;
+      margin-bottom: 35px;
       margin-top: 0;
       font-weight: 700;
       letter-spacing: 1px;
     }
-    .welcome {
-      color: #2a2a2a;
-      text-align: center;
-      font-size: 1.4rem;
-      margin-bottom: 50px;
+    /* Menübutton */
+    .menu-btn {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .menu-btn span, .menu-btn span:before, .menu-btn span:after {
+      display: block;
+      background: #14365e;
+      height: 5px;
+      width: 36px;
+      border-radius: 2px;
+      position: relative;
+      transition: 0.3s;
+    }
+    .menu-btn span {
+      position: relative;
+    }
+    .menu-btn span:before,
+    .menu-btn span:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 36px;
+    }
+    .menu-btn span:before { top: -12px; }
+    .menu-btn span:after  { top: 12px; }
+
+    /* Menü Overlay */
+    .menu-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(20,54,94,0.98);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s;
+    }
+    .menu-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .menu-overlay a {
+      color: #fff;
+      font-size: 2rem;
+      margin: 1.2rem 0;
+      text-decoration: none;
+      font-weight: 400;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+    .menu-overlay a:hover {
+      color: #7ecfff;
     }
     @media (max-width: 600px) {
-      .logo { max-width: 90vw; padding: 0.5rem; }
-      h1 { font-size: 1.5rem; }
-      .welcome { font-size: 1.1rem; }
+      .logo { max-width: 90vw; }
+      h1 { font-size: 1.4rem; }
+      .menu-btn { width: 38px; height: 38px; top: 16px; right: 16px; }
+      .menu-btn span, .menu-btn span:before, .menu-btn span:after { width: 23px; }
+      .menu-btn span:before { top: -8px; }
+      .menu-btn span:after { top: 8px; }
+      .menu-overlay a { font-size: 1.2rem; }
     }
   </style>
 </head>
 <body>
+  <!-- Menübutton -->
+  <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen">
+    <span></span>
+  </button>
+  <!-- Logo -->
   <img src="logo.png" alt="Firmenlogo Hünig Wärme- und Kältetechnik" class="logo">
+  <!-- Begrüßung -->
   <h1>Herzlich Willkommen bei<br>Hünig Wärme- und Kältetechnik</h1>
+  <!-- Menü Overlay -->
+  <div class="menu-overlay" id="menuOverlay">
+    <a href="index.html">Startseite</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="klimaanlagen.html">Klimaanlagen</a>
+    <a href="waermepumpen.html">Wärmepumpen</a>
+    <a href="trinkwasserinstallationen.html">Trinkwasserinstallationen</a>
+    <a href="lueftung.html">Lüftung</a>
+    <a href="ueber-uns.html">Über uns</a>
+  </div>
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const menuOverlay = document.getElementById('menuOverlay');
+    menuBtn.onclick = function() {
+      menuOverlay.classList.toggle('open');
+    };
+    // Menü schließt beim Klick auf Link (nur Overlay-Links)
+    menuOverlay.querySelectorAll('a').forEach(link => {
+      link.onclick = () => menuOverlay.classList.remove('open');
+    });
+  </script>
 </body>
 </html>
