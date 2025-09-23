@@ -2,68 +2,46 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Hünig Wärme- und Kältetechnik</title>
+  <title>Wärmepumpen | Hünig Wärme- und Kältetechnik</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Wärmepumpen, Klimaanlagen, Lüftung und Trinkwasserinstallationen – Planung, Montage, Service im Raum Heidelberg.">
   <style>
     :root{
-      --bg:#f7f7f7; --card:#fff; --text:#1a2433; --primary:#14365e; --muted:#5b6b82; --ring:rgba(0,0,0,.08);
-      --accent:#e63a2e; --cool:#2e7bd9;
+      --bg:#f7f7f7; --card:#fff; --text:#1a2433; --primary:#14365e;
+      --muted:#5b6b82; --ring:rgba(0,0,0,.08); --accent:#e63a2e; --cool:#2e7bd9;
     }
     *{box-sizing:border-box}
-    body{
-      margin:0; min-height:100vh; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg); color:var(--text); display:flex; flex-direction:column;
-    }
+    body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:var(--text); display:flex; flex-direction:column; min-height:100vh}
     .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-
+    
     /* Header */
-    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);border-bottom:1px solid #e6e8eb}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--primary)}
-    .brand img{height:36px;width:auto}
+    header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e6e8eb;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--primary);text-decoration:none}
+    .brand img{height:52px;width:auto} /* Logo größer */
 
-    /* Desktop Nav */
+    /* Menü */
     nav a{color:var(--muted);text-decoration:none;margin-left:18px}
     nav a:hover{color:var(--primary)}
-
-    /* Mobile Menu Button */
     .menu-btn{display:none}
     @media (max-width: 900px){
       nav{display:none}
-      .menu-btn{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border:0;background:transparent;cursor:pointer}
-      .menu-btn span,.menu-btn span:before,.menu-btn span:after{display:block;background:var(--primary);height:3px;width:26px;border-radius:2px;position:relative;transition:.3s}
-      .menu-btn span:before,.menu-btn span:after{content:'';position:absolute;left:0;width:26px}
-      .menu-btn span:before{top:-8px}.menu-btn span:after{top:8px}
+      .menu-btn{display:flex;flex-direction:column;gap:6px;width:46px;height:46px;border:0;background:transparent;cursor:pointer;align-items:center;justify-content:center}
+      .menu-btn span{display:block;background:var(--primary);height:3px;width:26px;border-radius:2px}
       .menu-overlay{position:fixed;inset:0;background:rgba(20,54,94,.98);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.35s}
       .menu-overlay.open{opacity:1;pointer-events:auto}
-      .menu-overlay a{color:#fff;font-size:1.25rem;margin:.8rem 0;text-decoration:none}
-      .menu-overlay a:hover{color:#a9d6ff}
+      .menu-overlay a{color:#fff;font-size:1.3rem;margin:.8rem 0;text-decoration:none}
     }
 
-    /* Hero */
-    .hero{padding:48px 0}
-    .card{background:var(--card);border-radius:16px;box-shadow:0 6px 24px var(--ring);padding:28px}
-    .hero-grid{display:grid;gap:20px;align-items:center}
-    @media (min-width:900px){.hero-grid{grid-template-columns:1.1fr .9fr}}
-    h1{margin:0 0 10px;color:var(--primary);font-size:2.2rem}
-    .subtitle{color:var(--muted);margin:6px 0 14px}
-    .btn{display:inline-block;background:var(--primary);color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none}
-    .btn.alt{background:linear-gradient(90deg,var(--accent),var(--cool))}
-    .hero img{width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 6px 24px var(--ring)}
-
-    /* Sektionen */
+    /* Sections */
     .section{padding:48px 0}
-    h2{color:var(--primary);margin:0 0 14px}
-    .grid{display:grid;gap:20px}
-    @media (min-width:900px){.cols-2{grid-template-columns:1fr 1fr}.cols-3{grid-template-columns:repeat(3,1fr)}}
-    .card img.sec{width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:12px;background:#eaeef3}
+    h1,h2,h3{color:var(--primary);margin-top:0}
+    .card{background:var(--card);border-radius:16px;box-shadow:0 6px 24px var(--ring);padding:28px;margin-bottom:20px}
 
-    /* Logos-Laufband */
-    .brandbar{overflow:hidden;border-radius:12px;background:#fff;box-shadow:0 6px 24px var(--ring);padding:12px;margin-top:14px}
-    .marquee{display:flex;gap:48px;align-items:center;animation:marq 22s linear infinite;will-change:transform}
-    .marquee img{height:34px;filter:grayscale(100%);opacity:.85;transition:.2s}
-    .marquee img:hover{filter:none;opacity:1;transform:scale(1.02)}
+    /* Hersteller-Laufband */
+    .brandbar{overflow:hidden;border-radius:12px;background:#fff;box-shadow:0 6px 24px rgba(0,0,0,.08);padding:14px;margin-top:20px}
+    .marquee{display:flex;gap:48px;align-items:center;animation:marq 20s linear infinite;will-change:transform}
+    .marquee img{height:40px;filter:grayscale(100%);opacity:.85;transition:.2s}
+    .marquee img:hover{filter:none;opacity:1;transform:scale(1.05)}
     @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
     /* Footer */
@@ -71,7 +49,6 @@
     .foot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:12px 20px;color:var(--muted);font-size:.95rem}
     .foot a{color:var(--muted);text-decoration:none;margin-right:14px}
     .foot a:hover{color:var(--primary)}
-    .legal{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
   </style>
 </head>
 <body>
@@ -79,14 +56,8 @@
   <!-- Header -->
   <header>
     <div class="wrap nav">
-      <a class="brand" href="index.html" aria-label="Zur Startseite">
-        <!-- LOGO: ersetze Datei im assets/ Ordner -->
-        <img src="assets/logo-huenig.png" alt="Hünig Logo (Flamme/Schneeflocke)">
-        <span>Hünig • Wärme- und Kältetechnik</span>
-      </a>
-
-      <!-- Desktop-Navigation -->
-      <nav aria-label="Hauptnavigation">
+      <a class="brand" href="index.html"><img src="assets/logo-huenig.png" alt="Hünig Logo"><span>Hünig • Wärme- und Kältetechnik</span></a>
+      <nav>
         <a href="index.html">Startseite</a>
         <a href="waermepumpen.html">Wärmepumpen</a>
         <a href="klimaanlagen.html">Klimaanlagen</a>
@@ -97,12 +68,8 @@
         <a href="ueber-uns.html">Über uns</a>
         <a href="kontakt.html">Kontakt</a>
       </nav>
-
-      <!-- Mobile Menübutton -->
-      <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen"><span></span></button>
+      <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
     </div>
-
-    <!-- Mobile Overlay-Menü -->
     <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
       <a href="index.html">Startseite</a>
       <a href="waermepumpen.html">Wärmepumpen</a>
@@ -115,115 +82,85 @@
       <a href="kontakt.html">Kontakt</a>
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
-      <a href="agb.html">AGB</a>
-      <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="card">
-        <h1>Präzise Lösungen für Wärme & Kälte</h1>
-        <p class="subtitle">Wärmepumpen, Klimageräte, Lüftung und Trinkwasser – Planung, Montage und Service im Raum Heidelberg.</p>
-        <a class="btn" href="kontakt.html">Anfrage stellen</a>
-        <a class="btn alt" style="margin-left:8px" href="referenzen.html">Referenzen ansehen</a>
-      </div>
-      <!-- HERO-BILD: Platzhalter -->
-      <img src="assets/hero-anlage.jpg" alt="Installierte Außeneinheit – Beispielanlage (Platzhalter)">
+  <main class="wrap">
+    <h1>Wärmepumpen – Zukunft der Heizung</h1>
+
+    <div class="card">
+      <h2>Welche Arten von Wärmepumpen gibt es?</h2>
+      <p>
+        Wärmepumpen nutzen Umweltenergie aus Luft, Erde oder Wasser. Die gängigsten Typen sind:
+      </p>
+      <ul>
+        <li><b>Luft/Wasser-Wärmepumpe:</b> am häufigsten, flexibel nachrüstbar, geeignet für Neubau & Sanierung.</li>
+        <li><b>Sole/Wasser-Wärmepumpe (Erdwärme):</b> hohe Effizienz, benötigt Erdsonden oder Flächenkollektor.</li>
+        <li><b>Wasser/Wasser-Wärmepumpe:</b> nutzt Grundwasser, sehr effizient, Genehmigungspflichtig.</li>
+      </ul>
     </div>
-  </section>
 
-  <!-- LEISTUNGEN -->
-  <section class="section">
-    <div class="wrap">
-      <h2>Leistungen</h2>
-      <div class="grid cols-3">
-        <div class="card">
-          <img class="sec" src="assets/waermepumpe-platzhalter.jpg" alt="Wärmepumpe – Außeneinheit / Hydraulik (Platzhalter)">
-          <h3>Wärmepumpen</h3>
-          <p>Planung & Einbau von Luft/Wasser-Wärmepumpen – effizient, leise, förderfähig.</p>
-          <p><a class="btn" href="waermepumpen.html">Mehr erfahren</a></p>
-        </div>
-        <div class="card">
-          <img class="sec" src="assets/klima-platzhalter.jpg" alt="Split-Klimagerät Innen- und Außeneinheit (Platzhalter)">
-          <h3>Klimaanlagen</h3>
-          <p>Single- & Multisplit, saubere Leitungsführung, leiser Betrieb, fachgerechtes Bördeln.</p>
-          <p><a class="btn" href="klimaanlagen.html">Mehr erfahren</a></p>
-        </div>
-        <div class="card">
-          <img class="sec" src="assets/lueftung-platzhalter.jpg" alt="Lüftungsanlage mit Wärmerückgewinnung (Platzhalter)">
-          <h3>Lüftung</h3>
-          <p>Gesunde Luft & Wärmerückgewinnung – Planung, Montage und Inbetriebnahme.</p>
-          <p><a class="btn" href="lueftung.html">Mehr erfahren</a></p>
-        </div>
-      </div>
-
-      <div class="grid cols-3" style="margin-top:20px">
-        <div class="card">
-          <img class="sec" src="assets/trinkwasser-platzhalter.jpg" alt="Trinkwasser-Installation: Pressfitting / Verteiler (Platzhalter)">
-          <h3>Trinkwasser</h3>
-          <p>Sichere Installationen nach Stand der Technik – sauber, langlebig, dokumentiert.</p>
-          <p><a class="btn" href="trinkwasserinstallationen.html">Mehr erfahren</a></p>
-        </div>
-        <div class="card">
-          <img class="sec" src="assets/service-platzhalter.jpg" alt="Wartung – Manometer/Servicekoffer (Platzhalter)">
-          <h3>Service & Wartung</h3>
-          <p>Regelmäßige Inspektion, Entstörung und Optimierung für maximale Effizienz.</p>
-          <p><a class="btn" href="service.html">Mehr erfahren</a></p>
-        </div>
-        <div class="card">
-          <img class="sec" src="assets/referenz-platzhalter.jpg" alt="Projektabschluss – Referenzobjekt (Platzhalter)">
-          <h3>Referenzen</h3>
-          <p>Einblicke in umgesetzte Projekte – vom Micro-Apartment bis Mehrfamilienhaus.</p>
-          <p><a class="btn" href="referenzen.html">Mehr erfahren</a></p>
-        </div>
-      </div>
+    <div class="card">
+      <h2>Für wen ist eine Wärmepumpe geeignet?</h2>
+      <p>
+        Wärmepumpen eignen sich für Neubauten, aber auch für modernisierte Bestandsgebäude. Besonders sinnvoll sind sie:
+      </p>
+      <ul>
+        <li>Bei Gebäuden mit Fußbodenheizung oder großen Heizflächen.</li>
+        <li>Wenn eine Sanierung (Fenster, Dämmung) erfolgt ist.</li>
+        <li>Für Eigentümer, die Wert auf Nachhaltigkeit und niedrige Heizkosten legen.</li>
+      </ul>
     </div>
-  </section>
 
-  <!-- WÄRMEPUMPEN: Markenlaufband -->
-  <section class="section">
-    <div class="wrap">
-      <h2>Wärmepumpen – starke Marken</h2>
-      <p class="subtitle">Verbaut u. a. Viessmann, Daikin, Buderus, Panasonic, Samsung.</p>
-      <div class="brandbar">
-        <div class="marquee">
-          <img src="assets/logo-viessmann.svg" alt="Viessmann Logo (Platzhalter)">
-          <img src="assets/logo-daikin.svg" alt="Daikin Logo (Platzhalter)">
-          <img src="assets/logo-buderus.svg" alt="Buderus Logo (Platzhalter)">
-          <img src="assets/logo-panasonic.svg" alt="Panasonic Logo (Platzhalter)">
-          <img src="assets/logo-samsung.svg" alt="Samsung Logo (Platzhalter)">
-          <!-- zweite Runde für Loop -->
-          <img src="assets/logo-viessmann.svg" alt="Viessmann Logo (Platzhalter)">
-          <img src="assets/logo-daikin.svg" alt="Daikin Logo (Platzhalter)">
-          <img src="assets/logo-buderus.svg" alt="Buderus Logo (Platzhalter)">
-          <img src="assets/logo-panasonic.svg" alt="Panasonic Logo (Platzhalter)">
-          <img src="assets/logo-samsung.svg" alt="Samsung Logo (Platzhalter)">
-        </div>
-      </div>
+    <div class="card">
+      <h2>Ist eine Wartung notwendig?</h2>
+      <p>
+        Ja, auch Wärmepumpen sollten regelmäßig gewartet werden. Dadurch wird:
+      </p>
+      <ul>
+        <li>die Lebensdauer verlängert,</li>
+        <li>der Energieverbrauch minimiert,</li>
+        <li>die Betriebssicherheit erhöht.</li>
+      </ul>
+      <p>
+        In der Regel genügt eine jährliche Wartung durch einen Fachbetrieb.
+      </p>
     </div>
-  </section>
 
-  <!-- ÜBER UNS -->
-  <section class="section">
-    <div class="wrap grid cols-2">
-      <div class="card">
-        <h2>Über uns</h2>
-        <p>Handwerk mit Anspruch: saubere Ausführung, klare Kommunikation, Termine halten.
-           Meisterbetrieb aus der Region – effiziente Lösungen für Wärme & Kälte.</p>
-        <p><a class="btn" href="ueber-uns.html">Mehr über uns</a></p>
-      </div>
-      <img class="card" src="assets/team-werkstatt.jpg" alt="Team in der Werkstatt / Montagevorbereitung (Platzhalter)">
+    <div class="card">
+      <h2>Weitere wichtige Themen</h2>
+      <ul>
+        <li><b>Förderungen:</b> Staatliche Zuschüsse und KfW-Kredite können die Investition deutlich reduzieren.</li>
+        <li><b>Stromverbrauch:</b> In Kombination mit Photovoltaik besonders effizient.</li>
+        <li><b>Umwelt:</b> Reduziert den CO₂-Ausstoß und macht unabhängig von fossilen Brennstoffen.</li>
+      </ul>
     </div>
-  </section>
 
-  <!-- Kontakt-Teaser -->
-  <section class="section">
-    <div class="wrap card">
-      <h2>Kontakt</h2>
-      <p>Projekt oder Frage? Schreib uns kurz Gerät/Objekt und gewünschten Zeitraum.</p>
-      <p><a class="btn" href="kontakt.html">Kontaktformular öffnen</a></p>
+    <div class="card" style="text-align:center">
+      <h2>Jetzt Angebot anfordern</h2>
+      <p>Planen Sie eine Erneuerung oder einen Neubau? Stellen Sie Ihre Anfrage direkt online.</p>
+      <a class="btn alt" href="kontakt.html">Zum Kontaktformular (Erneuerung/Neubau)</a>
+    </div>
+  </main>
+
+  <!-- Hersteller-Laufband -->
+  <section class="wrap brandbar">
+    <div class="marquee">
+      <img src="assets/logo-viessmann.svg" alt="Viessmann">
+      <img src="assets/logo-daikin.svg" alt="Daikin">
+      <img src="assets/logo-buderus.svg" alt="Buderus">
+      <img src="assets/logo-bosch.svg" alt="Bosch">
+      <img src="assets/logo-mitsubishi.svg" alt="Mitsubishi">
+      <img src="assets/logo-panasonic.svg" alt="Panasonic">
+      <img src="assets/logo-samsung.svg" alt="Samsung">
+      <!-- zweite Runde -->
+      <img src="assets/logo-viessmann.svg" alt="Viessmann">
+      <img src="assets/logo-daikin.svg" alt="Daikin">
+      <img src="assets/logo-buderus.svg" alt="Buderus">
+      <img src="assets/logo-bosch.svg" alt="Bosch">
+      <img src="assets/logo-mitsubishi.svg" alt="Mitsubishi">
+      <img src="assets/logo-panasonic.svg" alt="Panasonic">
+      <img src="assets/logo-samsung.svg" alt="Samsung">
     </div>
   </section>
 
@@ -231,7 +168,7 @@
   <footer>
     <div class="wrap foot">
       <div>© <span id="y"></span> Hünig Wärme- und Kältetechnik</div>
-      <div class="legal" aria-label="Rechtliche Links">
+      <div class="legal">
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Datenschutz</a>
         <a href="agb.html">AGB</a>
@@ -242,15 +179,11 @@
   </footer>
 
   <script>
-    // Jahr im Footer
     document.getElementById('y').textContent = new Date().getFullYear();
-    // Mobile Menü
     const btn = document.getElementById('menuBtn');
     const overlay = document.getElementById('menuOverlay');
-    if (btn && overlay){
-      btn.onclick = () => overlay.classList.toggle('open');
-      overlay.querySelectorAll('a').forEach(a => a.onclick = () => overlay.classList.remove('open'));
-    }
+    btn.onclick = () => overlay.classList.toggle('open');
+    overlay.querySelectorAll('a').forEach(a => a.onclick = () => overlay.classList.remove('open'));
   </script>
 </body>
 </html>
