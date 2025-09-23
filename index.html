@@ -4,250 +4,156 @@
   <meta charset="UTF-8">
   <title>Hünig Wärme- und Kältetechnik</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Planung, Einbau und Service für Wärme- und Kältetechnik – Wärmepumpen, Klimaanlagen, Lüftung, Trinkwasserinstallationen im Raum Heidelberg.">
   <style>
     :root{
-      --bg:#f7f7f7; --card:#fff; --text:#1a2433; --primary:#14365e; --muted:#5b6b82; --ring:rgba(0,0,0,.08);
-      --accent:#e63a2e; /* warm (rot) */ --cool:#2e7bd9; /* kalt (blau) */
+      --bg:#f0f2f6; --card:#fff; --text:#1a2433; --primary:#14365e;
+      --accent:#e63a2e; --cool:#2e7bd9;
     }
     *{box-sizing:border-box}
-    body{
-      margin:0; min-height:100vh; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg); color:var(--text); display:flex; flex-direction:column;
+    html,body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text)}
+
+    /* SPLASH */
+    #splash{
+      position:fixed;inset:0;background:#fff;display:flex;flex-direction:column;
+      align-items:center;justify-content:center;z-index:1000;transition:opacity .8s ease
     }
-    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-    /* Header / Menü */
-    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);
-      border-bottom:1px solid #e6e8eb}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--primary);letter-spacing:.2px}
-    .brand img{height:36px;width:auto}
-    .menu-btn{display:none}
-    nav a{color:var(--muted);text-decoration:none;margin-left:18px}
-    nav a:hover{color:var(--primary)}
-    /* Mobile Overlay Menu */
-    @media (max-width: 900px){
-      nav{display:none}
-      .menu-btn{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border:0;background:transparent;cursor:pointer}
-      .menu-btn span,.menu-btn span:before,.menu-btn span:after{display:block;background:var(--primary);height:3px;width:26px;border-radius:2px;position:relative;transition:.3s}
-      .menu-btn span:before,.menu-btn span:after{content:'';position:absolute;left:0;width:26px}
-      .menu-btn span:before{top:-8px}.menu-btn span:after{top:8px}
-      .menu-overlay{position:fixed;inset:0;background:rgba(20,54,94,.98);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.35s}
-      .menu-overlay.open{opacity:1;pointer-events:auto}
-      .menu-overlay a{color:#fff;font-size:1.25rem;margin:.8rem 0;text-decoration:none}
-      .menu-overlay a:hover{color:#a9d6ff}
+    #splash img{max-width:320px;width:80vw;height:auto}
+    #splash h2{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:1.4rem;
+      margin-top:20px;
+      color:var(--primary);
+      text-align:center;
+    }
+    #arrow{margin-top:40px;font-size:2.6rem;color:var(--primary);cursor:pointer;animation:bounce 1.6s infinite}
+    @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-12px)}60%{transform:translateY(-6px)}}
+
+    /* HEADER */
+    header{
+      position:fixed;top:0;left:0;right:0;height:60px;background:rgba(255,255,255,0.9);
+      display:flex;align-items:center;justify-content:space-between;padding:0 16px;
+      box-shadow:0 2px 6px rgba(0,0,0,.05);z-index:900
+    }
+    header .logo{height:36px;width:auto}
+
+    /* HAMBURGER BUTTON */
+    .menu-btn{
+      border:none;background:transparent;cursor:pointer;padding:10px;width:44px;height:44px
+    }
+    .menu-btn .bar,
+    .menu-btn .bar::before,
+    .menu-btn .bar::after{
+      content:"";display:block;height:3px;width:24px;background:var(--primary);
+      border-radius:2px;position:relative;transition:.25s
+    }
+    .menu-btn .bar::before{position:absolute;top:-8px;left:0}
+    .menu-btn .bar::after{position:absolute;top:8px;left:0}
+
+    /* OVERLAY-MENÜ */
+    .menu-overlay{
+      position:fixed;top:0;right:-100%;bottom:0;width:100%;background:rgba(20,54,94,.97);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      opacity:0;pointer-events:none;transition:all .5s ease;z-index:800
+    }
+    .menu-overlay.open{
+      right:0;opacity:1;pointer-events:auto;
+    }
+    .menu-overlay a{
+      color:#fff;font-size:1.5rem;margin:0.7rem 0;text-decoration:none;
+      transform:translateX(100px);opacity:0;
+    }
+    .menu-overlay.open a{
+      animation:slideIn .5s forwards;
+    }
+    .menu-overlay a:nth-child(1){animation-delay:.1s}
+    .menu-overlay a:nth-child(2){animation-delay:.2s}
+    .menu-overlay a:nth-child(3){animation-delay:.3s}
+    .menu-overlay a:nth-child(4){animation-delay:.4s}
+    .menu-overlay a:nth-child(5){animation-delay:.5s}
+    .menu-overlay a:nth-child(6){animation-delay:.6s}
+    .menu-overlay a:nth-child(7){animation-delay:.7s}
+    .menu-overlay a:nth-child(8){animation-delay:.8s}
+    .menu-overlay a:nth-child(9){animation-delay:.9s}
+    .menu-overlay a:nth-child(10){animation-delay:1s}
+    .menu-overlay a:nth-child(11){animation-delay:1.1s}
+    @keyframes slideIn{
+      to{transform:translateX(0);opacity:1}
     }
 
-    /* Hero */
-    .hero{padding:48px 0}
-    .card{background:var(--card);border-radius:16px;box-shadow:0 6px 24px var(--ring);padding:28px}
-    .hero-grid{display:grid;gap:20px;align-items:center}
-    @media (min-width:900px){.hero-grid{grid-template-columns:1.1fr .9fr}}
-    h1{margin:0 0 10px;color:var(--primary);font-size:2.2rem}
-    .subtitle{color:var(--muted);margin:6px 0 14px}
-    .btn{display:inline-block;background:var(--primary);color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none}
-    .btn.alt{background:linear-gradient(90deg,var(--accent),var(--cool))}
-    .hero img{width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 6px 24px var(--ring)}
-
-    /* Sektionen */
-    .section{padding:48px 0}
-    h2{color:var(--primary);margin:0 0 14px}
-    .grid{display:grid;gap:20px}
-    @media (min-width:900px){.cols-2{grid-template-columns:1fr 1fr}.cols-3{grid-template-columns:repeat(3,1fr)}}
-    .card img.sec{width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:12px;background:#eaeef3}
-
-    /* Logos-Laufband */
-    .brandbar{overflow:hidden;border-radius:12px;background:#fff;box-shadow:0 6px 24px var(--ring);padding:12px;margin-top:14px}
-    .marquee{display:flex;gap:48px;align-items:center;animation:marq 22s linear infinite;will-change:transform}
-    .marquee img{height:34px;filter:grayscale(100%);opacity:.85;transition:.2s}
-    .marquee img:hover{filter:none;opacity:1;transform:scale(1.02)}
-    @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-    /* Footer – fix am unteren Rand */
-    footer{
-      margin-top:auto;border-top:1px solid #e6e8eb;background:#fff;position:sticky;bottom:0;z-index:40
-    }
-    .foot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:12px 20px;color:var(--muted);font-size:.95rem}
-    .foot a{color:var(--muted);text-decoration:none;margin-right:14px}
-    .foot a:hover{color:var(--primary)}
-    .legal{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    /* MAIN */
+    main{padding:80px 20px;background:var(--bg);min-height:100vh;display:none}
+    .wrap{max-width:1100px;margin:0 auto}
+    .card{background:var(--card);border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.08);padding:24px}
+    h1{margin-top:0;color:var(--primary)}
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- SPLASH -->
+  <div id="splash" aria-label="Intro">
+    <img src="assets/logo.png" alt="Hünig Logo">
+    <h2>Herzlich Willkommen bei<br>Hünig Wärme- und Kältetechnik</h2>
+    <div id="arrow" aria-label="Weiter zur Website" title="Weiter">↓</div>
+  </div>
+
+  <!-- HEADER -->
   <header>
-    <div class="wrap nav">
-      <div class="brand">
-        <!-- LOGO: später ersetzen -->
-        <img src="assets/logo.png" alt="Hünig Logo (Flamme/Scheeflocke)">
-        <span>Hünig • Wärme- und Kältetechnik</span>
-      </div>
-
-      <!-- Desktop-Navigation (sinnvoll sortiert + ergänzt) -->
-      <nav aria-label="Hauptnavigation">
-        <a href="index.html">Startseite</a>
-        <a href="waermepumpen.html">Wärmepumpen</a>
-        <a href="klimaanlagen.html">Klimaanlagen</a>
-        <a href="lueftung.html">Lüftung</a>
-        <a href="trinkwasserinstallationen.html">Trinkwasser</a>
-        <a href="referenzen.html">Referenzen</a>
-        <a href="service.html">Service & Wartung</a>
-        <a href="ueber-uns.html">Über uns</a>
-        <a href="kontakt.html">Kontakt</a>
-      </nav>
-
-      <!-- Mobile Menübutton -->
-      <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen"><span></span></button>
-    </div>
-
-    <!-- Mobile Overlay-Menü -->
-    <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
-      <a href="index.html">Startseite</a>
-      <a href="waermepumpen.html">Wärmepumpen</a>
-      <a href="klimaanlagen.html">Klimaanlagen</a>
-      <a href="lueftung.html">Lüftung</a>
-      <a href="trinkwasserinstallationen.html">Trinkwasser</a>
-      <a href="referenzen.html">Referenzen</a>
-      <a href="service.html">Service & Wartung</a>
-      <a href="ueber-uns.html">Über uns</a>
-      <a href="kontakt.html">Kontakt</a>
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
-    </div>
+    <img src="assets/logo.png" alt="Hünig Logo" class="logo">
+    <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen"><span class="bar"></span></button>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="card">
-        <h1>Präzise Lösungen für Wärme & Kälte</h1>
-        <p class="subtitle">Wärmepumpen, Klimageräte, Lüftung und Trinkwasser – Planung, Montage und Service im Raum Heidelberg.</p>
-        <a class="btn" href="kontakt.html">Anfrage stellen</a>
-        <a class="btn alt" style="margin-left:8px" href="referenzen.html">Referenzen ansehen</a>
-      </div>
-      <!-- HERO-BILD: später ersetzen -->
-      <img src="assets/hero-anlage.jpg" alt="Installierte Außeneinheit – Beispielanlage (Platzhalterbild)">
-    </div>
-  </section>
+  <!-- MENÜ -->
+  <nav class="menu-overlay" id="menuOverlay" aria-label="Hauptmenü">
+    <a href="index.html">Startseite</a>
+    <a href="waermepumpen.html">Wärmepumpen</a>
+    <a href="klimaanlagen.html">Klimaanlagen</a>
+    <a href="lueftung.html">Lüftung</a>
+    <a href="trinkwasserinstallationen.html">Trinkwasser</a>
+    <a href="referenzen.html">Referenzen</a>
+    <a href="service.html">Service & Wartung</a>
+    <a href="ueber-uns.html">Über uns</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </nav>
 
-  <!-- LEISTUNGEN-Kacheln mit Platzhalterbildern -->
-  <section class="section">
+  <!-- INHALT -->
+  <main id="content">
     <div class="wrap">
-      <h2>Leistungen</h2>
-      <div class="grid cols-3">
-        <div class="card">
-          <img class="sec" src="assets/waermepumpe-platzhalter.jpg" alt="Wärmepumpe – Außeneinheit / Hydraulik (Platzhalter)">
-          <h3>Wärmepumpen</h3>
-          <p>Planung & Einbau von Luft/Wasser-Wärmepumpen – effizient, leise, förderfähig.</p>
-          <p><a class="btn" href="waermepumpen.html">Mehr erfahren</a></p>
-        </div>
-        <div class="card">
-          <img class="sec" src="assets/klima-platzhalter.jpg" alt="Split-Klimagerät Innen- und Außeneinheit (Platzhalter)">
-          <h3>Klimaanlagen</h3>
-          <p>Single- & Multisplit, saubere Leitungsführung, leiser Betrieb, fachgerechtes Bördeln.</p>
-          <p><a class="btn" href="klimaanlagen.html">Mehr erfahren</a></p>
-        </div>
-        <div class="card">
-          <img class="sec" src="assets/lueftung-platzhalter.jpg" alt="Zentrale/Dezentrale Lüftungsanlage mit Wärmerückgewinnung (Platzhalter)">
-          <h3>Lüftung</h3>
-          <p>Gesunde Luft & Wärmerückgewinnung – Planung, Montage und Inbetriebnahme.</p>
-          <p><a class="btn" href="lueftung.html">Mehr erfahren</a></p>
-        </div>
-      </div>
-
-      <div class="grid cols-3" style="margin-top:20px">
-        <div class="card">
-          <img class="sec" src="assets/trinkwasser-platzhalter.jpg" alt="Trinkwasser-Installation: Pressfitting / Verteiler (Platzhalter)">
-          <h3>Trinkwasser</h3>
-          <p>Sichere Installationen nach Stand der Technik – sauber, langlebig, dokumentiert.</p>
-          <p><a class="btn" href="trinkwasserinstallationen.html">Mehr erfahren</a></p>
-        </div>
-        <div class="card">
-          <img class="sec" src="assets/service-platzhalter.jpg" alt="Wartung einer Anlage – Manometer/Servicekoffer (Platzhalter)">
-          <h3>Service & Wartung</h3>
-          <p>Regelmäßige Inspektion, Entstörung und Optimierung für maximale Effizienz.</p>
-          <p><a class="btn" href="service.html">Mehr erfahren</a></p>
-        </div>
-        <div class="card">
-          <img class="sec" src="assets/referenz-platzhalter.jpg" alt="Projektabschluss – Referenzobjekt (Platzhalter)">
-          <h3>Referenzen</h3>
-          <p>Einblicke in umgesetzte Projekte – vom Micro-Apartment bis Mehrfamilienhaus.</p>
-          <p><a class="btn" href="referenzen.html">Mehr erfahren</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WÄRMEPUMPEN: Herstellerlogos (laufend) -->
-  <section class="section">
-    <div class="wrap">
-      <h2>Wärmepumpen – starke Marken</h2>
-      <p class="subtitle">Verbaut u. a. von Viessmann, Daikin, Buderus, Panasonic, Samsung.</p>
-      <div class="brandbar">
-        <div class="marquee">
-          <img src="assets/logo-viessmann.svg" alt="Viessmann Logo (Platzhalter)">
-          <img src="assets/logo-daikin.svg" alt="Daikin Logo (Platzhalter)">
-          <img src="assets/logo-buderus.svg" alt="Buderus Logo (Platzhalter)">
-          <img src="assets/logo-panasonic.svg" alt="Panasonic Logo (Platzhalter)">
-          <img src="assets/logo-samsung.svg" alt="Samsung Logo (Platzhalter)">
-          <!-- zweite Runde für nahtlosen Loop -->
-          <img src="assets/logo-viessmann.svg" alt="Viessmann Logo (Platzhalter)">
-          <img src="assets/logo-daikin.svg" alt="Daikin Logo (Platzhalter)">
-          <img src="assets/logo-buderus.svg" alt="Buderus Logo (Platzhalter)">
-          <img src="assets/logo-panasonic.svg" alt="Panasonic Logo (Platzhalter)">
-          <img src="assets/logo-samsung.svg" alt="Samsung Logo (Platzhalter)">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ÜBER UNS mit Bild -->
-  <section class="section">
-    <div class="wrap grid cols-2">
       <div class="card">
-        <h2>Über uns</h2>
-        <p>Handwerk mit Anspruch: saubere Ausführung, klare Kommunikation, Termine halten.  
-           Meisterbetrieb aus der Region – spezialisiert auf effiziente Lösungen für Wärme & Kälte.</p>
-        <p><a class="btn" href="ueber-uns.html">Mehr über uns</a></p>
-      </div>
-      <img class="card" src="assets/team-werkstatt.jpg" alt="Team in der Werkstatt / Montagevorbereitung (Platzhalter)">
-    </div>
-  </section>
-
-  <!-- Kontakt-Teaser -->
-  <section class="section">
-    <div class="wrap card">
-      <h2>Kontakt</h2>
-      <p>Projekt oder Frage? Schreib uns kurz Gerät/Objekt und gewünschten Zeitraum.</p>
-      <p><a class="btn" href="kontakt.html">Kontaktformular öffnen</a></p>
-    </div>
-  </section>
-
-  <!-- Footer (immer sichtbar) -->
-  <footer>
-    <div class="wrap foot">
-      <div>© <span id="y"></span> Hünig Wärme- und Kältetechnik</div>
-      <div class="legal" aria-label="Rechtliche Links">
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
-        <a href="agb.html">AGB</a>
-        <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
-        <a href="kontakt.html">Kontakt</a>
+        <h1>Willkommen bei Hünig Wärme- und Kältetechnik</h1>
+        <p>
+          Effiziente Lösungen für Wärmepumpen, Klimaanlagen, Lüftung und Trinkwasser –
+          von Beratung über Montage bis zum Service.  
+          Nutze das Menü oben rechts, um mehr über unsere Leistungen zu erfahren.
+        </p>
       </div>
     </div>
-  </footer>
+  </main>
 
   <script>
-    // Jahr im Footer
-    document.getElementById('y').textContent = new Date().getFullYear();
-    // Mobile Menü
-    const btn = document.getElementById('menuBtn');
-    const overlay = document.getElementById('menuOverlay');
-    if (btn && overlay){
-      btn.onclick = () => overlay.classList.toggle('open');
-      overlay.querySelectorAll('a').forEach(a => a.onclick = () => overlay.classList.remove('open'));
+    const splash = document.getElementById('splash');
+    const arrow  = document.getElementById('arrow');
+    const content= document.getElementById('content');
+
+    function hideSplash(){
+      if (!splash) return;
+      splash.style.opacity = 0;
+      setTimeout(()=>{
+        splash.style.display='none';
+        content.style.display='block';
+      },800);
     }
+    // Pfeil-Klick
+    arrow.addEventListener('click', hideSplash);
+    // Automatisch nach 5 Sekunden
+    setTimeout(hideSplash, 5000);
+
+    // Menü
+    const menuBtn  = document.getElementById('menuBtn');
+    const overlay  = document.getElementById('menuOverlay');
+    menuBtn.addEventListener('click', ()=> overlay.classList.toggle('open'));
+    overlay.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> overlay.classList.remove('open')));
   </script>
 </body>
 </html>
