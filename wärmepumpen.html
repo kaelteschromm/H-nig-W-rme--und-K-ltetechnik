@@ -1,18 +1,134 @@
-{/* WÄRMEPUMPEN */}
-<section id="heatpumps" className="mx-auto max-w-7xl px-6 py-16">
-  <h2 className="text-2xl md:text-3xl font-semibold">Wärmepumpen</h2>
-  <p className="mt-4 text-slate-600 max-w-2xl">
-    Ich habe bereits zahlreiche Wärmepumpen führender Hersteller verbaut –
-    darunter Viessmann, Daikin, Buderus, Panasonic und Samsung. Qualität und
-    Effizienz stehen bei mir im Fokus.
-  </p>
-  <div className="mt-10 overflow-hidden">
-    <div className="flex gap-10 animate-marquee">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Viessmann_logo.svg" alt="Viessmann" className="h-12 grayscale hover:grayscale-0 transition"/>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Daikin-logo.svg" alt="Daikin" className="h-12 grayscale hover:grayscale-0 transition"/>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Buderus_Logo.svg" alt="Buderus" className="h-12 grayscale hover:grayscale-0 transition"/>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Panasonic_logo_%28Blue%29.svg" alt="Panasonic" className="h-12 grayscale hover:grayscale-0 transition"/>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung" className="h-12 grayscale hover:grayscale-0 transition"/>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hünig Wärme- und Kältetechnik</title>
+  <style>
+    :root {
+      --bg: #f7f7f7;
+      --card: #ffffff;
+      --text: #1a2433;
+      --primary: #14365e;
+      --muted: #5b6b82;
+      --ring: rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    header { position: sticky; top:0; z-index: 50; background: rgba(255,255,255,.8); backdrop-filter: blur(6px); border-bottom: 1px solid #e6e8eb; }
+    .nav { display:flex; align-items:center; justify-content:space-between; height:64px; }
+    .brand { font-weight: 700; color: var(--primary); letter-spacing:.2px; }
+    nav a { text-decoration:none; color: var(--muted); margin-left: 18px; }
+    nav a:hover { color: var(--primary); }
+    .hero { padding: 56px 0 32px; }
+    .card { background: var(--card); border-radius: 16px; box-shadow: 0 6px 24px var(--ring); padding: 28px; }
+    h1 { margin:0 0 10px; color: var(--primary); font-size: 2rem; }
+    h2 { color: var(--primary); margin: 28px 0 12px; font-size: 1.4rem; }
+    p { line-height: 1.6; color: var(--text); }
+    .btn { display:inline-block; background: var(--primary); color:#fff; padding:10px 16px; border-radius: 10px; text-decoration:none; margin-top:14px; }
+    .section { padding: 48px 0; }
+    /* Logos – Laufband */
+    .brandbar { overflow:hidden; border-radius: 12px; background:#fff; box-shadow: 0 6px 24px var(--ring); padding: 16px; }
+    .marquee { display:flex; gap: 48px; align-items:center; animation: marquee 22s linear infinite; will-change: transform; }
+    .marquee img { height: 36px; filter: grayscale(100%); opacity:.85; transition: filter .2s, opacity .2s, transform .2s; }
+    .marquee img:hover { filter: grayscale(0%); opacity:1; transform: scale(1.02); }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    footer { border-top:1px solid #e6e8eb; padding: 22px 0; color: var(--muted); font-size:.95rem; }
+    .grid { display:grid; gap:20px; }
+    @media (min-width: 900px){ .grid-cols-2 { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">Hünig • Wärme- und Kältetechnik</div>
+      <nav>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#waermepumpen">Wärmepumpen</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="impressum.html">Impressum</a>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="card">
+          <h1>Präzise Lösungen für Wärme & Kälte</h1>
+          <p>Planung, Einbau und Service – effizient, langlebig und sauber umgesetzt.
+             Speziell für Sanierung und Neubau im Raum Heidelberg.</p>
+          <a class="btn" href="#kontakt">Anfrage stellen</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="leistungen" class="section">
+      <div class="wrap grid grid-cols-2">
+        <div class="card">
+          <h2>Leistungen</h2>
+          <p>• Wärmepumpen (Luft/Wasser) • Klimageräte • Kupferleitungen/Bördeln
+             • Hydraulik & Inbetriebnahme • Wartung & Störungsdienst</p>
+        </div>
+        <div class="card">
+          <h2>Region & Qualität</h2>
+          <p>Fokus auf Top-Verarbeitung, kurze Wege und klare Kommunikation. Materialien & Geräte von führenden Herstellern.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEU: Wärmepumpen -->
+    <section id="waermepumpen" class="section">
+      <div class="wrap">
+        <div class="card">
+          <h2>Wärmepumpen</h2>
+          <p>Ich habe bereits zahlreiche Wärmepumpen führender Hersteller verbaut – darunter
+             Viessmann, Daikin, Buderus, Panasonic und Samsung. Planung, Montage und
+             Inbetriebnahme aus einer Hand.</p>
+        </div>
+
+        <!-- Logos (laufen endlos durch) -->
+        <div class="brandbar" style="margin-top:18px;">
+          <!-- Doppelte Liste für nahtlosen Loop -->
+          <div class="marquee">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Viessmann_logo.svg" alt="Viessmann" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Daikin-logo.svg" alt="Daikin" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Buderus_Logo.svg" alt="Buderus" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Panasonic_logo_%28Blue%29.svg" alt="Panasonic" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung" />
+            <!-- zweite Runde für Endloslauf -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Viessmann_logo.svg" alt="Viessmann" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Daikin-logo.svg" alt="Daikin" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Buderus_Logo.svg" alt="Buderus" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Panasonic_logo_%28Blue%29.svg" alt="Panasonic" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="section">
+      <div class="wrap grid grid-cols-2">
+        <div class="card">
+          <h2>Kontakt</h2>
+          <p>E-Mail: <a href="mailto:info@huenig.com">info@huenig.com</a><br>
+             Telefon: +49 …</p>
+          <p>Projekt anfragen? Schreib kurz Objekt, gewünschte Leistung und Zeitraum.</p>
+        </div>
+        <div class="card">
+          <h2>Adresse</h2>
+          <p>Hünig Wärme- und Kältetechnik<br>68753 Waghäusel · Deutschland</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © <span id="y"></span> Hünig Wärme- und Kältetechnik · <a href="impressum.html">Impressum</a>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
