@@ -1,90 +1,56 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
   <title>Impressum | Hünig Wärme- und Kältetechnik</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Impressum von Hünig Wärme- und Kältetechnik.">
   <style>
-    body {
-      margin: 0;
-      padding: 0 1rem;
-      font-family: Arial, sans-serif;
-      background: #f7f7f7;
-      color: #1a2433;
+    :root{--text:#1a2433;--primary:#14365e;--muted:#5b6b82;--ring:rgba(0,0,0,.08);}
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:url("Wald Hintergrund.webp") no-repeat center center fixed;
+      background-size:cover;
+      color:var(--text);
+      display:flex;flex-direction:column;min-height:100vh;
     }
-    .container {
-      max-width: 700px;
-      margin: 50px auto 0 auto;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-      padding: 2rem;
-    }
-    h1 {
-      text-align: center;
-      color: #14365e;
-      margin-top: 0;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
-    h2 {
-      margin-top: 2rem;
-      color: #14365e;
-      font-size: 1.2rem;
-    }
-    p, address {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 1.2rem;
-    }
-    address {
-      font-style: normal;
-    }
-    @media (max-width: 600px) {
-      .container { padding: 1rem; }
-      h1 { font-size: 1.2rem; }
-    }
+    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+    
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.9);border-bottom:1px solid #e6e8eb;display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:70px}
+    .brand img{height:60px;width:auto}
+    .menu-btn{border:none;background:transparent;cursor:pointer;padding:10px;width:48px;height:48px}
+    .menu-btn .bar,.menu-btn .bar::before,.menu-btn .bar::after{content:"";display:block;height:3px;width:28px;background:var(--primary);border-radius:2px;position:relative;transition:.25s}
+    .menu-btn .bar::before{position:absolute;top:-8px;left:0}
+    .menu-btn .bar::after{position:absolute;top:8px;left:0}
+    
+    /* Overlay-Menü */
+    .menu-overlay{position:fixed;inset:0;background:rgba(20,54,94,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.35s;z-index:1000}
+    .menu-overlay.open{opacity:1;pointer-events:auto}
+    .menu-overlay a{color:#fff;font-size:1.5rem;margin:.7rem 0;text-decoration:none}
+    
+    /* Inhalt */
+    main{flex:1;padding:40px 20px}
+    h1{text-align:center;color:var(--primary);margin-bottom:24px}
+    .grid{display:grid;gap:20px}
+    @media(min-width:800px){.grid{grid-template-columns:1fr 1fr}}
+    
+    /* Karten */
+    .card{background:rgba(255,255,255,0.9);border-radius:16px;box-shadow:0 6px 24px var(--ring);padding:20px}
+    .card h2{color:var(--primary);margin:0 0 10px;font-size:1.2rem}
+    .card p{line-height:1.6;font-size:.95rem;margin-bottom:10px}
+    
+    /* Footer */
+    footer{background:rgba(255,255,255,0.9);border-top:1px solid #e6e8eb;margin-top:auto}
+    .foot{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;font-size:.95rem;color:var(--muted)}
+    .legal{display:flex;flex-wrap:wrap;gap:14px}
+    .legal a{color:var(--muted);text-decoration:none}
+    .legal a:hover{color:var(--primary)}
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Impressum</h1>
-    <h2>Angaben gemäß § 5 TMG</h2>
-    <address>
-      Hünig Wärme- und Kältetechnik<br>
-      <br>
-      68753 Waghäusel<br>
-      Deutschland
-    </address>
-
-    <h2>Vertreten durch</h2>
-    <p>Jérôme Hünig</p>
-
-    <h2>Kontakt</h2>
-    <p>
-      Telefon: <br>
-
-      E-mail.com: kaelteschromm@gmail.com
-      Instagramm: kaelte_schromm
-    </p>
-
-    <h2>Umsatzsteuer-ID</h2>
-    <p>Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz: fehlt noch</p>
-
-    <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-    <p>Jérôme Hünig, Adresse wie oben</p>
-
-    <h2>EU-Streitschlichtung</h2>
-    <p>
-      Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: 
-      <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>
-    </p>
-    <p>Unsere E-Mail-Adresse findest du oben im Impressum.</p>
-
-    <h2>Verbraucherstreitbeilegung/Universalschlichtungsstelle</h2>
-    <p>
-      Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
-    </p>
-  </div>
-</body>
-</html>
+  <header>
+    <a class="brand" href="index.html"><img sr
