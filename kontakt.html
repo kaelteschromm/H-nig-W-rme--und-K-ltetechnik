@@ -21,7 +21,6 @@
       --ok:#1f8b62;
       --warn:#c34848;
       --shadow:0 10px 28px rgba(12,28,52,.10);
-      --shadow-hover:0 16px 34px rgba(12,28,52,.16);
     }
 
     *{box-sizing:border-box}
@@ -242,7 +241,7 @@
       margin:0 auto;
     }
 
-    main{padding:28px 0 110px}
+    main{padding:28px 0 70px}
 
     .hero{margin-bottom:20px}
 
@@ -303,6 +302,13 @@
       border-radius:24px;
       box-shadow:var(--shadow);
       padding:24px;
+      transition:opacity .35s ease, transform .35s ease;
+    }
+
+    .card.hide-on-send{
+      opacity:0;
+      transform:translateY(10px);
+      pointer-events:none;
     }
 
     h2{
@@ -417,6 +423,10 @@
       resize:vertical;
     }
 
+    .hidden{
+      display:none !important;
+    }
+
     .navbtns{
       display:flex;
       justify-content:space-between;
@@ -499,53 +509,79 @@
       margin:18px 0;
     }
 
-    .success-box{
+    .success-screen{
       display:none;
-      margin:18px 0 0;
-      padding:18px 20px;
-      border-radius:18px;
-      border:1px solid rgba(31,139,98,.22);
-      background:linear-gradient(135deg, rgba(31,139,98,.10), rgba(47,157,118,.07));
-      color:#155841;
-      box-shadow:0 8px 20px rgba(31,139,98,.08);
+      margin-top:22px;
+      background:linear-gradient(135deg, rgba(255,255,255,.98), rgba(255,255,255,.95));
+      border:1px solid rgba(217,225,234,.85);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      padding:42px 24px;
+      text-align:center;
     }
 
-    .success-box.show{display:block}
-
-    .success-box strong{
+    .success-screen.show{
       display:block;
-      font-size:1.05rem;
-      margin-bottom:6px;
+      animation:fadeInUp .5s ease forwards;
     }
 
-    .success-box p{
-      margin:0;
-      line-height:1.6;
-    }
-
-    .loading-row{
-      display:none;
+    .success-spinner-wrap{
+      display:flex;
+      justify-content:center;
       align-items:center;
-      gap:10px;
-      margin-top:14px;
-      color:var(--muted);
-      font-size:.95rem;
+      padding:30px 0 10px;
     }
 
-    .loading-row.show{display:flex}
-
-    .spinner{
-      width:18px;
-      height:18px;
+    .success-spinner{
+      width:58px;
+      height:58px;
       border-radius:50%;
-      border:2px solid rgba(18,55,97,.18);
+      border:4px solid rgba(18,55,97,.12);
       border-top-color:var(--primary);
       animation:spin .8s linear infinite;
-      flex-shrink:0;
+    }
+
+    .success-check{
+      width:74px;
+      height:74px;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--ok),#2f9d76);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin:0 auto 18px;
+      font-size:2rem;
+      box-shadow:0 12px 24px rgba(31,139,98,.18);
+    }
+
+    .success-screen h3{
+      margin:0 0 10px;
+      color:var(--primary);
+      font-size:1.55rem;
+    }
+
+    .success-screen p{
+      margin:0 auto;
+      max-width:620px;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:1rem;
     }
 
     @keyframes spin{
       to{transform:rotate(360deg)}
+    }
+
+    @keyframes fadeInUp{
+      from{
+        opacity:0;
+        transform:translateY(14px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
     }
 
     .honeypot{
@@ -591,54 +627,14 @@
 
     .legal a:hover{color:var(--primary)}
 
-    .floating-cta{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      z-index:1050;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      background:linear-gradient(135deg,var(--primary),var(--accent));
-      color:#fff;
-      padding:14px 20px;
-      border-radius:999px;
-      font-weight:700;
-      box-shadow:0 12px 28px rgba(18,55,97,.26);
-      transition:transform .2s ease, box-shadow .2s ease;
-    }
-
-    .floating-cta:hover{
-      transform:translateY(-3px);
-      box-shadow:0 16px 34px rgba(18,55,97,.34);
-    }
-
-    .floating-icon{
-      background:rgba(255,255,255,.18);
-      width:28px;
-      height:28px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:14px;
-      flex-shrink:0;
-    }
-
     @media (max-width:760px){
       .top-contact{display:none}
       .header-inner{min-height:72px}
       .brand-sub{display:none}
       .desktop-cta{display:none}
       .options,.row,.sum{grid-template-columns:1fr}
-      .hero-box,.card{padding:20px}
+      .hero-box,.card,.success-screen{padding:20px}
       .menu-overlay a{font-size:1.16rem}
-      .floating-cta{
-        right:14px;
-        bottom:14px;
-        padding:12px 16px;
-        font-size:.94rem;
-      }
     }
   </style>
 </head>
@@ -711,7 +707,6 @@
         <div class="bar" id="bar"></div>
       </div>
 
-      <!-- STEP 1 -->
       <section class="step active" data-step="1" id="step1">
         <div class="q">Worum geht es?</div>
         <div class="options" role="listbox" aria-label="Anliegen wählen" id="anliegenOptions">
@@ -728,7 +723,6 @@
         </div>
       </section>
 
-      <!-- STEP 2 -->
       <section class="step" data-step="2">
         <div class="q">Objektart</div>
         <div class="options">
@@ -755,7 +749,6 @@
         </div>
       </section>
 
-      <!-- STEP 3 -->
       <section class="step" data-step="3">
         <div class="q">Sanierungsstand *</div>
         <div class="options">
@@ -782,13 +775,19 @@
           <button type="button" class="opt" data-key="altanlage" data-value="Andere">Andere</button>
         </div>
 
+        <div id="verbrauchWrapper" class="hidden">
+          <div class="field">
+            <label for="verbrauch">Aktueller Verbrauch *</label>
+            <input id="verbrauch" placeholder="z. B. 28000 kWh Gas pro Jahr oder 2500 Liter Öl pro Jahr">
+          </div>
+        </div>
+
         <div class="navbtns">
           <button type="button" class="btn secondary" data-prev>Zurück</button>
           <button type="button" class="btn primary" data-next>Nächster Schritt</button>
         </div>
       </section>
 
-      <!-- STEP 4 -->
       <section class="step" data-step="4">
         <div class="q">Was ist gewünscht?</div>
         <div class="options">
@@ -817,7 +816,6 @@
         </div>
       </section>
 
-      <!-- STEP 5 -->
       <section class="step" data-step="5">
         <div class="row">
           <div class="field">
@@ -841,7 +839,6 @@
         </div>
       </section>
 
-      <!-- STEP 6 -->
       <section class="step" data-step="6">
         <div class="q">Ihre Angaben im Überblick</div>
         <div class="sum" id="summary"></div>
@@ -865,24 +862,29 @@
             <input id="telefonB" placeholder="+49 ..." />
           </div>
           <div class="field">
-            <label for="wunschterminB">Wunschtermin</label>
-            <input id="wunschterminB" placeholder="z. B. KW 45" />
+            <label for="datumVon">Wunschtermin von</label>
+            <input type="date" id="datumVon" />
           </div>
         </div>
 
-        <div class="field">
-          <label for="nachrichtB">Nachricht (optional)</label>
-          <textarea id="nachrichtB" placeholder="Weitere Hinweise, Erreichbarkeit oder ergänzende Informationen"></textarea>
+        <div class="row">
+          <div class="field">
+            <label for="datumBis">Wunschtermin bis</label>
+            <input type="date" id="datumBis" />
+          </div>
+          <div class="field">
+            <label for="nachrichtB">Nachricht (optional)</label>
+            <textarea id="nachrichtB" placeholder="Weitere Hinweise, Erreichbarkeit oder ergänzende Informationen"></textarea>
+          </div>
         </div>
 
-        <!-- Spam-Schutz -->
         <div class="honeypot" aria-hidden="true">
           <label for="website">Bitte dieses Feld leer lassen</label>
           <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
         </div>
 
         <p class="hint">
-          Nach dem Absenden wird Ihre Anfrage direkt übermittelt. Sie bleiben dabei auf dieser Seite.
+          Nach dem Absenden wird Ihre Anfrage direkt übermittelt.
         </p>
 
         <p class="warn" id="errB" style="display:none">
@@ -893,24 +895,18 @@
           <button type="button" class="btn secondary" data-prev>Zurück</button>
           <button type="button" class="btn success" id="sendBtnB">Anfrage absenden</button>
         </div>
-
-        <div class="loading-row" id="loadingRow">
-          <span class="spinner"></span>
-          <span>Ihre Anfrage wird gesendet...</span>
-        </div>
-
-        <div class="success-box" id="successBox">
-          <strong>Vielen Dank.</strong>
-          <p>Ihre Anfrage wurde erfolgreich versendet. Wir melden uns schnellstmöglich bei Ihnen.</p>
-        </div>
       </section>
     </div>
-  </main>
 
-  <a href="kontakt.html" class="floating-cta" aria-label="Zur Anfrage">
-    <span class="floating-icon">✉</span>
-    Anfrage
-  </a>
+    <div class="success-screen" id="successScreen">
+      <div class="success-spinner-wrap" id="successSpinnerWrap">
+        <div class="success-spinner"></div>
+      </div>
+      <div class="success-check hidden" id="successCheck">✓</div>
+      <h3 id="successTitle" class="hidden">Vielen Dank für Ihre Anfrage.</h3>
+      <p id="successText" class="hidden">Ihre Anfrage wurde erfolgreich versendet. Wir melden uns schnellstmöglich bei Ihnen.</p>
+    </div>
+  </main>
 
   <footer>
     <div class="foot">
@@ -939,6 +935,9 @@
     const data = {};
     const SEND_TO = 'https://formspree.io/f/xaqpnnqp';
 
+    const verbrauchWrapper = document.getElementById('verbrauchWrapper');
+    const verbrauchInput = document.getElementById('verbrauch');
+
     function updateProgress(){
       const visible = steps.filter(s => s.style.display !== 'none' || s.classList.contains('active'));
       const idx = visible.indexOf(steps[current]);
@@ -953,6 +952,15 @@
       updateProgress();
       if (steps[i].dataset.step === '6') renderSummary();
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateVerbrauchField(){
+      const needsVerbrauch = data.altanlage === 'Gas' || data.altanlage === 'Öl';
+      verbrauchWrapper.classList.toggle('hidden', !needsVerbrauch);
+      if (!needsVerbrauch) {
+        verbrauchInput.value = '';
+        data.verbrauch = '';
+      }
     }
 
     updateProgress();
@@ -1000,6 +1008,10 @@
           if (!data.sanierung) return alert('Bitte Sanierungsstand wählen.');
           if (!data.abgabe) return alert('Bitte Wärmeabgabe wählen.');
           if (!data.altanlage) return alert('Bitte bisherige Heizart wählen.');
+          if ((data.altanlage === 'Gas' || data.altanlage === 'Öl') && !verbrauchInput.value.trim()) {
+            return alert('Bitte den aktuellen Gas- oder Ölverbrauch angeben.');
+          }
+          data.verbrauch = verbrauchInput.value.trim();
         }
 
         if (stepId === '4'){
@@ -1035,6 +1047,7 @@
         const key = btn.dataset.key;
         const value = btn.dataset.value;
         if (key) data[key] = value;
+        if (key === 'altanlage') updateVerbrauchField();
       });
 
       group.addEventListener('dblclick', (e)=>{
@@ -1043,6 +1056,7 @@
         const key = btn.dataset.key;
         const value = btn.dataset.value;
         if (key) data[key] = value;
+        if (key === 'altanlage') updateVerbrauchField();
 
         const stepEl = group.closest('.step');
         if (stepEl && stepEl.dataset.step !== '1'){
@@ -1052,6 +1066,10 @@
     });
 
     function renderSummary(){
+      const datumVon = document.getElementById('datumVon').value;
+      const datumBis = document.getElementById('datumBis').value;
+      const wunschterminText = datumVon || datumBis ? `${datumVon || '-'} bis ${datumBis || '-'}` : '-';
+
       const el = document.getElementById('summary');
       el.innerHTML = `
         <div><b>Anliegen:</b><br>${data.anliegen || '-'}</div>
@@ -1061,11 +1079,13 @@
         <div><b>Sanierung:</b><br>${data.sanierung || '-'}</div>
         <div><b>Wärmeabgabe:</b><br>${data.abgabe || '-'}</div>
         <div><b>Bisherige Heizart:</b><br>${data.altanlage || '-'}</div>
+        <div><b>Aktueller Verbrauch:</b><br>${data.verbrauch || '-'}</div>
         <div><b>Wunsch:</b><br>${data.wunsch || '-'}</div>
         <div><b>Zeitrahmen:</b><br>${data.zeit || '-'}</div>
         <div><b>PLZ/Ort:</b><br>${data.plz || '-'}</div>
         <div><b>Straße:</b><br>${data.adresse || '-'}</div>
         <div><b>Bewohner:</b><br>${data.bewohner || '-'}</div>
+        <div><b>Wunschtermin:</b><br>${wunschterminText}</div>
         <div style="grid-column:1/-1"><b>Zusatzinfo:</b><br>${(data.bemerkung || '').replace(/\n/g,'<br>') || '-'}</div>
       `;
     }
@@ -1087,33 +1107,37 @@
     }
 
     const sendBtn = document.getElementById('sendBtnB');
-    const loadingRow = document.getElementById('loadingRow');
-    const successBox = document.getElementById('successBox');
     const errBox = document.getElementById('errB');
-
-    function setSendingState(isSending){
-      sendBtn.classList.toggle('loading', isSending);
-      sendBtn.disabled = isSending;
-      sendBtn.textContent = isSending ? 'Wird gesendet...' : 'Anfrage absenden';
-      loadingRow.classList.toggle('show', isSending);
-    }
+    const formCard = document.getElementById('formCard');
+    const successScreen = document.getElementById('successScreen');
+    const successSpinnerWrap = document.getElementById('successSpinnerWrap');
+    const successCheck = document.getElementById('successCheck');
+    const successTitle = document.getElementById('successTitle');
+    const successText = document.getElementById('successText');
 
     sendBtn.addEventListener('click', async ()=>{
       errBox.style.display = 'none';
-      successBox.classList.remove('show');
 
       const name = document.getElementById('nameB').value.trim();
       const email = document.getElementById('emailB').value.trim();
       const honeypot = document.getElementById('website').value.trim();
+      const datumVon = document.getElementById('datumVon').value;
+      const datumBis = document.getElementById('datumBis').value;
 
-      if (honeypot) {
-        return;
-      }
+      if (honeypot) return;
 
       if (!name || !email || !data.anliegen || !data.plz || !data.adresse || !data.bewohner) {
         errBox.style.display = 'block';
         return;
       }
+
+      if ((data.altanlage === 'Gas' || data.altanlage === 'Öl') && !verbrauchInput.value.trim()) {
+        errBox.textContent = 'Bitte den aktuellen Gas- oder Ölverbrauch angeben.';
+        errBox.style.display = 'block';
+        return;
+      }
+
+      const wunschterminText = datumVon || datumBis ? `${datumVon || '-'} bis ${datumBis || '-'}` : '';
 
       const summaryText = `
 Anliegen: ${data.anliegen || '-'}
@@ -1123,11 +1147,13 @@ Baujahr: ${data.baujahr || '-'}
 Sanierung: ${data.sanierung || '-'}
 Wärmeabgabe: ${data.abgabe || '-'}
 Bisherige Heizart: ${data.altanlage || '-'}
+Aktueller Verbrauch: ${verbrauchInput.value.trim() || '-'}
 Wunsch: ${data.wunsch || '-'}
 Zeitrahmen: ${data.zeit || '-'}
 PLZ/Ort: ${data.plz || '-'}
 Straße: ${data.adresse || '-'}
 Bewohner: ${data.bewohner || '-'}
+Wunschtermin: ${wunschterminText || '-'}
 Zusatzinfo: ${data.bemerkung || ''}
       `.trim();
 
@@ -1136,7 +1162,9 @@ Zusatzinfo: ${data.bemerkung || ''}
         name: name,
         email: email,
         telefon: document.getElementById('telefonB').value.trim(),
-        wunschtermin: document.getElementById('wunschterminB').value.trim(),
+        wunschtermin_von: datumVon,
+        wunschtermin_bis: datumBis,
+        wunschtermin: wunschterminText,
         nachricht: document.getElementById('nachrichtB').value.trim(),
         anliegen: data.anliegen || '',
         objekt: data.objekt || '',
@@ -1145,6 +1173,7 @@ Zusatzinfo: ${data.bemerkung || ''}
         sanierung: data.sanierung || '',
         abgabe: data.abgabe || '',
         altanlage: data.altanlage || '',
+        verbrauch: verbrauchInput.value.trim() || '',
         wunsch: data.wunsch || '',
         zeit: data.zeit || '',
         plz_ort: data.plz || '',
@@ -1154,16 +1183,34 @@ Zusatzinfo: ${data.bemerkung || ''}
         zusammenfassung: summaryText
       };
 
-      setSendingState(true);
+      sendBtn.disabled = true;
+      sendBtn.classList.add('loading');
+      sendBtn.textContent = 'Wird gesendet...';
+
+      formCard.classList.add('hide-on-send');
+      successScreen.classList.add('show');
+      successSpinnerWrap.classList.remove('hidden');
+      successCheck.classList.add('hidden');
+      successTitle.classList.add('hidden');
+      successText.classList.add('hidden');
+
+      window.scrollTo({ top: successScreen.offsetTop - 40, behavior: 'smooth' });
 
       const ok = await sendToFormspree(payload);
 
-      setSendingState(false);
-
       if (ok) {
-        successBox.classList.add('show');
-        document.querySelector('.step.active .navbtns')?.scrollIntoView({behavior:'smooth', block:'end'});
+        setTimeout(() => {
+          successSpinnerWrap.classList.add('hidden');
+          successCheck.classList.remove('hidden');
+          successTitle.classList.remove('hidden');
+          successText.classList.remove('hidden');
+        }, 1100);
       } else {
+        successScreen.classList.remove('show');
+        formCard.classList.remove('hide-on-send');
+        sendBtn.disabled = false;
+        sendBtn.classList.remove('loading');
+        sendBtn.textContent = 'Anfrage absenden';
         errBox.textContent = 'Senden fehlgeschlagen. Bitte später erneut versuchen oder direkt per E-Mail melden.';
         errBox.style.display = 'block';
       }
