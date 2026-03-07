@@ -1,462 +1,430 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Wielo Wärmetechnik</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Wielo Wärmetechnik – Ihr Fachbetrieb für Wärmepumpen, Klimaanlagen, Lüftung, Trinkwasserinstallationen sowie Service und Wartung.">
+<meta charset="UTF-8">
+<title>Wielo Wärmetechnik</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
-    :root{
-      --primary:#123761;
-      --primary-dark:#0b2745;
-      --accent:#1e4c7d;
-      --cool:#3e6fa3;
-      --card:rgba(255,255,255,0.94);
-      --footer:rgba(255,255,255,0.96);
-      --text:#172435;
-      --muted:#5f6f82;
-      --line:#d9e1ea;
-      --bg:#f4f7fb;
-    }
+<style>
 
-    *{
-      box-sizing:border-box;
-    }
+:root{
+  --primary:#123761;
+  --primary-dark:#0b2745;
+  --accent:#1e4c7d;
+  --cool:#3e6fa3;
+  --card:rgba(255,255,255,0.94);
+  --footer:rgba(255,255,255,0.96);
+  --text:#172435;
+  --muted:#5f6f82;
+  --line:#d9e1ea;
+  --bg:#f4f7fb;
+}
 
-    html,body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color:var(--text);
-      min-height:100vh;
-      background:url("Haus am Wald.webp") no-repeat center center fixed;
-      background-size:cover;
-    }
+*{
+box-sizing:border-box;
+}
 
-    #splash{
-      position:fixed;
-      inset:0;
-      background:rgba(255,255,255,0.96);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      z-index:1000;
-      transition:opacity .8s ease;
-    }
+html,body{
+margin:0;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+color:var(--text);
+min-height:100vh;
+background:url("Haus am Wald.webp") no-repeat center center fixed;
+background-size:cover;
+}
 
-    #splash img{
-      max-width:320px;
-      width:80vw;
-      height:auto;
-    }
+/* SPLASH */
 
-    #splash h2{
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:1.4rem;
-      margin-top:20px;
-      color:var(--primary);
-      text-align:center;
-      line-height:1.4;
-    }
+#splash{
+position:fixed;
+inset:0;
+background:rgba(255,255,255,0.96);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+z-index:1000;
+transition:opacity .8s ease;
+}
 
-    #arrow{
-      margin-top:40px;
-      font-size:2.6rem;
-      color:var(--primary);
-      cursor:pointer;
-      animation:bounce 1.6s infinite;
-      user-select:none;
-    }
+#splash img{
+max-width:320px;
+width:80vw;
+height:auto;
+}
 
-    @keyframes bounce{
-      0%,20%,50%,80%,100%{transform:translateY(0)}
-      40%{transform:translateY(-12px)}
-      60%{transform:translateY(-6px)}
-    }
+#splash h2{
+font-family:Georgia,"Times New Roman",serif;
+font-size:1.4rem;
+margin-top:20px;
+color:var(--primary);
+text-align:center;
+line-height:1.4;
+}
 
-    header{
-      position:fixed;
-      top:0;
-      left:0;
-      right:0;
-      height:60px;
-      background:rgba(255,255,255,0.94);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:0 16px;
-      box-shadow:0 2px 8px rgba(0,0,0,.06);
-      z-index:900;
-      backdrop-filter:blur(4px);
-      border-bottom:1px solid rgba(217,225,234,.7);
-    }
+#arrow{
+margin-top:40px;
+font-size:2.6rem;
+color:var(--primary);
+cursor:pointer;
+animation:bounce 1.6s infinite;
+}
 
-    header .logo{
-      height:42px;
-      width:auto;
-    }
+@keyframes bounce{
+0%,20%,50%,80%,100%{transform:translateY(0)}
+40%{transform:translateY(-12px)}
+60%{transform:translateY(-6px)}
+}
 
-    .menu-btn{
-      border:none;
-      background:transparent;
-      cursor:pointer;
-      padding:10px;
-      width:44px;
-      height:44px;
-    }
+/* HEADER */
 
-    .menu-btn .bar,
-    .menu-btn .bar::before,
-    .menu-btn .bar::after{
-      content:"";
-      display:block;
-      height:3px;
-      width:24px;
-      background:var(--primary);
-      border-radius:2px;
-      position:relative;
-      transition:.25s;
-    }
+header{
+position:fixed;
+top:0;
+left:0;
+right:0;
+height:60px;
+background:rgba(255,255,255,0.95);
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 16px;
+box-shadow:0 2px 8px rgba(0,0,0,.06);
+z-index:900;
+border-bottom:1px solid rgba(217,225,234,.7);
+}
 
-    .menu-btn .bar::before{
-      position:absolute;
-      top:-8px;
-      left:0;
-    }
+.logo{
+height:42px;
+width:auto;
+}
 
-    .menu-btn .bar::after{
-      position:absolute;
-      top:8px;
-      left:0;
-    }
+/* BURGER */
 
-    .menu-overlay{
-      position:fixed;
-      top:0;
-      right:-100%;
-      bottom:0;
-      width:100%;
-      background:rgba(18,55,97,.97);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      opacity:0;
-      pointer-events:none;
-      transition:all .5s ease;
-      z-index:800;
-      padding:30px 20px;
-    }
+.menu-btn{
+border:none;
+background:transparent;
+cursor:pointer;
+padding:10px;
+width:44px;
+height:44px;
+}
 
-    .menu-overlay.open{
-      right:0;
-      opacity:1;
-      pointer-events:auto;
-    }
+.menu-btn .bar,
+.menu-btn .bar::before,
+.menu-btn .bar::after{
+content:"";
+display:block;
+height:3px;
+width:24px;
+background:var(--primary);
+border-radius:2px;
+position:relative;
+transition:.25s;
+}
 
-    .menu-overlay a{
-      color:#fff;
-      font-size:1.35rem;
-      margin:.55rem 0;
-      text-decoration:none;
-      transform:translateX(100px);
-      opacity:0;
-      text-transform:uppercase;
-      letter-spacing:.03em;
-      font-weight:600;
-    }
+.menu-btn .bar::before{
+position:absolute;
+top:-8px;
+left:0;
+}
 
-    .menu-overlay.open a{
-      animation:slideIn .5s forwards;
-    }
+.menu-btn .bar::after{
+position:absolute;
+top:8px;
+left:0;
+}
 
-    .menu-overlay a:nth-child(1){animation-delay:.05s}
-    .menu-overlay a:nth-child(2){animation-delay:.1s}
-    .menu-overlay a:nth-child(3){animation-delay:.15s}
-    .menu-overlay a:nth-child(4){animation-delay:.2s}
-    .menu-overlay a:nth-child(5){animation-delay:.25s}
-    .menu-overlay a:nth-child(6){animation-delay:.3s}
-    .menu-overlay a:nth-child(7){animation-delay:.35s}
-    .menu-overlay a:nth-child(8){animation-delay:.4s}
-    .menu-overlay a:nth-child(9){animation-delay:.45s}
-    .menu-overlay a:nth-child(10){animation-delay:.5s}
-    .menu-overlay a:nth-child(11){animation-delay:.55s}
-    .menu-overlay a:nth-child(12){animation-delay:.6s}
-    .menu-overlay a:nth-child(13){animation-delay:.65s}
+/* OVERLAY MENU */
 
-    @keyframes slideIn{
-      to{
-        transform:translateX(0);
-        opacity:1;
-      }
-    }
+.menu-overlay{
+position:fixed;
+top:0;
+right:-100%;
+bottom:0;
+width:100%;
+background:rgba(18,55,97,.97);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+opacity:0;
+pointer-events:none;
+transition:all .5s ease;
+z-index:800;
+}
 
-    main{
-      padding:80px 20px 100px;
-      min-height:100vh;
-      display:none;
-    }
+.menu-overlay.open{
+right:0;
+opacity:1;
+pointer-events:auto;
+}
 
-    .wrap{
-      max-width:1100px;
-      margin:0 auto;
-    }
+.menu-overlay a{
+color:#fff;
+font-size:1.3rem;
+margin:.6rem 0;
+text-decoration:none;
+text-transform:uppercase;
+letter-spacing:.04em;
+font-weight:600;
+transform:translateX(100px);
+opacity:0;
+}
 
-    .card{
-      background:var(--card);
-      border-radius:16px;
-      box-shadow:0 8px 24px rgba(12,28,52,.08);
-      padding:24px;
-      border:1px solid rgba(217,225,234,.7);
-    }
+.menu-overlay.open a{
+animation:slideIn .5s forwards;
+}
 
-    h1{
-      margin-top:0;
-      margin-bottom:14px;
-      color:var(--primary);
-    }
+@keyframes slideIn{
+to{
+transform:translateX(0);
+opacity:1;
+}
+}
 
-    .intro-text{
-      font-size:1.05rem;
-      line-height:1.7;
-    }
+/* CONTENT */
 
-    footer{
-      position:sticky;
-      bottom:0;
-      background:var(--footer);
-      border-top:1px solid var(--line);
-      z-index:700;
-    }
+main{
+padding:90px 20px 100px;
+min-height:100vh;
+display:none;
+}
 
-    .foot{
-      max-width:1100px;
-      margin:0 auto;
-      padding:10px 16px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      align-items:center;
-      justify-content:space-between;
-      font-size:.95rem;
-      color:var(--muted);
-    }
+.wrap{
+max-width:1100px;
+margin:0 auto;
+}
 
-    .legal{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-    }
+.card{
+background:var(--card);
+border-radius:16px;
+box-shadow:0 8px 24px rgba(12,28,52,.08);
+padding:24px;
+border:1px solid rgba(217,225,234,.7);
+}
 
-    .legal a{
-      color:var(--muted);
-      text-decoration:none;
-    }
+h1{
+margin-top:0;
+margin-bottom:14px;
+color:var(--primary);
+}
 
-    .legal a:hover{
-      color:var(--primary);
-    }
+/* FOOTER */
 
-    .floating-cta{
-      position:fixed;
-      right:20px;
-      bottom:20px;
-      z-index:950;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      background:linear-gradient(135deg,var(--primary),var(--accent));
-      color:#fff;
-      text-decoration:none;
-      padding:14px 20px;
-      border-radius:999px;
-      font-weight:700;
-      font-size:15px;
-      box-shadow:0 10px 25px rgba(18,55,97,.28);
-      transition:opacity .3s ease, transform .2s ease, box-shadow .2s ease;
-      opacity:0;
-      pointer-events:none;
-    }
+footer{
+position:sticky;
+bottom:0;
+background:var(--footer);
+border-top:1px solid var(--line);
+z-index:700;
+}
 
-    .floating-cta.visible{
-      opacity:1;
-      pointer-events:auto;
-    }
+.foot{
+max-width:1100px;
+margin:0 auto;
+padding:10px 16px;
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+align-items:center;
+justify-content:space-between;
+font-size:.95rem;
+color:var(--muted);
+}
 
-    .floating-cta:hover{
-      transform:translateY(-3px);
-      box-shadow:0 14px 32px rgba(18,55,97,.35);
-    }
+.legal{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+}
 
-    .floating-cta::after{
-      content:"";
-      position:absolute;
-      inset:-6px;
-      border-radius:999px;
-      border:2px solid rgba(18,55,97,.25);
-      animation:pulseRing 2.5s infinite;
-      pointer-events:none;
-    }
+.legal a{
+color:var(--muted);
+text-decoration:none;
+}
 
-    @keyframes pulseRing{
-      0%{
-        transform:scale(1);
-        opacity:.7;
-      }
-      70%{
-        transform:scale(1.35);
-        opacity:0;
-      }
-      100%{
-        opacity:0;
-      }
-    }
+.legal a:hover{
+color:var(--primary);
+}
 
-    .floating-icon{
-      background:rgba(255,255,255,.18);
-      width:28px;
-      height:28px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:14px;
-      flex-shrink:0;
-    }
+/* FLOATING BUTTON */
 
-    @media (max-width:700px){
-      .menu-overlay a{
-        font-size:1.2rem;
-      }
+.floating-cta{
+position:fixed;
+right:20px;
+bottom:20px;
+z-index:950;
+display:flex;
+align-items:center;
+gap:10px;
+background:linear-gradient(135deg,var(--primary),var(--accent));
+color:#fff;
+text-decoration:none;
+padding:14px 20px;
+border-radius:999px;
+font-weight:700;
+box-shadow:0 10px 25px rgba(18,55,97,.28);
+transition:transform .2s ease;
+opacity:0;
+pointer-events:none;
+}
 
-      .floating-cta{
-        right:14px;
-        bottom:14px;
-        padding:12px 16px;
-        font-size:14px;
-      }
+.floating-cta.visible{
+opacity:1;
+pointer-events:auto;
+}
 
-      .floating-icon{
-        width:26px;
-        height:26px;
-        font-size:13px;
-      }
-    }
-  </style>
+.floating-cta:hover{
+transform:translateY(-3px);
+}
+
+.floating-icon{
+background:rgba(255,255,255,.18);
+width:28px;
+height:28px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:14px;
+}
+
+</style>
 </head>
+
 <body>
 
-  <div id="splash" aria-label="Intro">
-    <img src="logo.png" alt="Hünig Logo">
-    <h2>Herzlich Willkommen bei<br>Wielo Wärmetechnik</h2>
-    <div id="arrow" aria-label="Weiter zur Website" title="Weiter">↓</div>
-  </div>
+<!-- SPLASH -->
 
-  <header>
-    <img src="logo.png" alt="Hünig Logo" class="logo">
-    <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen">
-      <span class="bar"></span>
-    </button>
-  </header>
+<div id="splash">
+<img src="logo1.png" alt="Firmenlogo">
+<h2>Herzlich Willkommen<br>bei Wielo Wärmetechnik</h2>
+<div id="arrow">↓</div>
+</div>
 
-  <nav class="menu-overlay" id="menuOverlay" aria-label="Hauptmenü">
-    <a href="index.html">Startseite</a>
-    <a href="waermepumpen.html">Wärmepumpen</a>
-    <a href="klimaanlagen.html">Klimaanlagen</a>
-    <a href="lueftung.html">Lüftung</a>
-    <a href="trinkwasserinstallationen.html">Trinkwasser</a>
-    <a href="referenzen.html">Referenzen</a>
-    <a href="service.html">Service & Wartung</a>
-    <a href="ueber-uns.html">Über uns</a>
-    <a href="kontakt.html">Anfrage</a>
-    <a href="impressum.html">Impressum</a>
-    <a href="datenschutz.html">Datenschutz</a>
-    <a href="agb.html">AGB</a>
-    <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
-  </nav>
+<!-- HEADER -->
 
-  <main id="content">
-    <div class="wrap">
-      <div class="card">
-        <h1>Willkommen bei Wielo Wärmetechnik</h1>
-        <p class="intro-text">
-          Effiziente Lösungen für Wärmepumpen, Klimaanlagen, Lüftung und Trinkwasser –
-          von der Beratung über die Montage bis hin zu Service und Wartung.
-          Nutzen Sie das Menü oben rechts oder starten Sie Ihre Anfrage direkt über den Button unten rechts.
-        </p>
-      </div>
-    </div>
-  </main>
+<header>
+<img src="logo1.png" alt="Firmenlogo" class="logo">
 
-  <a href="kontakt.html" class="floating-cta" id="floatingCta" aria-label="Jetzt Anfrage starten">
-    <span class="floating-icon">✉</span>
-    Jetzt anfragen
-  </a>
+<button class="menu-btn" id="menuBtn">
+<span class="bar"></span>
+</button>
+</header>
 
-  <footer>
-    <div class="foot">
-      <div>© <span id="y"></span> Wielo Wärmetechnik</div>
-      <div class="legal" aria-label="Rechtliche Links">
-        <a href="kontakt.html">Anfrage</a>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
-        <a href="agb.html">AGB</a>
-        <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
-      </div>
-    </div>
-  </footer>
+<!-- MENU -->
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+<nav class="menu-overlay" id="menuOverlay">
+<a href="index.html">Startseite</a>
+<a href="waermepumpen.html">Wärmepumpen</a>
+<a href="klimaanlagen.html">Klimaanlagen</a>
+<a href="lueftung.html">Lüftung</a>
+<a href="trinkwasserinstallationen.html">Trinkwasser</a>
+<a href="referenzen.html">Referenzen</a>
+<a href="service.html">Service</a>
+<a href="ueber-uns.html">Über uns</a>
+<a href="kontakt.html">Anfrage</a>
+<a href="impressum.html">Impressum</a>
+<a href="datenschutz.html">Datenschutz</a>
+</nav>
 
-    const splash = document.getElementById('splash');
-    const arrow = document.getElementById('arrow');
-    const content = document.getElementById('content');
-    const cta = document.getElementById('floatingCta');
+<!-- CONTENT -->
 
-    let splashHidden = false;
+<main id="content">
 
-    function showCta(){
-      cta.classList.add('visible');
+<div class="wrap">
 
-      setTimeout(() => {
-        cta.style.transform = 'scale(1.08)';
-        setTimeout(() => {
-          cta.style.transform = 'scale(1)';
-        }, 300);
-      }, 600);
-    }
+<div class="card">
 
-    function hideSplash(){
-      if (splashHidden) return;
-      splashHidden = true;
+<h1>Moderne Wärme- und Gebäudetechnik</h1>
 
-      splash.style.opacity = 0;
+<p>
+Wielo Wärmetechnik steht für moderne Lösungen rund um Wärmepumpen,
+Klimaanlagen, Lüftung und Sanitärtechnik.
+</p>
 
-      setTimeout(() => {
-        splash.style.display = 'none';
-        content.style.display = 'block';
-        showCta();
-        window.scrollTo({ top: 0, behavior: 'auto' });
-      }, 800);
-    }
+<p>
+Von der ersten Beratung über die Planung bis zur Montage und Wartung
+begleiten wir unsere Kunden zuverlässig und fachgerecht.
+</p>
 
-    arrow.addEventListener('click', hideSplash);
-    setTimeout(hideSplash, 5000);
+</div>
 
-    const menuBtn = document.getElementById('menuBtn');
-    const overlay = document.getElementById('menuOverlay');
+</div>
 
-    menuBtn.addEventListener('click', () => {
-      overlay.classList.toggle('open');
-    });
+</main>
 
-    overlay.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        overlay.classList.remove('open');
-      });
-    });
-  </script>
+<!-- FLOATING BUTTON -->
+
+<a href="kontakt.html" class="floating-cta" id="floatingCta">
+<span class="floating-icon">✉</span>
+Jetzt anfragen
+</a>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="foot">
+
+<div>© <span id="y"></span> Wielo Wärmetechnik</div>
+
+<div class="legal">
+<a href="kontakt.html">Kontakt</a>
+<a href="impressum.html">Impressum</a>
+<a href="datenschutz.html">Datenschutz</a>
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+document.getElementById('y').textContent = new Date().getFullYear();
+
+const splash = document.getElementById('splash');
+const arrow = document.getElementById('arrow');
+const content = document.getElementById('content');
+const cta = document.getElementById('floatingCta');
+
+function showCta(){
+cta.classList.add('visible');
+}
+
+function hideSplash(){
+
+splash.style.opacity = 0;
+
+setTimeout(()=>{
+
+splash.style.display = 'none';
+content.style.display = 'block';
+
+showCta();
+
+},800);
+
+}
+
+arrow.addEventListener('click', hideSplash);
+setTimeout(hideSplash,5000);
+
+const menuBtn = document.getElementById('menuBtn');
+const overlay = document.getElementById('menuOverlay');
+
+menuBtn.addEventListener('click',()=>{
+overlay.classList.toggle('open');
+});
+
+overlay.querySelectorAll('a').forEach(a=>{
+a.addEventListener('click',()=>{
+overlay.classList.remove('open');
+});
+});
+
+</script>
+
 </body>
 </html>
