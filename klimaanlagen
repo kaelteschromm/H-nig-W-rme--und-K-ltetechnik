@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Wärmepumpen | Hünig Wärme- und Kältetechnik</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Moderne Wärmepumpen vom Fachbetrieb – Beratung, Planung, Montage, hydraulische Einbindung, Inbetriebnahme und Wartung für Neubau und Sanierung.">
+
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --card:rgba(255,255,255,0.95);
+      --card-strong:#ffffff;
+      --text:#1a2433;
+      --primary:#14365e;
+      --accent:#e63a2e;
+      --cool:#2e7bd9;
+      --muted:#5b6b82;
+      --line:#dde5ef;
+      --shadow:0 10px 30px rgba(12,28,52,.10);
+      --shadow-hover:0 16px 38px rgba(12,28,52,.16);
+      --hero-overlay:linear-gradient(135deg, rgba(20,54,94,.90), rgba(46,123,217,.72));
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(46,123,217,.13), transparent 28%),
+        radial-gradient(circle at left center, rgba(230,58,46,.07), transparent 18%),
+        var(--bg);
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    a{
+      color:inherit;
+    }
+
+    .wrap{
+      width:min(1140px, calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    /* HEADER */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.88);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(221,229,239,.9);
+    }
+
+    .topbar{
+      min-height:68px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:10px 0;
+    }
+
+    .logo-link{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      min-width:0;
+    }
+
+    .logo{
+      height:44px;
+      width:auto;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      min-width:0;
+    }
+
+    .brand-title{
+      margin:0;
+      color:var(--primary);
+      font-size:1rem;
+      font-weight:800;
+      line-height:1.15;
+    }
+
+    .brand-sub{
+      margin:2px 0 0;
+      color:var(--muted);
+      font-size:.86rem;
+    }
+
+    .menu-btn{
+      border:none;
+      background:transparent;
+      cursor:pointer;
+      padding:10px;
+      width:46px;
+      height:46px;
+      flex-shrink:0;
+    }
+
+    .menu-btn .bar,
+    .menu-btn .bar::before,
+    .menu-btn .bar::after{
+      content:"";
+      display:block;
+      width:24px;
+      height:3px;
+      border-radius:2px;
+      background:var(--primary);
+      position:relative;
+      transition:.25s ease;
+      margin:0 auto;
+    }
+
+    .menu-btn .bar::before{
+      position:absolute;
+      top:-8px;
+      left:0;
+    }
+
+    .menu-btn .bar::after{
+      position:absolute;
+      top:8px;
+      left:0;
+    }
+
+    /* OVERLAY MENU */
+    .menu-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(20,54,94,.97);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      opacity:0;
+      pointer-events:none;
+      transform:translateX(100%);
+      transition:.4s ease;
+      z-index:999;
+      padding:30px 20px;
+    }
+
+    .menu-overlay.open{
+      opacity:1;
+      pointer-events:auto;
+      transform:translateX(0);
+    }
+
+    .menu-overlay a{
+      color:#fff;
+      text-decoration:none;
+      font-size:1.32rem;
+      font-weight:600;
+      opacity:0;
+      transform:translateX(40px);
+    }
+
+    .menu-overlay.open a{
+      animation:slideIn .45s forwards;
+    }
+
+    .menu-overlay a:nth-child(1){animation-delay:.04s}
+    .menu-overlay a:nth-child(2){animation-delay:.08s}
+    .menu-overlay a:nth-child(3){animation-delay:.12s}
+    .menu-overlay a:nth-child(4){animation-delay:.16s}
+    .menu-overlay a:nth-child(5){animation-delay:.20s}
+    .menu-overlay a:nth-child(6){animation-delay:.24s}
+    .menu-overlay a:nth-child(7){animation-delay:.28s}
+    .menu-overlay a:nth-child(8){animation-delay:.32s}
+    .menu-overlay a:nth-child(9){animation-delay:.36s}
+    .menu-overlay a:nth-child(10){animation-delay:.40s}
+    .menu-overlay a:nth-child(11){animation-delay:.44s}
+    .menu-overlay a:nth-child(12){animation-delay:.48s}
+    .menu-overlay a:nth-child(13){animation-delay:.52s}
+
+    @keyframes slideIn{
+      to{
+        opacity:1;
+        transform:translateX(0);
+      }
+    }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      overflow:hidden;
+      color:#fff;
+      background:
+        var(--hero-overlay),
+        url("Haus am Wald.webp") center center / cover no-repeat;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:auto auto -120px -120px;
+      width:320px;
+      height:320px;
+      background:radial-gradient(circle, rgba(255,255,255,.14), transparent 70%);
+      border-radius:50%;
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:30px;
+      align-items:center;
+      min-height:calc(100vh - 68px);
+      padding:56px 0 68px;
+    }
+
+    .hero-copy{
+      max-width:720px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:16px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.18);
+      font-size:.95rem;
+      font-weight:600;
+      letter-spacing:.02em;
+    }
+
+    .hero h1{
+      margin:0 0 16px;
+      font-size:clamp(2.2rem, 5vw, 4.2rem);
+      line-height:1.02;
+      letter-spacing:-.03em;
+    }
+
+    .hero-lead{
+      margin:0 0 24px;
+      font-size:1.08rem;
+      line-height:1.75;
+      max-width:700px;
+      color:rgba(255,255,255,.92);
+    }
+
+    .hero-points{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:12px;
+      margin:0 0 28px;
+      padding:0;
+      list-style:none;
+    }
+
+    .hero-points li{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);
+      backdrop-filter:blur(2px);
+      line-height:1.5;
+    }
+
+    .hero-points li span{
+      flex-shrink:0;
+      width:24px;
+      height:24px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      background:rgba(255,255,255,.15);
+      font-size:.9rem;
+      font-weight:700;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 20px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:700;
+      transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+      border:none;
+      cursor:pointer;
+      box-shadow:var(--shadow);
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-primary{
+      color:#fff;
+      background:linear-gradient(135deg, var(--accent), var(--cool));
+    }
+
+    .btn-secondary{
+      color:#fff;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow:none;
+    }
+
+    .hero-card{
+      background:rgba(255,255,255,.96);
+      color:var(--text);
+      border-radius:28px;
+      padding:26px;
+      box-shadow:0 20px 50px rgba(10,24,46,.18);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      top:-70px;
+      right:-70px;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(46,123,217,.18), transparent 70%);
+      pointer-events:none;
+    }
+
+    .hero-card h2{
+      margin:0 0 10px;
+      color:var(--primary);
+      font-size:1.45rem;
+    }
+
+    .hero-card p{
+      margin:0 0 18px;
+      color:var(--muted);
+      line-height:1.65;
+    }
+
+    .mini-list{
+      display:grid;
+      gap:12px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    .mini-list li{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:12px 14px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#fff;
+    }
+
+    .mini-icon{
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.05rem;
+      background:linear-gradient(135deg, rgba(230,58,46,.14), rgba(46,123,217,.14));
+      color:var(--primary);
+      font-weight:700;
+    }
+
+    .mini-list strong{
+      display:block;
+      color:var(--primary);
+      margin-bottom:3px;
+    }
+
+    .mini-list small{
+      color:var(--muted);
+      line-height:1.5;
+    }
+
+    /* CONTENT */
+    main{
+      padding:30px 0 110px;
+    }
+
+    .section{
+      padding:34px 0;
+    }
+
+    .section-head{
+      max-width:760px;
+      margin-bottom:22px;
+    }
+
+    .section-head h2{
+      margin:0 0 10px;
+      color:var(--primary);
+      font-size:clamp(1.7rem, 3vw, 2.5rem);
+      line-height:1.1;
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:1.02rem;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .grid-4{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid rgba(221,229,239,.95);
+      border-radius:24px;
+      padding:22px;
+      box-shadow:var(--shadow);
+      transition:transform .22s ease, box-shadow .22s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-hover);
+    }
+
+    .icon{
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:14px;
+      font-size:1.2rem;
+      font-weight:700;
+      color:var(--primary);
+      background:linear-gradient(135deg, rgba(230,58,46,.12), rgba(46,123,217,.16));
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      color:var(--primary);
+      font-size:1.15rem;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      align-items:stretch;
+    }
+
+    .feature-panel{
+      background:linear-gradient(180deg, #ffffff, #f8fbff);
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:26px;
+      box-shadow:var(--shadow);
+      height:100%;
+    }
+
+    .feature-panel h3{
+      margin:0 0 12px;
+      color:var(--primary);
+      font-size:1.35rem;
+    }
+
+    .feature-panel p{
+      margin:0 0 18px;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .checklist{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:12px;
+    }
+
+    .checklist li{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      line-height:1.65;
+      color:var(--text);
+    }
+
+    .check{
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      flex-shrink:0;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:.85rem;
+      background:linear-gradient(135deg, rgba(230,58,46,.14), rgba(46,123,217,.18));
+      color:var(--primary);
+      font-weight:700;
+      margin-top:1px;
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:18px;
+      counter-reset:step;
+    }
+
+    .step-card{
+      position:relative;
+      background:var(--card-strong);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:24px 20px 20px;
+      box-shadow:var(--shadow);
+    }
+
+    .step-number{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:14px;
+      background:linear-gradient(135deg, var(--accent), var(--cool));
+      color:#fff;
+      font-weight:800;
+      box-shadow:0 10px 24px rgba(20,54,94,.18);
+    }
+
+    .step-card h3{
+      margin:0 0 10px;
+      color:var(--primary);
+      font-size:1.08rem;
+    }
+
+    .step-card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.65;
+    }
+
+    .band{
+      background:linear-gradient(135deg, rgba(20,54,94,.96), rgba(46,123,217,.88));
+      color:#fff;
+      border-radius:30px;
+      padding:28px;
+      box-shadow:0 18px 40px rgba(20,54,94,.18);
+    }
+
+    .band h2{
+      margin:0 0 10px;
+      font-size:clamp(1.7rem, 3vw, 2.5rem);
+      line-height:1.08;
+    }
+
+    .band p{
+      margin:0;
+      color:rgba(255,255,255,.88);
+      line-height:1.75;
+      max-width:760px;
+    }
+
+    .band-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:22px;
+    }
+
+    .btn-light{
+      background:#fff;
+      color:var(--primary);
+    }
+
+    .btn-outline-light{
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.18);
+      color:#fff;
+      box-shadow:none;
+    }
+
+    /* FOOTER */
+    footer{
+      background:#fff;
+      border-top:1px solid var(--line);
+    }
+
+    .foot{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .legal{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    .legal a{
+      color:var(--muted);
+      text-decoration:none;
+    }
+
+    .legal a:hover{
+      color:var(--primary);
+    }
+
+    /* FLOATING CTA */
+    .floating-cta{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:1100;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      background:linear-gradient(135deg, var(--accent), var(--cool));
+      color:#fff;
+      text-decoration:none;
+      padding:14px 20px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:.98rem;
+      box-shadow:0 12px 28px rgba(20,54,94,.28);
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+
+    .floating-cta:hover{
+      transform:translateY(-3px);
+      box-shadow:0 16px 34px rgba(20,54,94,.34);
+    }
+
+    .floating-cta::after{
+      content:"";
+      position:absolute;
+      inset:-6px;
+      border-radius:999px;
+      border:2px solid rgba(230,58,46,.32);
+      animation:pulseRing 2.5s infinite;
+      pointer-events:none;
+    }
+
+    @keyframes pulseRing{
+      0%{
+        transform:scale(1);
+        opacity:.75;
+      }
+      70%{
+        transform:scale(1.34);
+        opacity:0;
+      }
+      100%{
+        opacity:0;
+      }
+    }
+
+    .floating-icon{
+      width:28px;
+      height:28px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(255,255,255,.18);
+      font-size:.9rem;
+      flex-shrink:0;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width:1024px){
+      .hero-grid,
+      .split,
+      .grid-4,
+      .grid-3,
+      .steps{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (max-width:760px){
+      .hero-grid,
+      .split,
+      .grid-4,
+      .grid-3,
+      .grid-2,
+      .steps,
+      .hero-points{
+        grid-template-columns:1fr;
+      }
+
+      .hero-grid{
+        min-height:auto;
+        padding:42px 0 52px;
+      }
+
+      .hero h1{
+        font-size:2.3rem;
+      }
+
+      .brand-sub{
+        display:none;
+      }
+
+      .menu-overlay a{
+        font-size:1.16rem;
+      }
+
+      .floating-cta{
+        right:14px;
+        bottom:14px;
+        padding:12px 16px;
+        font-size:.92rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap topbar">
+      <a href="index.html" class="logo-link" aria-label="Zur Startseite">
+        <img src="logo.png" alt="Hünig Logo" class="logo">
+        <div class="brand-text">
+          <p class="brand-title">Hünig Wärme- und Kältetechnik</p>
+          <p class="brand-sub">Wärmepumpen, Klima, Lüftung und Service</p>
+        </div>
+      </a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen">
+        <span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="menu-overlay" id="menuOverlay" aria-label="Hauptmenü">
+    <a href="index.html">Startseite</a>
+    <a href="waermepumpen.html">Wärmepumpen</a>
+    <a href="klimaanlagen.html">Klimaanlagen</a>
+    <a href="lueftung.html">Lüftung</a>
+    <a href="trinkwasserinstallationen.html">Trinkwasser</a>
+    <a href="referenzen.html">Referenzen</a>
+    <a href="service.html">Service & Wartung</a>
+    <a href="ueber-uns.html">Über uns</a>
+    <a href="kontakt.html">Anfrage</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+    <a href="agb.html">AGB</a>
+    <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+  </nav>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Effizient heizen mit moderner Wärmepumpentechnik</div>
+
+        <h1>Wärmepumpen vom Fachbetrieb</h1>
+
+        <p class="hero-lead">
+          Ob Neubau oder Sanierung – wir begleiten Sie von der ersten Beratung über die
+          Planung und Montage bis hin zur Inbetriebnahme und Wartung Ihrer Wärmepumpe.
+          Modern, effizient und passend zu Ihrem Gebäude.
+        </p>
+
+        <ul class="hero-points">
+          <li><span>✓</span> Planung und Auslegung passend zu Objekt und Wärmebedarf</li>
+          <li><span>✓</span> Saubere Montage und hydraulische Einbindung</li>
+          <li><span>✓</span> Lösungen für Einfamilienhaus, Sanierung und kleinere Gewerbeobjekte</li>
+          <li><span>✓</span> Service, Wartung und langfristige Betreuung aus einer Hand</li>
+        </ul>
+
+        <div class="hero-actions">
+          <a href="kontakt.html" class="btn btn-primary">Jetzt Wärmepumpe anfragen</a>
+          <a href="#ablauf" class="btn btn-secondary">Mehr erfahren</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h2>Ihre Vorteile auf einen Blick</h2>
+        <p>
+          Wärmepumpen nutzen vorhandene Umweltenergie und bieten eine moderne,
+          zukunftssichere Lösung für komfortables und effizientes Heizen.
+        </p>
+
+        <ul class="mini-list">
+          <li>
+            <div class="mini-icon">⚡</div>
+            <div>
+              <strong>Effizient heizen</strong>
+              <small>Moderne Systeme senken den Energieverbrauch und passen zu vielen Gebäudekonzepten.</small>
+            </div>
+          </li>
+          <li>
+            <div class="mini-icon">🏠</div>
+            <div>
+              <strong>Für Neubau und Sanierung</strong>
+              <small>Geeignet für neue Gebäude ebenso wie für viele Bestandsobjekte mit passender Auslegung.</small>
+            </div>
+          </li>
+          <li>
+            <div class="mini-icon">🔧</div>
+            <div>
+              <strong>Alles aus einer Hand</strong>
+              <small>Beratung, Montage, Inbetriebnahme und Service in einem durchgängigen Ablauf.</small>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Warum eine Wärmepumpe?</h2>
+          <p>
+            Eine Wärmepumpe ist mehr als nur ein neues Heizsystem. Sie ist eine moderne,
+            effiziente und langfristig attraktive Lösung für Gebäude, die auf Zukunft,
+            Komfort und niedrige Betriebskosten setzen möchten.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="icon">🌿</div>
+            <h3>Nachhaltige Technik</h3>
+            <p>
+              Wärmepumpen nutzen vorhandene Umweltenergie und bieten eine zeitgemäße
+              Alternative zu klassischen Heizsystemen.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">📉</div>
+            <h3>Geringere Energiekosten</h3>
+            <p>
+              Mit der richtigen Planung und einem passenden System kann der Energieeinsatz
+              deutlich effizienter gestaltet werden.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🔥</div>
+            <h3>Komfortables Heizen</h3>
+            <p>
+              Gleichmäßige Wärme, moderne Regelungstechnik und ein angenehmes Raumklima
+              sorgen für hohen Wohnkomfort.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap split">
+        <div class="feature-panel">
+          <h3>Für welche Gebäude ist eine Wärmepumpe sinnvoll?</h3>
+          <p>
+            Ob im Neubau oder im Bestand – entscheidend ist nicht nur das Gerät,
+            sondern die richtige Auslegung für das konkrete Objekt.
+          </p>
+
+          <ul class="checklist">
+            <li><span class="check">✓</span> Einfamilienhäuser und Doppelhaushälften</li>
+            <li><span class="check">✓</span> Sanierungen mit abgestimmtem Gesamtkonzept</li>
+            <li><span class="check">✓</span> Gebäude mit Fußbodenheizung oder passenden Heizkörpern</li>
+            <li><span class="check">✓</span> Kleinere Mehrfamilienhäuser und ausgewählte Gewerbeeinheiten</li>
+            <li><span class="check">✓</span> Kombination mit Warmwasserbereitung und moderner Regelung</li>
+          </ul>
+        </div>
+
+        <div class="feature-panel">
+          <h3>Unsere Leistungen rund um Wärmepumpen</h3>
+          <p>
+            Damit Ihre Anlage später zuverlässig und effizient läuft, kommt es auf die
+            saubere Abstimmung aller Komponenten an – nicht nur auf das Gerät selbst.
+          </p>
+
+          <ul class="checklist">
+            <li><span class="check">✓</span> Beratung und technische Vorprüfung vor Ort</li>
+            <li><span class="check">✓</span> Planung und Auswahl des passenden Systems</li>
+            <li><span class="check">✓</span> Montage der Wärmepumpe und Einbindung ins Heizsystem</li>
+            <li><span class="check">✓</span> Verrohrung, Speicherkonzepte und hydraulische Trennung</li>
+            <li><span class="check">✓</span> Inbetriebnahme, Einweisung sowie Service und Wartung</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ablauf">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>So läuft ein Wärmepumpen-Projekt ab</h2>
+          <p>
+            Ein klarer Ablauf sorgt für Planungssicherheit. Von der ersten Einschätzung
+            bis zur fertigen Anlage begleiten wir Sie Schritt für Schritt.
+          </p>
+        </div>
+
+        <div class="steps">
+          <article class="step-card">
+            <div class="step-number">1</div>
+            <h3>Beratung</h3>
+            <p>
+              Wir betrachten Ihr Gebäude, die vorhandene Heizsituation und die gewünschte
+              Zielsetzung des Projekts.
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">2</div>
+            <h3>Planung</h3>
+            <p>
+              Systemauswahl, Einbindung, Speicherlösung und hydraulisches Konzept werden
+              passend zum Objekt abgestimmt.
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">3</div>
+            <h3>Montage</h3>
+            <p>
+              Die Wärmepumpe wird fachgerecht installiert, angeschlossen und sauber in das
+              bestehende oder neue System integriert.
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">4</div>
+            <h3>Inbetriebnahme</h3>
+            <p>
+              Nach der Fertigstellung erfolgt die Inbetriebnahme, Prüfung und Einweisung
+              für einen sicheren und effizienten Betrieb.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Worauf es bei einer guten Lösung ankommt</h2>
+          <p>
+            Nicht jede Wärmepumpe passt automatisch zu jedem Gebäude. Die eigentliche
+            Qualität zeigt sich in der Planung, der Verrohrung, der Einbindung und der
+            sauberen Ausführung im Detail.
+          </p>
+        </div>
+
+        <div class="grid-4">
+          <article class="card">
+            <div class="icon">📐</div>
+            <h3>Passende Auslegung</h3>
+            <p>
+              Leistung und System müssen auf das Gebäude und den tatsächlichen Bedarf abgestimmt sein.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">💧</div>
+            <h3>Hydraulische Einbindung</h3>
+            <p>
+              Pufferspeicher, Heizkreis und Wärmepumpe müssen sauber zusammenspielen.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🛠️</div>
+            <h3>Saubere Montage</h3>
+            <p>
+              Eine fachgerechte Ausführung erhöht Betriebssicherheit, Effizienz und Lebensdauer.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🔍</div>
+            <h3>Langfristiger Service</h3>
+            <p>
+              Auch nach der Installation bleiben Wartung, Betreuung und Erreichbarkeit wichtig.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="band">
+          <h2>Interesse an einer Wärmepumpe?</h2>
+          <p>
+            Nutzen Sie unseren Anfragebereich und teilen Sie uns Ihr Vorhaben mit.
+            So können wir Ihr Projekt schneller einschätzen und gezielt auf Ihr Objekt eingehen.
+          </p>
+
+          <div class="band-actions">
+            <a href="kontakt.html" class="btn btn-light">Jetzt Anfrage starten</a>
+            <a href="service.html" class="btn btn-outline-light">Service & Wartung ansehen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a href="kontakt.html" class="floating-cta" aria-label="Jetzt Wärmepumpe anfragen">
+    <span class="floating-icon">✉</span>
+    Jetzt anfragen
+  </a>
+
+  <footer>
+    <div class="wrap foot">
+      <div>© <span id="y"></span> Hünig Wärme- und Kältetechnik</div>
+
+      <div class="legal" aria-label="Rechtliche Links">
+        <a href="kontakt.html">Anfrage</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+        <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const menuBtn = document.getElementById('menuBtn');
+    const overlay = document.getElementById('menuOverlay');
+
+    menuBtn.addEventListener('click', () => {
+      overlay.classList.toggle('open');
+    });
+
+    overlay.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        overlay.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
