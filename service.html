@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Service & Wartung | Wielo Wärmetechnik</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Service und Wartung von Wielo Wärmetechnik – zuverlässige Betreuung für Wärmepumpen, Klimaanlagen, Lüftung und haustechnische Anlagen.">
+
+  <style>
+    :root{
+      --primary:#123761;
+      --primary-dark:#0b2745;
+      --accent:#1e4c7d;
+      --cool:#3e6fa3;
+      --bg:#f4f7fb;
+      --card:rgba(255,255,255,0.97);
+      --card-soft:#f8fbfd;
+      --text:#172435;
+      --muted:#5f6f82;
+      --line:#d9e1ea;
+      --shadow:0 10px 28px rgba(12,28,52,.10);
+      --shadow-hover:0 16px 34px rgba(12,28,52,.16);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(30,76,125,.10), transparent 28%),
+        radial-gradient(circle at left center, rgba(62,111,163,.08), transparent 18%),
+        var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .top-contact{
+      background:var(--primary-dark);
+      color:#fff;
+      font-size:.92rem;
+    }
+
+    .top-contact-inner{
+      max-width:1180px;
+      margin:0 auto;
+      padding:10px 16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px 24px;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .top-contact-left,
+    .top-contact-right{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px 20px;
+      align-items:center;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.97);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(217,225,234,.85);
+      box-shadow:0 2px 8px rgba(0,0,0,.05);
+    }
+
+    .header-inner{
+      max-width:1180px;
+      margin:0 auto;
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:0 16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .logo{
+      height:52px;
+      width:auto;
+      flex-shrink:0;
+    }
+
+    .brand-title{
+      margin:0;
+      color:var(--primary);
+      font-size:1.15rem;
+      font-weight:800;
+      line-height:1.1;
+    }
+
+    .brand-sub{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:.9rem;
+      line-height:1.3;
+    }
+
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-shrink:0;
+    }
+
+    .desktop-cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 18px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      color:#fff;
+      font-weight:700;
+      box-shadow:0 10px 24px rgba(18,55,97,.20);
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+
+    .desktop-cta:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 30px rgba(18,55,97,.28);
+    }
+
+    .menu-btn{
+      border:none;
+      background:transparent;
+      cursor:pointer;
+      padding:10px;
+      width:46px;
+      height:46px;
+      border-radius:12px;
+    }
+
+    .menu-btn:hover{background:#eef3f8}
+
+    .menu-btn .bar,
+    .menu-btn .bar::before,
+    .menu-btn .bar::after{
+      content:"";
+      display:block;
+      height:3px;
+      width:24px;
+      background:var(--primary);
+      border-radius:2px;
+      position:relative;
+      transition:.25s;
+      margin:0 auto;
+    }
+
+    .menu-btn .bar::before{position:absolute;top:-8px;left:0}
+    .menu-btn .bar::after{position:absolute;top:8px;left:0}
+
+    .menu-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(18,55,97,.97);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      opacity:0;
+      pointer-events:none;
+      transform:translateX(100%);
+      transition:all .45s ease;
+      z-index:1100;
+      padding:28px 20px;
+    }
+
+    .menu-overlay.open{
+      opacity:1;
+      pointer-events:auto;
+      transform:translateX(0);
+    }
+
+    .menu-overlay a{
+      color:#fff;
+      font-size:1.28rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+      opacity:0;
+      transform:translateX(70px);
+    }
+
+    .menu-overlay.open a{animation:slideIn .45s forwards}
+    .menu-overlay a:nth-child(1){animation-delay:.04s}
+    .menu-overlay a:nth-child(2){animation-delay:.08s}
+    .menu-overlay a:nth-child(3){animation-delay:.12s}
+    .menu-overlay a:nth-child(4){animation-delay:.16s}
+    .menu-overlay a:nth-child(5){animation-delay:.20s}
+    .menu-overlay a:nth-child(6){animation-delay:.24s}
+    .menu-overlay a:nth-child(7){animation-delay:.28s}
+    .menu-overlay a:nth-child(8){animation-delay:.32s}
+    .menu-overlay a:nth-child(9){animation-delay:.36s}
+    .menu-overlay a:nth-child(10){animation-delay:.40s}
+    .menu-overlay a:nth-child(11){animation-delay:.44s}
+    .menu-overlay a:nth-child(12){animation-delay:.48s}
+
+    @keyframes slideIn{
+      to{
+        transform:translateX(0);
+        opacity:1;
+      }
+    }
+
+    .wrap{
+      width:min(1180px, calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    main{
+      padding:28px 0 90px;
+    }
+
+    .hero{
+      margin-bottom:24px;
+    }
+
+    .hero-box{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:22px;
+      align-items:center;
+      background:linear-gradient(135deg, rgba(255,255,255,.98), rgba(255,255,255,.94));
+      border:1px solid rgba(217,225,234,.85);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      padding:34px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero-box::after{
+      content:"";
+      position:absolute;
+      top:-80px;
+      right:-80px;
+      width:240px;
+      height:240px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(30,76,125,.10), transparent 70%);
+      pointer-events:none;
+    }
+
+    .hero-eyebrow{
+      display:inline-block;
+      margin-bottom:14px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:#edf3f8;
+      color:var(--primary);
+      font-size:.9rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+
+    h1{
+      margin:0 0 14px;
+      color:var(--primary);
+      font-size:clamp(2rem, 5vw, 3.4rem);
+      line-height:1.02;
+      letter-spacing:-.03em;
+    }
+
+    .hero-copy p{
+      margin:0 0 22px;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:1.02rem;
+      max-width:720px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 20px;
+      border-radius:999px;
+      font-weight:700;
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      color:#fff;
+      box-shadow:0 10px 24px rgba(18,55,97,.18);
+    }
+
+    .btn-secondary{
+      background:#eef3f8;
+      color:var(--primary);
+      border:1px solid var(--line);
+    }
+
+    .hero-side{
+      display:grid;
+      gap:14px;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-info{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:0 8px 20px rgba(12,28,52,.06);
+    }
+
+    .hero-info strong{
+      display:block;
+      color:var(--primary);
+      margin-bottom:6px;
+    }
+
+    .hero-info span{
+      color:var(--muted);
+      line-height:1.6;
+      font-size:.96rem;
+    }
+
+    .section{
+      margin-top:24px;
+    }
+
+    .section-head{
+      margin-bottom:18px;
+      max-width:820px;
+    }
+
+    .section-head h2{
+      margin:0 0 10px;
+      color:var(--primary);
+      font-size:clamp(1.7rem, 3vw, 2.5rem);
+      line-height:1.08;
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid rgba(217,225,234,.85);
+      border-radius:22px;
+      padding:22px;
+      box-shadow:var(--shadow);
+      transition:transform .22s ease, box-shadow .22s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-hover);
+    }
+
+    .icon{
+      width:50px;
+      height:50px;
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:14px;
+      background:#edf3f8;
+      color:var(--primary);
+      font-size:1.15rem;
+      font-weight:700;
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      color:var(--primary);
+      font-size:1.15rem;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .checklist{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:12px;
+    }
+
+    .checklist li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color:var(--text);
+      line-height:1.65;
+    }
+
+    .check{
+      width:24px;
+      height:24px;
+      border-radius:50%;
+      flex-shrink:0;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:#edf3f8;
+      color:var(--primary);
+      font-size:.82rem;
+      font-weight:700;
+      margin-top:1px;
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .step-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+
+    .step-number{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:12px;
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      color:#fff;
+      font-weight:800;
+    }
+
+    .step-card h3{
+      margin:0 0 8px;
+      color:var(--primary);
+      font-size:1.05rem;
+    }
+
+    .step-card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.65;
+    }
+
+    .band{
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      color:#fff;
+      border-radius:26px;
+      padding:30px;
+      box-shadow:0 16px 34px rgba(18,55,97,.18);
+    }
+
+    .band h2{
+      margin:0 0 10px;
+      font-size:clamp(1.7rem, 3vw, 2.4rem);
+      line-height:1.08;
+    }
+
+    .band p{
+      margin:0;
+      color:rgba(255,255,255,.90);
+      line-height:1.75;
+      max-width:780px;
+    }
+
+    .band-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .btn-light{
+      background:#fff;
+      color:var(--primary);
+    }
+
+    .btn-outline-light{
+      background:rgba(255,255,255,.10);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.20);
+    }
+
+    footer{
+      margin-top:auto;
+      border-top:1px solid var(--line);
+      background:rgba(255,255,255,.97);
+    }
+
+    .foot{
+      width:min(1180px, calc(100% - 32px));
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .legal{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      align-items:center;
+    }
+
+    .legal a{color:var(--muted)}
+    .legal a:hover{color:var(--primary)}
+
+    @media (max-width:1024px){
+      .hero-box,
+      .grid-3,
+      .grid-2,
+      .steps{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (max-width:760px){
+      .top-contact{display:none}
+      .brand-sub{display:none}
+      .desktop-cta{display:none}
+      .hero-box,
+      .grid-3,
+      .grid-2,
+      .steps{
+        grid-template-columns:1fr;
+      }
+      .hero-box,
+      .band,
+      .card,
+      .step-card{
+        padding:20px;
+      }
+      .menu-overlay a{font-size:1.16rem}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-contact">
+    <div class="top-contact-inner">
+      <div class="top-contact-left">
+        <span>Wärmepumpen</span>
+        <span>Klimaanlagen</span>
+        <span>Lüftung</span>
+        <span>Sanitär</span>
+      </div>
+      <div class="top-contact-right">
+        <span>Service & Wartung</span>
+        <span>Persönliche Betreuung</span>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="Startseite">
+        <img src="logo1.png" alt="Firmenlogo" class="logo">
+        <div>
+          <p class="brand-title">Wielo Wärmetechnik</p>
+          <p class="brand-sub">Moderne Wärme- und Gebäudetechnik</p>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <a href="kontakt.html" class="desktop-cta">Jetzt anfragen</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen"><span class="bar"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="menu-overlay" id="menuOverlay" aria-label="Hauptmenü">
+    <a href="index.html">Startseite</a>
+    <a href="waermepumpen.html">Wärmepumpen</a>
+    <a href="klimaanlagen.html">Klimaanlagen</a>
+    <a href="lueftung.html">Lüftung</a>
+    <a href="trinkwasserinstallationen.html">Trinkwasser</a>
+    <a href="referenzen.html">Referenzen</a>
+    <a href="service.html">Service</a>
+    <a href="ueber-uns.html">Über uns</a>
+    <a href="kontakt.html">Anfrage</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+    <a href="agb.html">AGB</a>
+  </nav>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-box">
+        <div class="hero-copy">
+          <div class="hero-eyebrow">Service & Wartung</div>
+          <h1>Zuverlässige Betreuung für Ihre Anlage</h1>
+          <p>
+            Auch nach der Inbetriebnahme bleibt eine gute Betreuung entscheidend. Mit
+            Service und Wartung sorgen wir dafür, dass Ihre Anlage langfristig zuverlässig,
+            sauber und möglichst störungsfrei läuft. Als Familienbetrieb setzen wir dabei
+            auf persönliche Erreichbarkeit und eine klare, nachvollziehbare Betreuung.
+          </p>
+
+          <div class="hero-actions">
+            <a href="kontakt.html" class="btn btn-primary">Jetzt Anfrage stellen</a>
+            <a href="#ablauf" class="btn btn-secondary">Serviceablauf ansehen</a>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="hero-info">
+            <strong>Regelmäßige Wartung</strong>
+            <span>Hilft dabei, die Anlage dauerhaft in einem guten technischen Zustand zu halten.</span>
+          </div>
+          <div class="hero-info">
+            <strong>Schnelle Einordnung</strong>
+            <span>Über unsere Anfrage können Anliegen strukturiert und gezielt übermittelt werden.</span>
+          </div>
+          <div class="hero-info">
+            <strong>Persönlicher Kontakt</strong>
+            <span>Als Familienbetrieb ist uns ein direkter und verlässlicher Austausch besonders wichtig.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Warum Service und Wartung wichtig sind</h2>
+        <p>
+          Technische Anlagen brauchen nicht nur eine gute Installation, sondern auch eine
+          verlässliche Betreuung im laufenden Betrieb. Regelmäßiger Service unterstützt
+          Funktion, Werterhalt und einen dauerhaft sauberen Anlagenzustand.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="icon">🛠</div>
+          <h3>Langfristige Betriebssicherheit</h3>
+          <p>Durch Wartung und Kontrolle lassen sich Anlagenzustand und Funktion regelmäßig überprüfen.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">🔍</div>
+          <h3>Frühzeitige Erkennung</h3>
+          <p>Kleinere Auffälligkeiten können früher erkannt und besser eingeordnet werden.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">📋</div>
+          <h3>Klare Betreuung</h3>
+          <p>Ein strukturierter Service hilft dabei, Anliegen, Termine und Maßnahmen übersichtlich zu halten.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid-2">
+        <article class="card">
+          <h3>Typische Serviceleistungen</h3>
+          <ul class="checklist">
+            <li><span class="check">✓</span> Sichtprüfung und allgemeine Anlagenkontrolle</li>
+            <li><span class="check">✓</span> Funktionsprüfung wichtiger Komponenten</li>
+            <li><span class="check">✓</span> Wartung nach Einsatzbereich und Anlagentyp</li>
+            <li><span class="check">✓</span> Einordnung von Auffälligkeiten und Fragen</li>
+            <li><span class="check">✓</span> Unterstützung bei laufenden technischen Anliegen</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Für welche Bereiche ist das relevant?</h3>
+          <ul class="checklist">
+            <li><span class="check">✓</span> Wärmepumpenanlagen</li>
+            <li><span class="check">✓</span> Klimaanlagen und Splitgeräte</li>
+            <li><span class="check">✓</span> Lüftungstechnische Anlagen</li>
+            <li><span class="check">✓</span> Haustechnische Systeme im Wohnbereich</li>
+            <li><span class="check">✓</span> Ausgewählte kleinere Gewerbeanlagen</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="ablauf">
+      <div class="section-head">
+        <h2>So läuft eine Serviceanfrage ab</h2>
+        <p>
+          Damit Ihr Anliegen schnell und sauber erfasst werden kann, setzen wir auf einen
+          klaren Ablauf – von der ersten Anfrage bis zur weiteren Abstimmung.
+        </p>
+      </div>
+
+      <div class="steps">
+        <article class="step-card">
+          <div class="step-number">1</div>
+          <h3>Anfrage stellen</h3>
+          <p>Über den Anfragebereich können Sie Ihr Anliegen strukturiert und direkt an uns senden.</p>
+        </article>
+
+        <article class="step-card">
+          <div class="step-number">2</div>
+          <h3>Anliegen prüfen</h3>
+          <p>Wir sehen uns die Angaben an und ordnen das Anliegen passend ein.</p>
+        </article>
+
+        <article class="step-card">
+          <div class="step-number">3</div>
+          <h3>Rückmeldung</h3>
+          <p>Im Anschluss melden wir uns zur weiteren Abstimmung bei Ihnen zurück.</p>
+        </article>
+
+        <article class="step-card">
+          <div class="step-number">4</div>
+          <h3>Umsetzung</h3>
+          <p>Je nach Anliegen folgt dann der passende Servicetermin oder die weitere Bearbeitung.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="band">
+        <h2>Serviceanfrage direkt online stellen</h2>
+        <p>
+          Nutzen Sie unseren Anfragebereich, um Service, Wartung oder ein anderes technisches
+          Anliegen schnell und unkompliziert zu übermitteln. So können wir Ihre Anfrage direkt
+          einordnen und uns gezielt bei Ihnen zurückmelden.
+        </p>
+
+        <div class="band-actions">
+          <a href="kontakt.html" class="btn btn-light">Zur Anfrage</a>
+          <a href="waermepumpen.html" class="btn btn-outline-light">Wärmepumpen ansehen</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot">
+      <div>© <span id="y"></span> Wielo Wärmetechnik</div>
+      <div class="legal">
+        <a href="kontakt.html">Anfrage</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const menuBtn = document.getElementById('menuBtn');
+    const overlay = document.getElementById('menuOverlay');
+
+    menuBtn.addEventListener('click', () => {
+      overlay.classList.toggle('open');
+    });
+
+    overlay.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        overlay.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
