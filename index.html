@@ -2,19 +2,22 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Hünig Wärme- und Kältetechnik</title>
+  <title>Wielo Wärmetechnik</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Hünig Wärme- und Kältetechnik – Ihr Fachbetrieb für Wärmepumpen, Klimaanlagen, Lüftung, Trinkwasserinstallationen sowie Service und Wartung.">
+  <meta name="description" content="Wielo Wärmetechnik – Ihr Fachbetrieb für Wärmepumpen, Klimaanlagen, Lüftung, Trinkwasserinstallationen sowie Service und Wartung.">
 
   <style>
     :root{
-      --card: rgba(255,255,255,0.9);
-      --text: #1a2433;
-      --primary: #14365e;
-      --accent: #e63a2e;
-      --cool: #2e7bd9;
-      --footer: rgba(255,255,255,0.9);
-      --muted: #5b6b82;
+      --primary:#123761;
+      --primary-dark:#0b2745;
+      --accent:#1e4c7d;
+      --cool:#3e6fa3;
+      --card:rgba(255,255,255,0.94);
+      --footer:rgba(255,255,255,0.96);
+      --text:#172435;
+      --muted:#5f6f82;
+      --line:#d9e1ea;
+      --bg:#f4f7fb;
     }
 
     *{
@@ -30,11 +33,10 @@
       background-size:cover;
     }
 
-    /* SPLASH */
     #splash{
       position:fixed;
       inset:0;
-      background:rgba(255,255,255,0.95);
+      background:rgba(255,255,255,0.96);
       display:flex;
       flex-direction:column;
       align-items:center;
@@ -73,21 +75,21 @@
       60%{transform:translateY(-6px)}
     }
 
-    /* HEADER */
     header{
       position:fixed;
       top:0;
       left:0;
       right:0;
       height:60px;
-      background:rgba(255,255,255,0.9);
+      background:rgba(255,255,255,0.94);
       display:flex;
       align-items:center;
       justify-content:space-between;
       padding:0 16px;
-      box-shadow:0 2px 6px rgba(0,0,0,.05);
+      box-shadow:0 2px 8px rgba(0,0,0,.06);
       z-index:900;
       backdrop-filter:blur(4px);
+      border-bottom:1px solid rgba(217,225,234,.7);
     }
 
     header .logo{
@@ -129,14 +131,13 @@
       left:0;
     }
 
-    /* OVERLAY MENÜ */
     .menu-overlay{
       position:fixed;
       top:0;
       right:-100%;
       bottom:0;
       width:100%;
-      background:rgba(20,54,94,.97);
+      background:rgba(18,55,97,.97);
       display:flex;
       flex-direction:column;
       align-items:center;
@@ -161,6 +162,9 @@
       text-decoration:none;
       transform:translateX(100px);
       opacity:0;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+      font-weight:600;
     }
 
     .menu-overlay.open a{
@@ -179,6 +183,7 @@
     .menu-overlay a:nth-child(10){animation-delay:.5s}
     .menu-overlay a:nth-child(11){animation-delay:.55s}
     .menu-overlay a:nth-child(12){animation-delay:.6s}
+    .menu-overlay a:nth-child(13){animation-delay:.65s}
 
     @keyframes slideIn{
       to{
@@ -187,7 +192,6 @@
       }
     }
 
-    /* MAIN */
     main{
       padding:80px 20px 100px;
       min-height:100vh;
@@ -202,8 +206,9 @@
     .card{
       background:var(--card);
       border-radius:16px;
-      box-shadow:0 6px 24px rgba(0,0,0,.08);
+      box-shadow:0 8px 24px rgba(12,28,52,.08);
       padding:24px;
+      border:1px solid rgba(217,225,234,.7);
     }
 
     h1{
@@ -217,12 +222,11 @@
       line-height:1.7;
     }
 
-    /* FOOTER */
     footer{
       position:sticky;
       bottom:0;
       background:var(--footer);
-      border-top:1px solid #dfe3e8;
+      border-top:1px solid var(--line);
       z-index:700;
     }
 
@@ -251,10 +255,9 @@
     }
 
     .legal a:hover{
-      color:#2b3a55;
+      color:var(--primary);
     }
 
-    /* FLOATING CTA PREMIUM */
     .floating-cta{
       position:fixed;
       right:20px;
@@ -263,14 +266,14 @@
       display:flex;
       align-items:center;
       gap:10px;
-      background:linear-gradient(135deg,var(--accent),var(--cool));
+      background:linear-gradient(135deg,var(--primary),var(--accent));
       color:#fff;
       text-decoration:none;
       padding:14px 20px;
       border-radius:999px;
       font-weight:700;
       font-size:15px;
-      box-shadow:0 10px 25px rgba(0,0,0,.25);
+      box-shadow:0 10px 25px rgba(18,55,97,.28);
       transition:opacity .3s ease, transform .2s ease, box-shadow .2s ease;
       opacity:0;
       pointer-events:none;
@@ -283,7 +286,7 @@
 
     .floating-cta:hover{
       transform:translateY(-3px);
-      box-shadow:0 14px 32px rgba(0,0,0,.35);
+      box-shadow:0 14px 32px rgba(18,55,97,.35);
     }
 
     .floating-cta::after{
@@ -291,7 +294,7 @@
       position:absolute;
       inset:-6px;
       border-radius:999px;
-      border:2px solid rgba(230,58,46,0.35);
+      border:2px solid rgba(18,55,97,.25);
       animation:pulseRing 2.5s infinite;
       pointer-events:none;
     }
@@ -344,14 +347,12 @@
 </head>
 <body>
 
-  <!-- SPLASH -->
   <div id="splash" aria-label="Intro">
     <img src="logo.png" alt="Hünig Logo">
-    <h2>Herzlich Willkommen bei<br>Hünig Wärme- und Kältetechnik</h2>
+    <h2>Herzlich Willkommen bei<br>Wielo Wärmetechnik</h2>
     <div id="arrow" aria-label="Weiter zur Website" title="Weiter">↓</div>
   </div>
 
-  <!-- HEADER -->
   <header>
     <img src="logo.png" alt="Hünig Logo" class="logo">
     <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen">
@@ -359,7 +360,6 @@
     </button>
   </header>
 
-  <!-- MENÜ -->
   <nav class="menu-overlay" id="menuOverlay" aria-label="Hauptmenü">
     <a href="index.html">Startseite</a>
     <a href="waermepumpen.html">Wärmepumpen</a>
@@ -376,11 +376,10 @@
     <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
   </nav>
 
-  <!-- INHALT -->
   <main id="content">
     <div class="wrap">
       <div class="card">
-        <h1>Willkommen bei Hünig Wärme- und Kältetechnik</h1>
+        <h1>Willkommen bei Wielo Wärmetechnik</h1>
         <p class="intro-text">
           Effiziente Lösungen für Wärmepumpen, Klimaanlagen, Lüftung und Trinkwasser –
           von der Beratung über die Montage bis hin zu Service und Wartung.
@@ -390,16 +389,14 @@
     </div>
   </main>
 
-  <!-- FLOATING BUTTON -->
   <a href="kontakt.html" class="floating-cta" id="floatingCta" aria-label="Jetzt Anfrage starten">
     <span class="floating-icon">✉</span>
     Jetzt anfragen
   </a>
 
-  <!-- FOOTER -->
   <footer>
     <div class="foot">
-      <div>© <span id="y"></span> Hünig Wärme- und Kältetechnik</div>
+      <div>© <span id="y"></span> Wielo Wärmetechnik</div>
       <div class="legal" aria-label="Rechtliche Links">
         <a href="kontakt.html">Anfrage</a>
         <a href="impressum.html">Impressum</a>
