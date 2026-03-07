@@ -2,24 +2,24 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Service & Wartung | Wielo Wärmetechnik</title>
+  <title>Service | Wielo Wärmetechnik</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Service und Wartung von Wielo Wärmetechnik – zuverlässige Betreuung für Wärmepumpen, Klimaanlagen, Lüftung und haustechnische Anlagen.">
+  <meta name="description" content="Service, Wartung und Störung bei Wielo Wärmetechnik – schnell, persönlich und strukturiert.">
 
   <style>
     :root{
       --primary:#123761;
       --primary-dark:#0b2745;
       --accent:#1e4c7d;
-      --cool:#3e6fa3;
       --bg:#f4f7fb;
-      --card:rgba(255,255,255,0.97);
-      --card-soft:#f8fbfd;
+      --card:#ffffff;
       --text:#172435;
       --muted:#5f6f82;
       --line:#d9e1ea;
       --shadow:0 10px 28px rgba(12,28,52,.10);
       --shadow-hover:0 16px 34px rgba(12,28,52,.16);
+      --warn:#b53a3a;
+      --warn-bg:#fff4f4;
     }
 
     *{box-sizing:border-box}
@@ -321,6 +321,12 @@
       border:1px solid var(--line);
     }
 
+    .btn-warn{
+      background:linear-gradient(135deg,#b53a3a,#d45555);
+      color:#fff;
+      box-shadow:0 10px 24px rgba(181,58,58,.20);
+    }
+
     .hero-side{
       display:grid;
       gap:14px;
@@ -376,12 +382,6 @@
       gap:18px;
     }
 
-    .grid-2{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
-      gap:18px;
-    }
-
     .card{
       background:var(--card);
       border:1px solid rgba(217,225,234,.85);
@@ -394,6 +394,11 @@
     .card:hover{
       transform:translateY(-4px);
       box-shadow:var(--shadow-hover);
+    }
+
+    .card.warn{
+      background:var(--warn-bg);
+      border-color:#efcaca;
     }
 
     .icon{
@@ -410,86 +415,37 @@
       font-weight:700;
     }
 
+    .card.warn .icon{
+      background:#ffe3e3;
+      color:var(--warn);
+    }
+
     .card h3{
       margin:0 0 10px;
       color:var(--primary);
       font-size:1.15rem;
     }
 
+    .card.warn h3{
+      color:var(--warn);
+    }
+
     .card p{
-      margin:0;
+      margin:0 0 16px;
       color:var(--muted);
       line-height:1.7;
     }
 
-    .checklist{
-      margin:0;
-      padding:0;
-      list-style:none;
-      display:grid;
-      gap:12px;
-    }
-
-    .checklist li{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      color:var(--text);
-      line-height:1.65;
-    }
-
-    .check{
-      width:24px;
-      height:24px;
-      border-radius:50%;
-      flex-shrink:0;
+    .card-link{
       display:inline-flex;
       align-items:center;
-      justify-content:center;
-      background:#edf3f8;
-      color:var(--primary);
-      font-size:.82rem;
+      gap:8px;
       font-weight:700;
-      margin-top:1px;
-    }
-
-    .steps{
-      display:grid;
-      grid-template-columns:repeat(4, minmax(0,1fr));
-      gap:18px;
-    }
-
-    .step-card{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:22px;
-      padding:22px;
-      box-shadow:var(--shadow);
-    }
-
-    .step-number{
-      width:42px;
-      height:42px;
-      border-radius:14px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin-bottom:12px;
-      background:linear-gradient(135deg,var(--primary),var(--accent));
-      color:#fff;
-      font-weight:800;
-    }
-
-    .step-card h3{
-      margin:0 0 8px;
       color:var(--primary);
-      font-size:1.05rem;
     }
 
-    .step-card p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.65;
+    .card.warn .card-link{
+      color:var(--warn);
     }
 
     .band{
@@ -562,9 +518,7 @@
 
     @media (max-width:1024px){
       .hero-box,
-      .grid-3,
-      .grid-2,
-      .steps{
+      .grid-3{
         grid-template-columns:1fr 1fr;
       }
     }
@@ -574,15 +528,12 @@
       .brand-sub{display:none}
       .desktop-cta{display:none}
       .hero-box,
-      .grid-3,
-      .grid-2,
-      .steps{
+      .grid-3{
         grid-template-columns:1fr;
       }
       .hero-box,
       .band,
-      .card,
-      .step-card{
+      .card{
         padding:20px;
       }
       .menu-overlay a{font-size:1.16rem}
@@ -642,33 +593,33 @@
     <section class="hero">
       <div class="hero-box">
         <div class="hero-copy">
-          <div class="hero-eyebrow">Service & Wartung</div>
-          <h1>Zuverlässige Betreuung für Ihre Anlage</h1>
+          <div class="hero-eyebrow">Servicebereich</div>
+          <h1>Service, Wartung und Störung schnell zum richtigen Weg führen</h1>
           <p>
-            Auch nach der Inbetriebnahme bleibt eine gute Betreuung entscheidend. Mit
-            Service und Wartung sorgen wir dafür, dass Ihre Anlage langfristig zuverlässig,
-            sauber und möglichst störungsfrei läuft. Als Familienbetrieb setzen wir dabei
-            auf persönliche Erreichbarkeit und eine klare, nachvollziehbare Betreuung.
+            Damit Ihr Anliegen direkt richtig eingeordnet werden kann, unterscheiden wir
+            bewusst zwischen Wartung, allgemeiner Serviceanfrage und Störung. So finden
+            Sie schneller den passenden Ablauf und wir können uns gezielter vorbereiten.
           </p>
 
           <div class="hero-actions">
-            <a href="kontakt.html" class="btn btn-primary">Jetzt Anfrage stellen</a>
-            <a href="#ablauf" class="btn btn-secondary">Serviceablauf ansehen</a>
+            <a href="wartung.html" class="btn btn-primary">Wartung</a>
+            <a href="kontakt.html" class="btn btn-secondary">Serviceanfrage</a>
+            <a href="stoerung.html" class="btn btn-warn">Störung melden</a>
           </div>
         </div>
 
         <div class="hero-side">
           <div class="hero-info">
-            <strong>Regelmäßige Wartung</strong>
-            <span>Hilft dabei, die Anlage dauerhaft in einem guten technischen Zustand zu halten.</span>
+            <strong>Wartung</strong>
+            <span>Für regelmäßige Termine, planbare Einsätze und vorbereitete Wartungsarbeiten.</span>
           </div>
           <div class="hero-info">
-            <strong>Schnelle Einordnung</strong>
-            <span>Über unsere Anfrage können Anliegen strukturiert und gezielt übermittelt werden.</span>
+            <strong>Serviceanfrage</strong>
+            <span>Für allgemeine technische Anliegen, Rückfragen oder organisatorische Themen.</span>
           </div>
           <div class="hero-info">
-            <strong>Persönlicher Kontakt</strong>
-            <span>Als Familienbetrieb ist uns ein direkter und verlässlicher Austausch besonders wichtig.</span>
+            <strong>Störung</strong>
+            <span>Für akute Probleme an der Anlage, damit Ihr Anliegen schnell richtig eingeordnet wird.</span>
           </div>
         </div>
       </div>
@@ -676,109 +627,58 @@
 
     <section class="section">
       <div class="section-head">
-        <h2>Warum Service und Wartung wichtig sind</h2>
+        <h2>Wählen Sie den passenden Bereich</h2>
         <p>
-          Technische Anlagen brauchen nicht nur eine gute Installation, sondern auch eine
-          verlässliche Betreuung im laufenden Betrieb. Regelmäßiger Service unterstützt
-          Funktion, Werterhalt und einen dauerhaft sauberen Anlagenzustand.
+          Nicht jedes Anliegen ist gleich. Deshalb ist der Servicebereich in klare Wege
+          aufgeteilt, damit Kunden ohne Umwege genau dort landen, wo ihr Anliegen am besten passt.
         </p>
       </div>
 
       <div class="grid-3">
         <article class="card">
-          <div class="icon">🛠</div>
-          <h3>Langfristige Betriebssicherheit</h3>
-          <p>Durch Wartung und Kontrolle lassen sich Anlagenzustand und Funktion regelmäßig überprüfen.</p>
+          <div class="icon">🗓</div>
+          <h3>Wartung</h3>
+          <p>
+            Für geplante Wartungen und regelmäßige Servicetermine. Dort kann zuerst ein
+            Zeitfenster gewählt und danach die Anlage genauer beschrieben werden.
+          </p>
+          <a href="wartung.html" class="card-link">Zur Wartung →</a>
         </article>
 
         <article class="card">
-          <div class="icon">🔍</div>
-          <h3>Frühzeitige Erkennung</h3>
-          <p>Kleinere Auffälligkeiten können früher erkannt und besser eingeordnet werden.</p>
+          <div class="icon">🔧</div>
+          <h3>Serviceanfrage</h3>
+          <p>
+            Für allgemeine Anfragen rund um bestehende Anlagen, technische Rückfragen oder
+            Servicewünsche ohne akute Störung.
+          </p>
+          <a href="kontakt.html" class="card-link">Zur Anfrage →</a>
         </article>
 
-        <article class="card">
-          <div class="icon">📋</div>
-          <h3>Klare Betreuung</h3>
-          <p>Ein strukturierter Service hilft dabei, Anliegen, Termine und Maßnahmen übersichtlich zu halten.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="grid-2">
-        <article class="card">
-          <h3>Typische Serviceleistungen</h3>
-          <ul class="checklist">
-            <li><span class="check">✓</span> Sichtprüfung und allgemeine Anlagenkontrolle</li>
-            <li><span class="check">✓</span> Funktionsprüfung wichtiger Komponenten</li>
-            <li><span class="check">✓</span> Wartung nach Einsatzbereich und Anlagentyp</li>
-            <li><span class="check">✓</span> Einordnung von Auffälligkeiten und Fragen</li>
-            <li><span class="check">✓</span> Unterstützung bei laufenden technischen Anliegen</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>Für welche Bereiche ist das relevant?</h3>
-          <ul class="checklist">
-            <li><span class="check">✓</span> Wärmepumpenanlagen</li>
-            <li><span class="check">✓</span> Klimaanlagen und Splitgeräte</li>
-            <li><span class="check">✓</span> Lüftungstechnische Anlagen</li>
-            <li><span class="check">✓</span> Haustechnische Systeme im Wohnbereich</li>
-            <li><span class="check">✓</span> Ausgewählte kleinere Gewerbeanlagen</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="ablauf">
-      <div class="section-head">
-        <h2>So läuft eine Serviceanfrage ab</h2>
-        <p>
-          Damit Ihr Anliegen schnell und sauber erfasst werden kann, setzen wir auf einen
-          klaren Ablauf – von der ersten Anfrage bis zur weiteren Abstimmung.
-        </p>
-      </div>
-
-      <div class="steps">
-        <article class="step-card">
-          <div class="step-number">1</div>
-          <h3>Anfrage stellen</h3>
-          <p>Über den Anfragebereich können Sie Ihr Anliegen strukturiert und direkt an uns senden.</p>
-        </article>
-
-        <article class="step-card">
-          <div class="step-number">2</div>
-          <h3>Anliegen prüfen</h3>
-          <p>Wir sehen uns die Angaben an und ordnen das Anliegen passend ein.</p>
-        </article>
-
-        <article class="step-card">
-          <div class="step-number">3</div>
-          <h3>Rückmeldung</h3>
-          <p>Im Anschluss melden wir uns zur weiteren Abstimmung bei Ihnen zurück.</p>
-        </article>
-
-        <article class="step-card">
-          <div class="step-number">4</div>
-          <h3>Umsetzung</h3>
-          <p>Je nach Anliegen folgt dann der passende Servicetermin oder die weitere Bearbeitung.</p>
+        <article class="card warn">
+          <div class="icon">!</div>
+          <h3>Störung melden</h3>
+          <p>
+            Für akute Probleme oder Ausfälle. Dieser Bereich sollte später eine kürzere,
+            gezielte Eingabemaske mit höherer Priorität bekommen.
+          </p>
+          <a href="stoerung.html" class="card-link">Zur Störung →</a>
         </article>
       </div>
     </section>
 
     <section class="section">
       <div class="band">
-        <h2>Serviceanfrage direkt online stellen</h2>
+        <h2>Sie sind unsicher, welcher Bereich passt?</h2>
         <p>
-          Nutzen Sie unseren Anfragebereich, um Service, Wartung oder ein anderes technisches
-          Anliegen schnell und unkompliziert zu übermitteln. So können wir Ihre Anfrage direkt
-          einordnen und uns gezielt bei Ihnen zurückmelden.
+          Dann nutzen Sie einfach unsere allgemeine Anfrage. Wir schauen uns Ihr Anliegen
+          an und melden uns bei Ihnen mit dem passenden weiteren Ablauf zurück.
         </p>
 
         <div class="band-actions">
-          <a href="kontakt.html" class="btn btn-light">Zur Anfrage</a>
-          <a href="waermepumpen.html" class="btn btn-outline-light">Wärmepumpen ansehen</a>
+          <a href="kontakt.html" class="btn btn-light">Allgemeine Anfrage</a>
+          <a href="wartung.html" class="btn btn-outline-light">Wartung öffnen</a>
+          <a href="stoerung.html" class="btn btn-outline-light">Störung öffnen</a>
         </div>
       </div>
     </section>
