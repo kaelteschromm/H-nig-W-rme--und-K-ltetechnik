@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Über uns | Wielo Wärmetechnik</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Über Wielo Wärmetechnik in Wiesloch – Familienbetrieb, Team, Geschäftsführer und Standort.">
+
+  <style>
+    :root{
+      --primary:#123761;
+      --primary-dark:#0b2745;
+      --accent:#1e4c7d;
+      --cool:#3e6fa3;
+      --bg:#f4f7fb;
+      --card:rgba(255,255,255,0.97);
+      --text:#172435;
+      --muted:#5f6f82;
+      --line:#d9e1ea;
+      --shadow:0 10px 28px rgba(12,28,52,.10);
+      --shadow-hover:0 16px 34px rgba(12,28,52,.16);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(30,76,125,.10), transparent 28%),
+        radial-gradient(circle at left center, rgba(62,111,163,.08), transparent 18%),
+        var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .top-contact{
+      background:var(--primary-dark);
+      color:#fff;
+      font-size:.92rem;
+    }
+
+    .top-contact-inner{
+      max-width:1180px;
+      margin:0 auto;
+      padding:10px 16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px 24px;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .top-contact-left,
+    .top-contact-right{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px 20px;
+      align-items:center;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.97);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(217,225,234,.85);
+      box-shadow:0 2px 8px rgba(0,0,0,.05);
+    }
+
+    .header-inner{
+      max-width:1180px;
+      margin:0 auto;
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:0 16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .logo{
+      height:52px;
+      width:auto;
+      flex-shrink:0;
+    }
+
+    .brand-title{
+      margin:0;
+      color:var(--primary);
+      font-size:1.15rem;
+      font-weight:800;
+      line-height:1.1;
+    }
+
+    .brand-sub{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:.9rem;
+      line-height:1.3;
+    }
+
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-shrink:0;
+    }
+
+    .desktop-cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 18px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      color:#fff;
+      font-weight:700;
+      box-shadow:0 10px 24px rgba(18,55,97,.20);
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+
+    .desktop-cta:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 30px rgba(18,55,97,.28);
+    }
+
+    .menu-btn{
+      border:none;
+      background:transparent;
+      cursor:pointer;
+      padding:10px;
+      width:46px;
+      height:46px;
+      border-radius:12px;
+    }
+
+    .menu-btn:hover{background:#eef3f8}
+
+    .menu-btn .bar,
+    .menu-btn .bar::before,
+    .menu-btn .bar::after{
+      content:"";
+      display:block;
+      height:3px;
+      width:24px;
+      background:var(--primary);
+      border-radius:2px;
+      position:relative;
+      transition:.25s;
+      margin:0 auto;
+    }
+
+    .menu-btn .bar::before{position:absolute;top:-8px;left:0}
+    .menu-btn .bar::after{position:absolute;top:8px;left:0}
+
+    .menu-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(18,55,97,.97);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      opacity:0;
+      pointer-events:none;
+      transform:translateX(100%);
+      transition:all .45s ease;
+      z-index:1100;
+      padding:28px 20px;
+    }
+
+    .menu-overlay.open{
+      opacity:1;
+      pointer-events:auto;
+      transform:translateX(0);
+    }
+
+    .menu-overlay a{
+      color:#fff;
+      font-size:1.28rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+      opacity:0;
+      transform:translateX(70px);
+    }
+
+    .menu-overlay.open a{animation:slideIn .45s forwards}
+    .menu-overlay a:nth-child(1){animation-delay:.04s}
+    .menu-overlay a:nth-child(2){animation-delay:.08s}
+    .menu-overlay a:nth-child(3){animation-delay:.12s}
+    .menu-overlay a:nth-child(4){animation-delay:.16s}
+    .menu-overlay a:nth-child(5){animation-delay:.20s}
+    .menu-overlay a:nth-child(6){animation-delay:.24s}
+    .menu-overlay a:nth-child(7){animation-delay:.28s}
+    .menu-overlay a:nth-child(8){animation-delay:.32s}
+    .menu-overlay a:nth-child(9){animation-delay:.36s}
+    .menu-overlay a:nth-child(10){animation-delay:.40s}
+    .menu-overlay a:nth-child(11){animation-delay:.44s}
+    .menu-overlay a:nth-child(12){animation-delay:.48s}
+
+    @keyframes slideIn{
+      to{
+        transform:translateX(0);
+        opacity:1;
+      }
+    }
+
+    .wrap{
+      width:min(1180px, calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    main{
+      padding:28px 0 90px;
+    }
+
+    .hero{
+      margin-bottom:24px;
+    }
+
+    .hero-box{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:22px;
+      align-items:center;
+      background:linear-gradient(135deg, rgba(255,255,255,.98), rgba(255,255,255,.94));
+      border:1px solid rgba(217,225,234,.85);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      padding:34px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero-box::after{
+      content:"";
+      position:absolute;
+      top:-80px;
+      right:-80px;
+      width:240px;
+      height:240px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(30,76,125,.10), transparent 70%);
+      pointer-events:none;
+    }
+
+    .hero-eyebrow{
+      display:inline-block;
+      margin-bottom:14px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:#edf3f8;
+      color:var(--primary);
+      font-size:.9rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+
+    h1{
+      margin:0 0 14px;
+      color:var(--primary);
+      font-size:clamp(2rem, 5vw, 3.3rem);
+      line-height:1.02;
+      letter-spacing:-.03em;
+    }
+
+    .hero-copy p{
+      margin:0 0 18px;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:1.02rem;
+      max-width:720px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:8px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 20px;
+      border-radius:999px;
+      font-weight:700;
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      color:#fff;
+      box-shadow:0 10px 24px rgba(18,55,97,.18);
+    }
+
+    .btn-secondary{
+      background:#eef3f8;
+      color:var(--primary);
+      border:1px solid var(--line);
+    }
+
+    .hero-side{
+      display:grid;
+      gap:14px;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-info{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:0 8px 20px rgba(12,28,52,.06);
+    }
+
+    .hero-info strong{
+      display:block;
+      color:var(--primary);
+      margin-bottom:6px;
+    }
+
+    .hero-info span{
+      color:var(--muted);
+      line-height:1.6;
+      font-size:.96rem;
+    }
+
+    .section{
+      margin-top:24px;
+    }
+
+    .section-head{
+      margin-bottom:18px;
+      max-width:820px;
+    }
+
+    .section-head h2{
+      margin:0 0 10px;
+      color:var(--primary);
+      font-size:clamp(1.7rem, 3vw, 2.4rem);
+      line-height:1.08;
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid rgba(217,225,234,.85);
+      border-radius:22px;
+      padding:22px;
+      box-shadow:var(--shadow);
+      transition:transform .22s ease, box-shadow .22s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-hover);
+    }
+
+    .icon{
+      width:50px;
+      height:50px;
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:14px;
+      background:#edf3f8;
+      color:var(--primary);
+      font-size:1.15rem;
+      font-weight:700;
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      color:var(--primary);
+      font-size:1.15rem;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .map-card{
+      overflow:hidden;
+      padding:0;
+    }
+
+    .map-frame{
+      width:100%;
+      height:100%;
+      min-height:360px;
+      border:0;
+      display:block;
+    }
+
+    .info-list{
+      display:grid;
+      gap:12px;
+      margin-top:8px;
+    }
+
+    .info-item{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px 16px;
+    }
+
+    .info-item strong{
+      display:block;
+      color:var(--primary);
+      margin-bottom:6px;
+    }
+
+    .info-item span{
+      color:var(--muted);
+      line-height:1.65;
+    }
+
+    .band{
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      color:#fff;
+      border-radius:26px;
+      padding:30px;
+      box-shadow:0 16px 34px rgba(18,55,97,.18);
+    }
+
+    .band h2{
+      margin:0 0 10px;
+      font-size:clamp(1.7rem, 3vw, 2.4rem);
+      line-height:1.08;
+    }
+
+    .band p{
+      margin:0;
+      color:rgba(255,255,255,.90);
+      line-height:1.75;
+      max-width:780px;
+    }
+
+    .band-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .btn-light{
+      background:#fff;
+      color:var(--primary);
+    }
+
+    .btn-outline-light{
+      background:rgba(255,255,255,.10);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.20);
+    }
+
+    footer{
+      margin-top:auto;
+      border-top:1px solid var(--line);
+      background:rgba(255,255,255,.97);
+    }
+
+    .foot{
+      width:min(1180px, calc(100% - 32px));
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .legal{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      align-items:center;
+    }
+
+    .legal a{color:var(--muted)}
+    .legal a:hover{color:var(--primary)}
+
+    @media (max-width:1024px){
+      .hero-box,
+      .grid-2,
+      .grid-3{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:760px){
+      .top-contact{display:none}
+      .brand-sub{display:none}
+      .desktop-cta{display:none}
+      .hero-box,
+      .band,
+      .card{
+        padding:20px;
+      }
+      .map-card{padding:0}
+      .menu-overlay a{font-size:1.16rem}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-contact">
+    <div class="top-contact-inner">
+      <div class="top-contact-left">
+        <span>Wärmepumpen</span>
+        <span>Klimaanlagen</span>
+        <span>Lüftung</span>
+        <span>Sanitär</span>
+      </div>
+      <div class="top-contact-right">
+        <span>10 Angestellte</span>
+        <span>Wiesloch</span>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="Startseite">
+        <img src="logo1.png" alt="Firmenlogo" class="logo">
+        <div>
+          <p class="brand-title">Wielo Wärmetechnik</p>
+          <p class="brand-sub">Moderne Wärme- und Gebäudetechnik</p>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <a href="kontakt.html" class="desktop-cta">Jetzt anfragen</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen"><span class="bar"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="menu-overlay" id="menuOverlay" aria-label="Hauptmenü">
+    <a href="index.html">Startseite</a>
+    <a href="waermepumpen.html">Wärmepumpen</a>
+    <a href="klimaanlagen.html">Klimaanlagen</a>
+    <a href="lueftung.html">Lüftung</a>
+    <a href="trinkwasserinstallationen.html">Trinkwasser</a>
+    <a href="referenzen.html">Referenzen</a>
+    <a href="service.html">Service</a>
+    <a href="ueber-uns.html">Über uns</a>
+    <a href="kontakt.html">Anfrage</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+    <a href="agb.html">AGB</a>
+  </nav>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-box">
+        <div class="hero-copy">
+          <div class="hero-eyebrow">Über uns</div>
+          <h1>Persönlich. Nah. Jeden Tag für unsere Kunden da.</h1>
+          <p>
+            Wielo Wärmetechnik ist ein kleines Heizungsteam mit 10 Angestellten in Wiesloch.
+            Wir freuen uns jeden Tag darauf, für unsere Kunden da zu sein und Projekte
+            mit Verlässlichkeit, Einsatz und persönlichem Kontakt umzusetzen.
+          </p>
+          <p>
+            Aktueller Geschäftsführer ist <strong>Lahoucine Aferkou</strong>. Gemeinsam mit
+            unserem Team stehen wir für eine bodenständige, ehrliche und lösungsorientierte
+            Arbeitsweise.
+          </p>
+
+          <div class="hero-actions">
+            <a href="kontakt.html" class="btn btn-primary">Jetzt Anfrage stellen</a>
+            <a href="#standort" class="btn btn-secondary">Zum Standort</a>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="hero-info">
+            <strong>Geschäftsführer</strong>
+            <span>Lahoucine Aferkou</span>
+          </div>
+          <div class="hero-info">
+            <strong>Standort</strong>
+            <span>Zwischen den Wegen 43<br>69168 Wiesloch</span>
+          </div>
+          <div class="hero-info">
+            <strong>Team</strong>
+            <span>Kleines Heizungsteam mit 10 Angestellten und persönlichem Ansprechpartner.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Wofür wir stehen</h2>
+        <p>
+          Als kleiner Betrieb ist uns die persönliche Betreuung besonders wichtig. Wir
+          möchten für unsere Kunden erreichbar sein, verständlich beraten und Lösungen
+          umsetzen, die im Alltag wirklich funktionieren.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="icon">🤝</div>
+          <h3>Persönlicher Kontakt</h3>
+          <p>Wir legen Wert auf einen direkten, ehrlichen und verbindlichen Austausch mit unseren Kunden.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">👨‍🔧</div>
+          <h3>Engagiertes Team</h3>
+          <p>Mit 10 Angestellten arbeiten wir als eingespieltes Team an sauberen und verlässlichen Lösungen.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">🏡</div>
+          <h3>Regional verwurzelt</h3>
+          <p>Unser Standort in Wiesloch ist die Basis für kurze Wege, Nähe zum Kunden und persönliche Betreuung.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid-2">
+        <article class="card">
+          <h3>Unser Anspruch</h3>
+          <p>
+            Wir wollen nicht nur Technik umsetzen, sondern auch Vertrauen schaffen. Deshalb
+            setzen wir auf klare Kommunikation, saubere Arbeit und eine Betreuung, die für
+            unsere Kunden nachvollziehbar und angenehm ist.
+          </p>
+
+          <div class="info-list">
+            <div class="info-item">
+              <strong>Verlässlich</strong>
+              <span>Wir möchten ein Ansprechpartner sein, auf den man sich im Alltag verlassen kann.</span>
+            </div>
+            <div class="info-item">
+              <strong>Persönlich</strong>
+              <span>Kurze Wege und direkter Kontakt sind für uns kein Extra, sondern selbstverständlich.</span>
+            </div>
+            <div class="info-item">
+              <strong>Motiviert</strong>
+              <span>Wir freuen uns jeden Tag darauf, für unsere Kunden im Einsatz zu sein.</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card map-card" id="standort">
+          <iframe
+            class="map-frame"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Zwischen%20den%20Wegen%2043%2C%2069168%20Wiesloch&z=15&output=embed"
+            title="Standort Wielo Wärmetechnik in Wiesloch">
+          </iframe>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="band">
+        <h2>Sie möchten mit uns in Kontakt treten?</h2>
+        <p>
+          Nutzen Sie unseren Anfragebereich und teilen Sie uns Ihr Anliegen mit. Ob
+          Wärmepumpe, Klimaanlage, Service oder ein anderes Projekt – wir freuen uns auf
+          Ihre Nachricht.
+        </p>
+
+        <div class="band-actions">
+          <a href="kontakt.html" class="btn btn-light">Zur Anfrage</a>
+          <a href="https://www.google.com/maps?q=Zwischen%20den%20Wegen%2043%2C%2069168%20Wiesloch" class="btn btn-outline-light" target="_blank" rel="noopener noreferrer">Google Maps öffnen</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot">
+      <div>© <span id="y"></span> Wielo Wärmetechnik</div>
+      <div class="legal">
+        <a href="kontakt.html">Anfrage</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const menuBtn = document.getElementById('menuBtn');
+    const overlay = document.getElementById('menuOverlay');
+
+    menuBtn.addEventListener('click', () => {
+      overlay.classList.toggle('open');
+    });
+
+    overlay.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        overlay.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
