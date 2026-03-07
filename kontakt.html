@@ -24,13 +24,8 @@
       --shadow-hover:0 16px 34px rgba(12,28,52,.16);
     }
 
-    *{
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
 
     body{
       margin:0;
@@ -45,15 +40,8 @@
       flex-direction:column;
     }
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    img{
-      max-width:100%;
-      display:block;
-    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
 
     .top-contact{
       background:var(--primary-dark);
@@ -114,9 +102,7 @@
       flex-shrink:0;
     }
 
-    .brand-text{
-      min-width:0;
-    }
+    .brand-text{min-width:0}
 
     .brand-title{
       margin:0;
@@ -169,9 +155,7 @@
       border-radius:12px;
     }
 
-    .menu-btn:hover{
-      background:#eef3f8;
-    }
+    .menu-btn:hover{background:#eef3f8}
 
     .menu-btn .bar,
     .menu-btn .bar::before,
@@ -232,10 +216,7 @@
       transform:translateX(70px);
     }
 
-    .menu-overlay.open a{
-      animation:slideIn .45s forwards;
-    }
-
+    .menu-overlay.open a{animation:slideIn .45s forwards}
     .menu-overlay a:nth-child(1){animation-delay:.04s}
     .menu-overlay a:nth-child(2){animation-delay:.08s}
     .menu-overlay a:nth-child(3){animation-delay:.12s}
@@ -261,13 +242,9 @@
       margin:0 auto;
     }
 
-    main{
-      padding:28px 0 110px;
-    }
+    main{padding:28px 0 110px}
 
-    .hero{
-      margin-bottom:20px;
-    }
+    .hero{margin-bottom:20px}
 
     .hero-box{
       background:linear-gradient(135deg, rgba(255,255,255,.98), rgba(255,255,255,.94));
@@ -349,13 +326,8 @@
       transition:width .25s;
     }
 
-    .step{
-      display:none;
-    }
-
-    .step.active{
-      display:block;
-    }
+    .step{display:none}
+    .step.active{display:block}
 
     .q{
       font-weight:700;
@@ -463,13 +435,11 @@
       font-weight:700;
       font-family:inherit;
       font-size:.98rem;
-      transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+      transition:transform .2s ease, box-shadow .2s ease, background .2s ease, opacity .2s ease;
       text-decoration:none;
     }
 
-    .btn:hover{
-      transform:translateY(-2px);
-    }
+    .btn:hover{transform:translateY(-2px)}
 
     .btn.primary{
       background:linear-gradient(135deg,var(--primary),var(--accent));
@@ -487,6 +457,12 @@
       background:linear-gradient(135deg,var(--ok),#2f9d76);
       color:#fff;
       box-shadow:0 10px 24px rgba(31,139,98,.18);
+    }
+
+    .btn.loading{
+      opacity:.8;
+      cursor:not-allowed;
+      pointer-events:none;
     }
 
     .hint{
@@ -515,14 +491,71 @@
       line-height:1.55;
     }
 
-    .sum b{
-      color:var(--primary);
-    }
+    .sum b{color:var(--primary)}
 
     hr{
       border:none;
       border-top:1px solid var(--line);
       margin:18px 0;
+    }
+
+    .success-box{
+      display:none;
+      margin:18px 0 0;
+      padding:18px 20px;
+      border-radius:18px;
+      border:1px solid rgba(31,139,98,.22);
+      background:linear-gradient(135deg, rgba(31,139,98,.10), rgba(47,157,118,.07));
+      color:#155841;
+      box-shadow:0 8px 20px rgba(31,139,98,.08);
+    }
+
+    .success-box.show{display:block}
+
+    .success-box strong{
+      display:block;
+      font-size:1.05rem;
+      margin-bottom:6px;
+    }
+
+    .success-box p{
+      margin:0;
+      line-height:1.6;
+    }
+
+    .loading-row{
+      display:none;
+      align-items:center;
+      gap:10px;
+      margin-top:14px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .loading-row.show{display:flex}
+
+    .spinner{
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      border:2px solid rgba(18,55,97,.18);
+      border-top-color:var(--primary);
+      animation:spin .8s linear infinite;
+      flex-shrink:0;
+    }
+
+    @keyframes spin{
+      to{transform:rotate(360deg)}
+    }
+
+    .honeypot{
+      position:absolute !important;
+      left:-9999px !important;
+      width:1px !important;
+      height:1px !important;
+      overflow:hidden !important;
+      opacity:0 !important;
+      pointer-events:none !important;
     }
 
     footer{
@@ -556,9 +589,7 @@
       text-decoration:none;
     }
 
-    .legal a:hover{
-      color:var(--primary);
-    }
+    .legal a:hover{color:var(--primary)}
 
     .floating-cta{
       position:fixed;
@@ -595,37 +626,13 @@
     }
 
     @media (max-width:760px){
-      .top-contact{
-        display:none;
-      }
-
-      .header-inner{
-        min-height:72px;
-      }
-
-      .brand-sub{
-        display:none;
-      }
-
-      .desktop-cta{
-        display:none;
-      }
-
-      .options,
-      .row,
-      .sum{
-        grid-template-columns:1fr;
-      }
-
-      .hero-box,
-      .card{
-        padding:20px;
-      }
-
-      .menu-overlay a{
-        font-size:1.16rem;
-      }
-
+      .top-contact{display:none}
+      .header-inner{min-height:72px}
+      .brand-sub{display:none}
+      .desktop-cta{display:none}
+      .options,.row,.sum{grid-template-columns:1fr}
+      .hero-box,.card{padding:20px}
+      .menu-overlay a{font-size:1.16rem}
       .floating-cta{
         right:14px;
         bottom:14px;
@@ -697,7 +704,7 @@
       </div>
     </section>
 
-    <div class="card">
+    <div class="card" id="formCard">
       <h2>Anfrage starten</h2>
 
       <div class="progress" aria-label="Fortschritt">
@@ -708,16 +715,16 @@
       <section class="step active" data-step="1" id="step1">
         <div class="q">Worum geht es?</div>
         <div class="options" role="listbox" aria-label="Anliegen wählen" id="anliegenOptions">
-          <button class="opt" data-key="anliegen" data-value="Service">Service <small>Termin anfragen</small></button>
-          <button class="opt" data-key="anliegen" data-value="Wartung">Wartung <small>regelmäßige Inspektion</small></button>
-          <button class="opt" data-key="anliegen" data-value="Störung">Störung <small>Gerät funktioniert nicht</small></button>
-          <button class="opt" data-key="anliegen" data-value="Erneuerung">Erneuerung <small>Altanlage ersetzen</small></button>
-          <button class="opt" data-key="anliegen" data-value="Neubau">Neubau <small>Erstanlage planen</small></button>
+          <button type="button" class="opt" data-key="anliegen" data-value="Service">Service <small>Termin anfragen</small></button>
+          <button type="button" class="opt" data-key="anliegen" data-value="Wartung">Wartung <small>regelmäßige Inspektion</small></button>
+          <button type="button" class="opt" data-key="anliegen" data-value="Störung">Störung <small>Gerät funktioniert nicht</small></button>
+          <button type="button" class="opt" data-key="anliegen" data-value="Erneuerung">Erneuerung <small>Altanlage ersetzen</small></button>
+          <button type="button" class="opt" data-key="anliegen" data-value="Neubau">Neubau <small>Erstanlage planen</small></button>
         </div>
 
         <div class="navbtns">
           <span></span>
-          <button class="btn primary" data-next>Nächster Schritt</button>
+          <button type="button" class="btn primary" data-next>Nächster Schritt</button>
         </div>
       </section>
 
@@ -725,10 +732,10 @@
       <section class="step" data-step="2">
         <div class="q">Objektart</div>
         <div class="options">
-          <button class="opt" data-key="objekt" data-value="Wohnung">Wohnung</button>
-          <button class="opt" data-key="objekt" data-value="Einfamilienhaus">Einfamilienhaus</button>
-          <button class="opt" data-key="objekt" data-value="Mehrfamilienhaus">Mehrfamilienhaus</button>
-          <button class="opt" data-key="objekt" data-value="Gewerbe">Gewerbe</button>
+          <button type="button" class="opt" data-key="objekt" data-value="Wohnung">Wohnung</button>
+          <button type="button" class="opt" data-key="objekt" data-value="Einfamilienhaus">Einfamilienhaus</button>
+          <button type="button" class="opt" data-key="objekt" data-value="Mehrfamilienhaus">Mehrfamilienhaus</button>
+          <button type="button" class="opt" data-key="objekt" data-value="Gewerbe">Gewerbe</button>
         </div>
 
         <div class="row">
@@ -743,8 +750,8 @@
         </div>
 
         <div class="navbtns">
-          <button class="btn secondary" data-prev>Zurück</button>
-          <button class="btn primary" data-next>Nächster Schritt</button>
+          <button type="button" class="btn secondary" data-prev>Zurück</button>
+          <button type="button" class="btn primary" data-next>Nächster Schritt</button>
         </div>
       </section>
 
@@ -752,32 +759,32 @@
       <section class="step" data-step="3">
         <div class="q">Sanierungsstand *</div>
         <div class="options">
-          <button class="opt" data-key="sanierung" data-value="keine">Keine</button>
-          <button class="opt" data-key="sanierung" data-value="teilweise">Teilweise (Fenster/Dämmung)</button>
-          <button class="opt" data-key="sanierung" data-value="umfassend">Umfassend</button>
+          <button type="button" class="opt" data-key="sanierung" data-value="keine">Keine</button>
+          <button type="button" class="opt" data-key="sanierung" data-value="teilweise">Teilweise (Fenster/Dämmung)</button>
+          <button type="button" class="opt" data-key="sanierung" data-value="umfassend">Umfassend</button>
         </div>
 
         <div class="q" style="margin-top:16px">Wärmeabgabe *</div>
         <div class="options">
-          <button class="opt" data-key="abgabe" data-value="Heizkörper">Heizkörper</button>
-          <button class="opt" data-key="abgabe" data-value="Fußbodenheizung">Fußbodenheizung</button>
-          <button class="opt" data-key="abgabe" data-value="Beides">Beides</button>
+          <button type="button" class="opt" data-key="abgabe" data-value="Heizkörper">Heizkörper</button>
+          <button type="button" class="opt" data-key="abgabe" data-value="Fußbodenheizung">Fußbodenheizung</button>
+          <button type="button" class="opt" data-key="abgabe" data-value="Beides">Beides</button>
         </div>
 
         <div class="q" style="margin-top:16px">Bisherige Heizart *</div>
         <div class="options">
-          <button class="opt" data-key="altanlage" data-value="Gas">Gas</button>
-          <button class="opt" data-key="altanlage" data-value="Öl">Öl</button>
-          <button class="opt" data-key="altanlage" data-value="Pellet">Pellet</button>
-          <button class="opt" data-key="altanlage" data-value="Nachtspeicher">Nachtspeicher</button>
-          <button class="opt" data-key="altanlage" data-value="Fernwärme">Fernwärme</button>
-          <button class="opt" data-key="altanlage" data-value="Keine/Neu">Keine / Neu</button>
-          <button class="opt" data-key="altanlage" data-value="Andere">Andere</button>
+          <button type="button" class="opt" data-key="altanlage" data-value="Gas">Gas</button>
+          <button type="button" class="opt" data-key="altanlage" data-value="Öl">Öl</button>
+          <button type="button" class="opt" data-key="altanlage" data-value="Pellet">Pellet</button>
+          <button type="button" class="opt" data-key="altanlage" data-value="Nachtspeicher">Nachtspeicher</button>
+          <button type="button" class="opt" data-key="altanlage" data-value="Fernwärme">Fernwärme</button>
+          <button type="button" class="opt" data-key="altanlage" data-value="Keine/Neu">Keine / Neu</button>
+          <button type="button" class="opt" data-key="altanlage" data-value="Andere">Andere</button>
         </div>
 
         <div class="navbtns">
-          <button class="btn secondary" data-prev>Zurück</button>
-          <button class="btn primary" data-next>Nächster Schritt</button>
+          <button type="button" class="btn secondary" data-prev>Zurück</button>
+          <button type="button" class="btn primary" data-next>Nächster Schritt</button>
         </div>
       </section>
 
@@ -785,18 +792,18 @@
       <section class="step" data-step="4">
         <div class="q">Was ist gewünscht?</div>
         <div class="options">
-          <button class="opt" data-key="wunsch" data-value="Wärmepumpe">Wärmepumpe</button>
-          <button class="opt" data-key="wunsch" data-value="Klimaanlage">Klimaanlage</button>
-          <button class="opt" data-key="wunsch" data-value="Lüftung">Lüftung</button>
-          <button class="opt" data-key="wunsch" data-value="Trinkwasser">Trinkwasser</button>
+          <button type="button" class="opt" data-key="wunsch" data-value="Wärmepumpe">Wärmepumpe</button>
+          <button type="button" class="opt" data-key="wunsch" data-value="Klimaanlage">Klimaanlage</button>
+          <button type="button" class="opt" data-key="wunsch" data-value="Lüftung">Lüftung</button>
+          <button type="button" class="opt" data-key="wunsch" data-value="Trinkwasser">Trinkwasser</button>
         </div>
 
         <div class="q" style="margin-top:16px">Wie schnell soll es gehen?</div>
         <div class="options">
-          <button class="opt" data-key="zeit" data-value="sofort">Sofort / dringend</button>
-          <button class="opt" data-key="zeit" data-value="3monate">In den nächsten 3 Monaten</button>
-          <button class="opt" data-key="zeit" data-value="6monate">In 3–6 Monaten</button>
-          <button class="opt" data-key="zeit" data-value="flexibel">Flexibel / nach Absprache</button>
+          <button type="button" class="opt" data-key="zeit" data-value="sofort">Sofort / dringend</button>
+          <button type="button" class="opt" data-key="zeit" data-value="3monate">In den nächsten 3 Monaten</button>
+          <button type="button" class="opt" data-key="zeit" data-value="6monate">In 3–6 Monaten</button>
+          <button type="button" class="opt" data-key="zeit" data-value="flexibel">Flexibel / nach Absprache</button>
         </div>
 
         <div class="field">
@@ -805,8 +812,8 @@
         </div>
 
         <div class="navbtns">
-          <button class="btn secondary" data-prev>Zurück</button>
-          <button class="btn primary" data-next>Nächster Schritt</button>
+          <button type="button" class="btn secondary" data-prev>Zurück</button>
+          <button type="button" class="btn primary" data-next>Nächster Schritt</button>
         </div>
       </section>
 
@@ -829,8 +836,8 @@
         </div>
 
         <div class="navbtns">
-          <button class="btn secondary" data-prev>Zurück</button>
-          <button class="btn primary" data-next>Nächster Schritt</button>
+          <button type="button" class="btn secondary" data-prev>Zurück</button>
+          <button type="button" class="btn primary" data-next>Nächster Schritt</button>
         </div>
       </section>
 
@@ -868,8 +875,14 @@
           <textarea id="nachrichtB" placeholder="Weitere Hinweise, Erreichbarkeit oder ergänzende Informationen"></textarea>
         </div>
 
+        <!-- Spam-Schutz -->
+        <div class="honeypot" aria-hidden="true">
+          <label for="website">Bitte dieses Feld leer lassen</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
         <p class="hint">
-          Beim Absenden werden Ihre Angaben per E-Mail an uns gesendet. Sie erhalten anschließend eine Bestätigung.
+          Nach dem Absenden wird Ihre Anfrage direkt übermittelt. Sie bleiben dabei auf dieser Seite.
         </p>
 
         <p class="warn" id="errB" style="display:none">
@@ -877,8 +890,18 @@
         </p>
 
         <div class="navbtns">
-          <button class="btn secondary" data-prev>Zurück</button>
-          <button class="btn success" id="sendBtnB">Anfrage absenden</button>
+          <button type="button" class="btn secondary" data-prev>Zurück</button>
+          <button type="button" class="btn success" id="sendBtnB">Anfrage absenden</button>
+        </div>
+
+        <div class="loading-row" id="loadingRow">
+          <span class="spinner"></span>
+          <span>Ihre Anfrage wird gesendet...</span>
+        </div>
+
+        <div class="success-box" id="successBox">
+          <strong>Vielen Dank.</strong>
+          <p>Ihre Anfrage wurde erfolgreich versendet. Wir melden uns schnellstmöglich bei Ihnen.</p>
         </div>
       </section>
     </div>
@@ -914,7 +937,7 @@
     const bar = document.getElementById('bar');
     let current = 0;
     const data = {};
-    const SEND_TO = 'FORM_ENDPOINT_HIER_EINSETZEN';
+    const SEND_TO = 'https://formspree.io/f/xaqpnnqp';
 
     function updateProgress(){
       const visible = steps.filter(s => s.style.display !== 'none' || s.classList.contains('active'));
@@ -952,7 +975,6 @@
       if (val === 'Wartung')   { window.location.href = 'wartung.html'; return; }
       if (val === 'Störung')   { window.location.href = 'stoerung.html'; return; }
 
-      steps.forEach(s => { s.style.display = (s.dataset.step === 'A') ? 'none' : ''; });
       showStep(1);
     });
 
@@ -963,7 +985,6 @@
         if (stepId === '1'){
           if (!data.anliegen) return alert('Bitte Anliegen auswählen.');
           if (['Service','Wartung','Störung'].includes(data.anliegen)) return;
-          steps.forEach(s => { s.style.display = (s.dataset.step === 'A') ? 'none' : ''; });
         }
 
         if (stepId === '2'){
@@ -1024,7 +1045,7 @@
         if (key) data[key] = value;
 
         const stepEl = group.closest('.step');
-        if (stepEl && !['1'].includes(stepEl.dataset.step)){
+        if (stepEl && stepEl.dataset.step !== '1'){
           document.querySelector('.step.active [data-next]')?.click();
         }
       });
@@ -1053,9 +1074,9 @@
       try{
         const res = await fetch(SEND_TO, {
           method:'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+          headers:{
+            'Accept':'application/json',
+            'Content-Type':'application/json'
           },
           body: JSON.stringify(payload)
         });
@@ -1065,12 +1086,32 @@
       }
     }
 
-    document.getElementById('sendBtnB')?.addEventListener('click', async ()=>{
+    const sendBtn = document.getElementById('sendBtnB');
+    const loadingRow = document.getElementById('loadingRow');
+    const successBox = document.getElementById('successBox');
+    const errBox = document.getElementById('errB');
+
+    function setSendingState(isSending){
+      sendBtn.classList.toggle('loading', isSending);
+      sendBtn.disabled = isSending;
+      sendBtn.textContent = isSending ? 'Wird gesendet...' : 'Anfrage absenden';
+      loadingRow.classList.toggle('show', isSending);
+    }
+
+    sendBtn.addEventListener('click', async ()=>{
+      errBox.style.display = 'none';
+      successBox.classList.remove('show');
+
       const name = document.getElementById('nameB').value.trim();
       const email = document.getElementById('emailB').value.trim();
+      const honeypot = document.getElementById('website').value.trim();
 
-      if (!name || !email) {
-        document.getElementById('errB').style.display = 'block';
+      if (honeypot) {
+        return;
+      }
+
+      if (!name || !email || !data.anliegen || !data.plz || !data.adresse || !data.bewohner) {
+        errBox.style.display = 'block';
         return;
       }
 
@@ -1087,25 +1128,45 @@ Zeitrahmen: ${data.zeit || '-'}
 PLZ/Ort: ${data.plz || '-'}
 Straße: ${data.adresse || '-'}
 Bewohner: ${data.bewohner || '-'}
-Zusatzinfo: ${(data.bemerkung || '')}
+Zusatzinfo: ${data.bemerkung || ''}
       `.trim();
 
       const payload = {
-        to: "kaelteschromm@gmail.com",
-        _subject: "Neue Anfrage über die Website",
-        _page: location.href,
-        'Zusammenfassung': summaryText,
-        name,
-        email,
+        _subject: 'Neue Anfrage über die Website',
+        name: name,
+        email: email,
         telefon: document.getElementById('telefonB').value.trim(),
         wunschtermin: document.getElementById('wunschterminB').value.trim(),
         nachricht: document.getElementById('nachrichtB').value.trim(),
-        ...data
+        anliegen: data.anliegen || '',
+        objekt: data.objekt || '',
+        flaeche: data.flaeche || '',
+        baujahr: data.baujahr || '',
+        sanierung: data.sanierung || '',
+        abgabe: data.abgabe || '',
+        altanlage: data.altanlage || '',
+        wunsch: data.wunsch || '',
+        zeit: data.zeit || '',
+        plz_ort: data.plz || '',
+        adresse: data.adresse || '',
+        bewohner: data.bewohner || '',
+        zusatzinfo: data.bemerkung || '',
+        zusammenfassung: summaryText
       };
 
+      setSendingState(true);
+
       const ok = await sendToFormspree(payload);
-      alert(ok ? 'Danke! Ihre Anfrage wurde gesendet.' : 'Senden fehlgeschlagen. Bitte später erneut versuchen oder per E-Mail senden.');
-      if (ok) location.href = 'index.html';
+
+      setSendingState(false);
+
+      if (ok) {
+        successBox.classList.add('show');
+        document.querySelector('.step.active .navbtns')?.scrollIntoView({behavior:'smooth', block:'end'});
+      } else {
+        errBox.textContent = 'Senden fehlgeschlagen. Bitte später erneut versuchen oder direkt per E-Mail melden.';
+        errBox.style.display = 'block';
+      }
     });
   </script>
 </body>
