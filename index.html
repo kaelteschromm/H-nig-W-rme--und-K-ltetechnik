@@ -4,90 +4,64 @@
   <meta charset="UTF-8">
   <title>Hünig Wärme- und Kältetechnik</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Hünig Wärme- und Kältetechnik – Ihre Experten für Wärmepumpen, Klimaanlagen, Lüftung und Sanitär.">
+  <meta name="description" content="Hünig Wärme- und Kältetechnik – Exzellenz in Wärme, Klima und Kälte.">
 
   <style>
     :root {
-      /* Farben basierend auf dem Logo */
-      --primary: #2175b5;       /* Das Blau aus dem Logo */
-      --primary-dark: #164e7a;  /* Dunkleres Blau für Kontraste */
-      --accent: #ef4423;        /* Das Rot aus der Flamme / "Wärme" */
-      --accent-dark: #c13216;   /* Dunkleres Rot für Hover-Effekte */
-      
-      --card: rgba(255,255,255,0.96);
-      --footer: #ffffff;
-      --text: #1d1d1b;          /* Das Schwarz aus dem "Hünig" Schriftzug */
-      --muted: #5f6f82;
-      --line: #d9e1ea;
-      --bg: #f4f7fb;
-      --shadow: 0 10px 28px rgba(12,28,52,.10);
-      --shadow-hover: 0 16px 34px rgba(12,28,52,.16);
+      /* Moderne, gedeckte Farbpalette */
+      --primary: #0f172a;       /* Deep Slate - für Text und Tiefe */
+      --brand-blue: #1e40af;    /* Seriöses Royal Blue */
+      --brand-red: #be123c;     /* Edles Weinrot statt Signalrot */
+      --bg-light: #f8fafc;      /* Softes Off-White */
+      --text-main: #334155;     /* Angenehmes Grau für Fließtext */
+      --white: #ffffff;
+      --glass: rgba(255, 255, 255, 0.8);
+      --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
     }
 
     * {
       box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
     }
 
     html, body {
       margin: 0;
       padding: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      min-height: 100vh;
-      background: linear-gradient(rgba(244,247,251,.9), rgba(244,247,251,.9)),
-                  url("Haus am Wald.webp") no-repeat center center fixed;
-      background-size: cover;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-light);
+      line-height: 1.6;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* SPLASH SCREEN */
+    /* SPLASH SCREEN (Dezent & Schnell) */
     #splash {
       position: fixed;
       inset: 0;
-      background: white;
+      background: var(--white);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      z-index: 1200;
-      transition: opacity .8s ease;
+      z-index: 2000;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     #splash img {
-      max-width: 400px;
-      width: 85vw;
-      height: auto;
-      margin-bottom: 20px;
-    }
-
-    #splash h2 {
-      font-size: 1.5rem;
-      text-align: center;
-      color: var(--text);
-      font-weight: 300;
+      max-width: 300px;
+      width: 70vw;
+      margin-bottom: 30px;
     }
 
     #arrow {
-      margin-top: 40px;
-      font-size: 3rem;
-      color: var(--primary);
+      font-size: 2rem;
+      color: var(--brand-blue);
       cursor: pointer;
-      animation: bounce 1.6s infinite;
+      animation: bounce 2s infinite;
     }
 
     @keyframes bounce {
-      0%,20%,50%,80%,100% { transform: translateY(0); }
-      40% { transform: translateY(-12px); }
-      60% { transform: translateY(-6px); }
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
     }
 
     /* HEADER */
@@ -95,259 +69,168 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255,255,255,.98);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-      box-shadow: 0 2px 10px rgba(0,0,0,.05);
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
     }
 
     .header-inner {
       max-width: 1200px;
       margin: 0 auto;
-      height: 85px;
+      height: 90px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 20px;
+      padding: 0 24px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .logo {
-      height: 60px;
+    .brand img {
+      height: 65px; /* Logo pur */
       width: auto;
     }
 
-    .brand-title {
-      margin: 0;
-      color: var(--text);
-      font-size: 1.2rem;
-      font-weight: 800;
-      line-height: 1.1;
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
 
-    .brand-sub {
-      margin: 2px 0 0;
-      color: var(--primary); /* Blau für den Untertitel */
-      font-size: 0.85rem;
+    /* DER EINZIGE BUTTON */
+    .cta-button {
+      background: var(--brand-red);
+      color: var(--white);
+      padding: 12px 28px;
+      border-radius: 8px;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .desktop-cta {
-      background: var(--accent);
-      color: white;
-      padding: 12px 24px;
-      border-radius: 50px;
-      font-weight: 700;
+      font-size: 0.95rem;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(239, 68, 35, 0.3);
+      box-shadow: 0 4px 6px -1px rgba(190, 18, 60, 0.2);
     }
 
-    .desktop-cta:hover {
-      background: var(--accent-dark);
-      transform: translateY(-2px);
+    .cta-button:hover {
+      background: #9f1239;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 15px -3px rgba(190, 18, 60, 0.3);
+    }
+
+    .menu-btn {
+      background: #f1f5f9;
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .menu-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      padding: 80px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: var(--primary);
+      line-height: 1.1;
+      margin: 0 0 24px;
+      font-weight: 850;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      color: var(--text-main);
+    }
+
+    /* SERVICES (Modern Cards) */
+    .services {
+      max-width: 1200px;
+      margin: 0 auto 100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 0 24px;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card h3::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brand-blue);
+      display: inline-block;
     }
 
     /* MENU OVERLAY */
-    .menu-btn {
-      border: none;
-      background: #f0f4f8;
-      cursor: pointer;
-      width: 45px;
-      height: 45px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .bar, .bar::before, .bar::after {
-      content: "";
-      display: block;
-      height: 3px;
-      width: 24px;
-      background: var(--primary);
-      border-radius: 3px;
-      position: relative;
-      transition: .3s;
-    }
-    .bar::before { position: absolute; top: -8px; }
-    .bar::after { position: absolute; top: 8px; }
-
     .menu-overlay {
       position: fixed;
       inset: 0;
       background: var(--primary);
+      z-index: 1500;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 20px;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-100%);
-      transition: all 0.5s ease;
-      z-index: 1100;
-    }
-
-    .menu-overlay.open {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-
-    .menu-overlay a {
-      color: white;
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-
-    /* MAIN CONTENT */
-    main {
-      display: none;
-      padding-bottom: 100px;
-    }
-
-    .hero {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    .hero-card {
-      background: var(--card);
-      border-radius: 30px;
-      padding: 50px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      box-shadow: var(--shadow);
-      border: 1px solid white;
-    }
-
-    .hero-eyebrow {
-      color: var(--accent);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    .hero-card h1 {
-      font-size: 3rem;
-      margin: 0 0 20px;
-      line-height: 1.1;
-      color: var(--text);
-    }
-
-    .hero-card p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: var(--muted);
-      margin-bottom: 30px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 16px 32px;
-      border-radius: 50px;
-      font-weight: 700;
-      transition: 0.3s;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-    }
-
-    .btn-secondary {
-      background: white;
-      border: 2px solid var(--primary);
-      color: var(--primary);
-      margin-left: 15px;
-    }
-
-    /* SERVICES */
-    .section {
-      max-width: 1200px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 25px;
+      transform: translateX(100%);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .service-card {
-      background: white;
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: var(--shadow);
-      transition: 0.3s;
-      border-bottom: 5px solid var(--primary);
-    }
-
-    .service-card:nth-child(2) {
-        border-bottom-color: var(--accent); /* Abwechslung Blau/Rot */
-    }
-
-    .service-card:hover {
-      transform: translateY(-10px);
-    }
-
-    .service-card h3 {
-      color: var(--primary);
-      margin-top: 0;
-    }
-
-    /* FLOATING CTA */
-    .floating-cta {
-      position: fixed;
-      right: 25px;
-      bottom: 25px;
-      background: var(--accent);
-      color: white;
-      padding: 15px 25px;
-      border-radius: 50px;
-      font-weight: 700;
-      box-shadow: 0 10px 20px rgba(239, 68, 35, 0.4);
-      z-index: 1050;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      opacity: 0;
-      transition: 0.5s;
-    }
-
-    .floating-cta.visible { opacity: 1; }
+    .menu-overlay.open { transform: translateX(0); }
+    .menu-overlay a { color: white; font-size: 2rem; font-weight: 700; text-decoration: none; opacity: 0.8; }
+    .menu-overlay a:hover { opacity: 1; color: var(--brand-blue); }
 
     footer {
-      background: white;
-      padding: 30px 20px;
-      border-top: 1px solid var(--line);
       text-align: center;
-      color: var(--muted);
+      padding: 60px 24px;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(0,0,0,0.05);
+      background: white;
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .hero-card { grid-template-columns: 1fr; padding: 30px; }
-      .service-grid { grid-template-columns: 1fr; }
-      .hero-card h1 { font-size: 2.2rem; }
-      .header-inner { height: 70px; }
-      .logo { height: 45px; }
-      .brand-sub { display: none; }
-      .btn-secondary { margin-left: 0; margin-top: 10px; width: 100%; text-align: center; }
-      .btn-primary { width: 100%; text-align: center; }
+    @media (max-width: 768px) {
+      .hero { padding: 60px 20px; }
+      .header-inner { height: 75px; }
+      .cta-button { display: none; } /* Auf Mobile nur Menü für mehr Platz */
     }
   </style>
 </head>
@@ -355,24 +238,20 @@
 
   <div id="splash">
     <img src="logo.png" alt="Hünig Logo">
-    <h2>Hünig Wärme- und Kältetechnik</h2>
     <div id="arrow">↓</div>
   </div>
 
   <header>
     <div class="header-inner">
       <a href="index.html" class="brand">
-        <img src="logo.png" alt="Hünig Logo" class="logo">
-        <div class="brand-text">
-          <p class="brand-title">Hünig</p>
-          <p class="brand-sub">Wärme- und Kältetechnik</p>
-        </div>
+        <img src="logo.png" alt="Hünig Logo">
       </a>
       
-      <div style="display: flex; align-items: center; gap: 15px;">
-        <a href="kontakt.html" class="desktop-cta">Jetzt anfragen</a>
+      <div class="header-right">
+        <a href="kontakt.html" class="cta-button">Jetzt anfragen</a>
         <button class="menu-btn" id="menuBtn">
-          <span class="bar"></span>
+          <span></span>
+          <span></span>
         </button>
       </div>
     </div>
@@ -383,91 +262,53 @@
     <a href="waermepumpen.html">Wärmepumpen</a>
     <a href="klimaanlagen.html">Klimaanlagen</a>
     <a href="service.html">Service & Wartung</a>
-    <a href="ueber-uns.html">Über uns</a>
-    <a href="kontakt.html">Kontakt</a>
+    <a href="kontakt.html">Anfrage</a>
   </nav>
 
-  <main id="content">
+  <main id="content" style="display:none;">
     <section class="hero">
-      <div class="hero-card">
-        <div class="hero-copy">
-          <span class="hero-eyebrow">Meisterbetrieb seit Generationen</span>
-          <h1>Nachhaltige Wärme. Perfekte Kälte.</h1>
-          <p>
-            Willkommen bei Hünig Wärme- und Kältetechnik. Wir bieten Ihnen moderne Lösungen für ein perfektes Raumklima – von effizienten Wärmepumpen bis hin zu professionellen Klimaanlagen für Ihr Zuhause oder Gewerbe.
-          </p>
-          <div class="hero-actions">
-            <a href="kontakt.html" class="btn btn-primary">Beratungstermin vereinbaren</a>
-            <a href="service.html" class="btn btn-secondary">Unsere Leistungen</a>
-          </div>
-        </div>
-        <div class="hero-image" style="background: #eef3f8; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: 700;">
-          [Hier ein Bild von einer Wärmepumpe oder Klimaanlage]
-        </div>
+      <h1>Premium-Technik für Ihr Klima.</h1>
+      <p>Hünig Wärme- und Kältetechnik vereint meisterhafte Präzision mit nachhaltiger Innovation. Für ein Zuhause, das atmet.</p>
+    </section>
+
+    <section class="services">
+      <div class="card">
+        <h3>Wärmepumpen</h3>
+        <p>Hocheffiziente Heizsysteme der nächsten Generation. Reduzieren Sie Ihre Kosten und Ihren CO2-Fußabdruck nachhaltig.</p>
+      </div>
+      <div class="card">
+        <h3>Kältetechnik</h3>
+        <p>Präzise Kühlung für Wohnraum und Gewerbe. Wir planen Systeme, die leise, unsichtbar und extrem leistungsstark sind.</p>
+      </div>
+      <div class="card">
+        <h3>Meisterservice</h3>
+        <p>Wartung und Support auf höchstem Niveau. Wir lassen Sie nicht im Kalten stehen – versprochen.</p>
       </div>
     </section>
 
-    <section class="section">
-      <div class="service-grid">
-        <div class="service-card">
-          <h3>Wärmepumpen</h3>
-          <p>Heizen Sie effizient und umweltfreundlich mit modernster Luft- oder Erdwärmetechnik.</p>
-          <a href="waermepumpen.html" style="color: var(--primary); font-weight: 700;">Mehr erfahren →</a>
-        </div>
-        <div class="service-card">
-          <h3>Klimaanlagen</h3>
-          <p>Behalten Sie einen kühlen Kopf. Wir planen und installieren Split-Klimageräte für höchsten Komfort.</p>
-          <a href="klimaanlagen.html" style="color: var(--accent); font-weight: 700;">Mehr erfahren →</a>
-        </div>
-        <div class="service-card">
-          <h3>Service & Wartung</h3>
-          <p>Langlebigkeit durch regelmäßige Checks. Wir warten Ihre Anlagen herstellerunabhängig.</p>
-          <a href="service.html" style="color: var(--primary); font-weight: 700;">Mehr erfahren →</a>
-        </div>
-      </div>
-    </section>
+    <footer>
+      <p>© <span id="y"></span> Hünig Wärme- und Kältetechnik | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
+    </footer>
   </main>
-
-  <a href="kontakt.html" class="floating-cta" id="floatingCta">
-    <span>✉</span> Jetzt anfragen
-  </a>
-
-  <footer>
-    <p>© <span id="y"></span> Hünig Wärme- und Kältetechnik | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
-  </footer>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
     const splash = document.getElementById('splash');
-    const arrow = document.getElementById('arrow');
     const content = document.getElementById('content');
-    const cta = document.getElementById('floatingCta');
     const menuBtn = document.getElementById('menuBtn');
     const overlay = document.getElementById('menuOverlay');
 
-    // Splash Screen Logik
     function hideSplash() {
-      splash.style.opacity = 0;
-      setTimeout(() => {
-        splash.style.display = 'none';
-        content.style.display = 'block';
-        cta.classList.add('visible');
-      }, 800);
+      splash.style.transform = 'translateY(-100%)';
+      content.style.display = 'block';
     }
 
-    arrow.addEventListener('click', hideSplash);
-    // Automatisches Ausblenden nach 4 Sekunden (optional)
-    setTimeout(hideSplash, 4000);
+    document.getElementById('arrow').addEventListener('click', hideSplash);
+    setTimeout(hideSplash, 3000);
 
-    // Menü Logik
     menuBtn.addEventListener('click', () => {
       overlay.classList.toggle('open');
-      menuBtn.classList.toggle('active');
-    });
-
-    overlay.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => overlay.classList.remove('open'));
     });
   </script>
 </body>
