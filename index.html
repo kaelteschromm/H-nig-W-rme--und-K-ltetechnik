@@ -2,964 +2,438 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Wielo Wärmetechnik</title>
+  <title>Hünig Wärme- und Kältetechnik</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Wielo Wärmetechnik – moderne Lösungen für Wärmepumpen, Klimaanlagen, Lüftung, Sanitär sowie Service und Wartung.">
+  <meta name="description" content="Hünig Wärme- und Kältetechnik – Ihre Experten für Wärmepumpen, Klimaanlagen, Lüftung und Sanitär.">
 
   <style>
-    :root{
-      --primary:#123761;
-      --primary-dark:#0b2745;
-      --accent:#1e4c7d;
-      --cool:#3e6fa3;
-      --card:rgba(255,255,255,0.96);
-      --footer:rgba(255,255,255,0.97);
-      --text:#172435;
-      --muted:#5f6f82;
-      --line:#d9e1ea;
-      --bg:#f4f7fb;
-      --shadow:0 10px 28px rgba(12,28,52,.10);
-      --shadow-hover:0 16px 34px rgba(12,28,52,.16);
+    :root {
+      /* Farben basierend auf dem Logo */
+      --primary: #2175b5;       /* Das Blau aus dem Logo */
+      --primary-dark: #164e7a;  /* Dunkleres Blau für Kontraste */
+      --accent: #ef4423;        /* Das Rot aus der Flamme / "Wärme" */
+      --accent-dark: #c13216;   /* Dunkleres Rot für Hover-Effekte */
+      
+      --card: rgba(255,255,255,0.96);
+      --footer: #ffffff;
+      --text: #1d1d1b;          /* Das Schwarz aus dem "Hünig" Schriftzug */
+      --muted: #5f6f82;
+      --line: #d9e1ea;
+      --bg: #f4f7fb;
+      --shadow: 0 10px 28px rgba(12,28,52,.10);
+      --shadow-hover: 0 16px 34px rgba(12,28,52,.16);
     }
 
-    *{
-      box-sizing:border-box;
+    * {
+      box-sizing: border-box;
     }
 
-    html,body{
-      margin:0;
-      padding:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color:var(--text);
-      min-height:100vh;
-      background:
-        linear-gradient(rgba(244,247,251,.18), rgba(244,247,251,.18)),
-        url("Haus am Wald.webp") no-repeat center center fixed;
-      background-size:cover;
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      background: linear-gradient(rgba(244,247,251,.9), rgba(244,247,251,.9)),
+                  url("Haus am Wald.webp") no-repeat center center fixed;
+      background-size: cover;
     }
 
-    img{
-      max-width:100%;
-      display:block;
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    a{
-      color:inherit;
-      text-decoration:none;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    /* SPLASH */
-    #splash{
-      position:fixed;
-      inset:0;
-      background:rgba(255,255,255,0.97);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      z-index:1200;
-      transition:opacity .8s ease;
+    /* SPLASH SCREEN */
+    #splash {
+      position: fixed;
+      inset: 0;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1200;
+      transition: opacity .8s ease;
     }
 
-    #splash img{
-      max-width:340px;
-      width:82vw;
-      height:auto;
+    #splash img {
+      max-width: 400px;
+      width: 85vw;
+      height: auto;
+      margin-bottom: 20px;
     }
 
-    #splash h2{
-      margin:22px 0 0;
-      font-size:1.45rem;
-      line-height:1.45;
-      text-align:center;
-      color:var(--primary);
-      font-family:Georgia,"Times New Roman",serif;
+    #splash h2 {
+      font-size: 1.5rem;
+      text-align: center;
+      color: var(--text);
+      font-weight: 300;
     }
 
-    #arrow{
-      margin-top:38px;
-      font-size:2.6rem;
-      color:var(--primary);
-      cursor:pointer;
-      user-select:none;
-      animation:bounce 1.6s infinite;
+    #arrow {
+      margin-top: 40px;
+      font-size: 3rem;
+      color: var(--primary);
+      cursor: pointer;
+      animation: bounce 1.6s infinite;
     }
 
-    @keyframes bounce{
-      0%,20%,50%,80%,100%{transform:translateY(0)}
-      40%{transform:translateY(-12px)}
-      60%{transform:translateY(-6px)}
+    @keyframes bounce {
+      0%,20%,50%,80%,100% { transform: translateY(0); }
+      40% { transform: translateY(-12px); }
+      60% { transform: translateY(-6px); }
     }
 
     /* HEADER */
-    .top-contact{
-      background:var(--primary-dark);
-      color:#fff;
-      font-size:.92rem;
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 2px 10px rgba(0,0,0,.05);
     }
 
-    .top-contact-inner{
-      max-width:1180px;
-      margin:0 auto;
-      padding:10px 16px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px 24px;
-      align-items:center;
-      justify-content:space-between;
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 85px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
     }
 
-    .top-contact-left,
-    .top-contact-right{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px 20px;
-      align-items:center;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
     }
 
-    .top-contact span{
-      opacity:.95;
+    .logo {
+      height: 60px;
+      width: auto;
     }
 
-    header{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:rgba(255,255,255,.97);
-      backdrop-filter:blur(8px);
-      border-bottom:1px solid rgba(217,225,234,.85);
-      box-shadow:0 2px 8px rgba(0,0,0,.05);
+    .brand-title {
+      margin: 0;
+      color: var(--text);
+      font-size: 1.2rem;
+      font-weight: 800;
+      line-height: 1.1;
     }
 
-    .header-inner{
-      max-width:1180px;
-      margin:0 auto;
-      min-height:78px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:0 16px;
+    .brand-sub {
+      margin: 2px 0 0;
+      color: var(--primary); /* Blau für den Untertitel */
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      min-width:0;
+    .desktop-cta {
+      background: var(--accent);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(239, 68, 35, 0.3);
     }
 
-    .logo{
-      height:52px;
-      width:auto;
-      flex-shrink:0;
-    }
-
-    .brand-text{
-      min-width:0;
-    }
-
-    .brand-title{
-      margin:0;
-      color:var(--primary);
-      font-size:1.15rem;
-      font-weight:800;
-      line-height:1.1;
-      letter-spacing:.01em;
-    }
-
-    .brand-sub{
-      margin:4px 0 0;
-      color:var(--muted);
-      font-size:.9rem;
-      line-height:1.3;
-    }
-
-    .header-actions{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      flex-shrink:0;
-    }
-
-    .desktop-cta{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 18px;
-      border-radius:999px;
-      background:linear-gradient(135deg,var(--primary),var(--accent));
-      color:#fff;
-      font-weight:700;
-      box-shadow:0 10px 24px rgba(18,55,97,.20);
-      transition:transform .2s ease, box-shadow .2s ease;
-    }
-
-    .desktop-cta:hover{
-      transform:translateY(-2px);
-      box-shadow:0 14px 30px rgba(18,55,97,.28);
-    }
-
-    .menu-btn{
-      border:none;
-      background:transparent;
-      cursor:pointer;
-      padding:10px;
-      width:46px;
-      height:46px;
-      border-radius:12px;
-    }
-
-    .menu-btn:hover{
-      background:#eef3f8;
-    }
-
-    .menu-btn .bar,
-    .menu-btn .bar::before,
-    .menu-btn .bar::after{
-      content:"";
-      display:block;
-      height:3px;
-      width:24px;
-      background:var(--primary);
-      border-radius:2px;
-      position:relative;
-      transition:.25s;
-      margin:0 auto;
-    }
-
-    .menu-btn .bar::before{
-      position:absolute;
-      top:-8px;
-      left:0;
-    }
-
-    .menu-btn .bar::after{
-      position:absolute;
-      top:8px;
-      left:0;
+    .desktop-cta:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
     }
 
     /* MENU OVERLAY */
-    .menu-overlay{
-      position:fixed;
-      inset:0;
-      background:rgba(18,55,97,.97);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      gap:14px;
-      opacity:0;
-      pointer-events:none;
-      transform:translateX(100%);
-      transition:all .45s ease;
-      z-index:1100;
-      padding:28px 20px;
+    .menu-btn {
+      border: none;
+      background: #f0f4f8;
+      cursor: pointer;
+      width: 45px;
+      height: 45px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .menu-overlay.open{
-      opacity:1;
-      pointer-events:auto;
-      transform:translateX(0);
+    .bar, .bar::before, .bar::after {
+      content: "";
+      display: block;
+      height: 3px;
+      width: 24px;
+      background: var(--primary);
+      border-radius: 3px;
+      position: relative;
+      transition: .3s;
+    }
+    .bar::before { position: absolute; top: -8px; }
+    .bar::after { position: absolute; top: 8px; }
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-100%);
+      transition: all 0.5s ease;
+      z-index: 1100;
     }
 
-    .menu-overlay a{
-      color:#fff;
-      font-size:1.28rem;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.03em;
-      opacity:0;
-      transform:translateX(70px);
+    .menu-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
     }
 
-    .menu-overlay.open a{
-      animation:slideIn .45s forwards;
+    .menu-overlay a {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
     }
 
-    .menu-overlay a:nth-child(1){animation-delay:.04s}
-    .menu-overlay a:nth-child(2){animation-delay:.08s}
-    .menu-overlay a:nth-child(3){animation-delay:.12s}
-    .menu-overlay a:nth-child(4){animation-delay:.16s}
-    .menu-overlay a:nth-child(5){animation-delay:.20s}
-    .menu-overlay a:nth-child(6){animation-delay:.24s}
-    .menu-overlay a:nth-child(7){animation-delay:.28s}
-    .menu-overlay a:nth-child(8){animation-delay:.32s}
-    .menu-overlay a:nth-child(9){animation-delay:.36s}
-    .menu-overlay a:nth-child(10){animation-delay:.40s}
-    .menu-overlay a:nth-child(11){animation-delay:.44s}
-    .menu-overlay a:nth-child(12){animation-delay:.48s}
-
-    @keyframes slideIn{
-      to{
-        transform:translateX(0);
-        opacity:1;
-      }
+    /* MAIN CONTENT */
+    main {
+      display: none;
+      padding-bottom: 100px;
     }
 
-    /* MAIN */
-    main{
-      display:none;
-      padding-bottom:110px;
+    .hero {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
 
-    .hero{
-      max-width:1180px;
-      margin:28px auto 0;
-      padding:0 16px;
+    .hero-card {
+      background: var(--card);
+      border-radius: 30px;
+      padding: 50px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      box-shadow: var(--shadow);
+      border: 1px solid white;
     }
 
-    .hero-card{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:24px;
-      align-items:center;
-      background:linear-gradient(135deg, rgba(255,255,255,.95), rgba(255,255,255,.90));
-      border:1px solid rgba(217,225,234,.8);
-      border-radius:28px;
-      padding:34px;
-      box-shadow:var(--shadow);
-      overflow:hidden;
-      position:relative;
+    .hero-eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      display: block;
     }
 
-    .hero-card::after{
-      content:"";
-      position:absolute;
-      top:-80px;
-      right:-80px;
-      width:240px;
-      height:240px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(30,76,125,.10), transparent 70%);
-      pointer-events:none;
+    .hero-card h1 {
+      font-size: 3rem;
+      margin: 0 0 20px;
+      line-height: 1.1;
+      color: var(--text);
     }
 
-    .hero-copy{
-      position:relative;
-      z-index:1;
+    .hero-card p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--muted);
+      margin-bottom: 30px;
     }
 
-    .hero-eyebrow{
-      display:inline-block;
-      margin-bottom:14px;
-      padding:8px 14px;
-      border-radius:999px;
-      background:#edf3f8;
-      color:var(--primary);
-      font-size:.9rem;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.04em;
+    .btn {
+      display: inline-block;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      transition: 0.3s;
     }
 
-    .hero-copy h1{
-      margin:0 0 16px;
-      color:var(--primary);
-      font-size:clamp(2rem, 5vw, 3.8rem);
-      line-height:1.02;
-      letter-spacing:-.03em;
+    .btn-primary {
+      background: var(--primary);
+      color: white;
     }
 
-    .hero-copy p{
-      margin:0 0 22px;
-      font-size:1.05rem;
-      line-height:1.75;
-      color:var(--muted);
-      max-width:720px;
+    .btn-secondary {
+      background: white;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      margin-left: 15px;
     }
 
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
+    /* SERVICES */
+    .section {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
     }
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:14px 20px;
-      border-radius:999px;
-      font-weight:700;
-      transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
     }
 
-    .btn:hover{
-      transform:translateY(-2px);
+    .service-card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      transition: 0.3s;
+      border-bottom: 5px solid var(--primary);
     }
 
-    .btn-primary{
-      background:linear-gradient(135deg,var(--primary),var(--accent));
-      color:#fff;
-      box-shadow:0 10px 24px rgba(18,55,97,.18);
+    .service-card:nth-child(2) {
+        border-bottom-color: var(--accent); /* Abwechslung Blau/Rot */
     }
 
-    .btn-secondary{
-      background:#eef3f8;
-      color:var(--primary);
-      border:1px solid var(--line);
+    .service-card:hover {
+      transform: translateY(-10px);
     }
 
-    .hero-side{
-      position:relative;
-      z-index:1;
-      display:grid;
-      gap:14px;
+    .service-card h3 {
+      color: var(--primary);
+      margin-top: 0;
     }
 
-    .hero-info-box{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:18px 18px;
-      box-shadow:0 8px 20px rgba(12,28,52,.06);
+    /* FLOATING CTA */
+    .floating-cta {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      background: var(--accent);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 50px;
+      font-weight: 700;
+      box-shadow: 0 10px 20px rgba(239, 68, 35, 0.4);
+      z-index: 1050;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      transition: 0.5s;
     }
 
-    .hero-info-box strong{
-      display:block;
-      margin-bottom:6px;
-      color:var(--primary);
-      font-size:1rem;
-    }
+    .floating-cta.visible { opacity: 1; }
 
-    .hero-info-box span{
-      color:var(--muted);
-      line-height:1.6;
-      font-size:.96rem;
-    }
-
-    .section{
-      max-width:1180px;
-      margin:0 auto;
-      padding:34px 16px 0;
-    }
-
-    .section-head{
-      margin-bottom:20px;
-      max-width:820px;
-    }
-
-    .section-head h2{
-      margin:0 0 10px;
-      color:var(--primary);
-      font-size:clamp(1.7rem, 3vw, 2.5rem);
-      line-height:1.08;
-    }
-
-    .section-head p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.75;
-      font-size:1rem;
-    }
-
-    /* SERVICE CARDS */
-    .service-grid{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:18px;
-    }
-
-    .service-card{
-      background:var(--card);
-      border:1px solid rgba(217,225,234,.85);
-      border-radius:22px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      transition:transform .22s ease, box-shadow .22s ease;
-    }
-
-    .service-card:hover{
-      transform:translateY(-4px);
-      box-shadow:var(--shadow-hover);
-    }
-
-    .service-top{
-      height:180px;
-      background:
-        linear-gradient(rgba(18,55,97,.18), rgba(18,55,97,.18)),
-        url("Haus am Wald.webp") center center / cover no-repeat;
-      position:relative;
-    }
-
-    .service-top::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg, transparent, rgba(18,55,97,.10));
-    }
-
-    .service-body{
-      padding:22px;
-    }
-
-    .service-body h3{
-      margin:0 0 10px;
-      color:var(--primary);
-      font-size:1.2rem;
-    }
-
-    .service-body p{
-      margin:0 0 16px;
-      color:var(--muted);
-      line-height:1.7;
-      min-height:96px;
-    }
-
-    .service-link{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      color:var(--primary);
-      font-weight:700;
-    }
-
-    /* HIGHLIGHT BAND */
-    .highlight-band{
-      background:linear-gradient(135deg,var(--primary),var(--accent));
-      color:#fff;
-      border-radius:26px;
-      padding:28px;
-      box-shadow:0 16px 34px rgba(18,55,97,.18);
-    }
-
-    .highlight-band h2{
-      margin:0 0 12px;
-      font-size:clamp(1.7rem, 3vw, 2.4rem);
-      line-height:1.08;
-    }
-
-    .highlight-band p{
-      margin:0;
-      color:rgba(255,255,255,.90);
-      line-height:1.75;
-      max-width:860px;
-    }
-
-    .highlight-grid{
-      display:grid;
-      grid-template-columns:repeat(4, minmax(0,1fr));
-      gap:14px;
-      margin-top:20px;
-    }
-
-    .highlight-item{
-      background:rgba(255,255,255,.10);
-      border:1px solid rgba(255,255,255,.18);
-      border-radius:18px;
-      padding:16px;
-      font-weight:700;
-      line-height:1.5;
-    }
-
-    /* CONTACT AREA */
-    .contact-box{
-      background:var(--card);
-      border:1px solid rgba(217,225,234,.85);
-      border-radius:24px;
-      padding:26px;
-      box-shadow:var(--shadow);
-    }
-
-    .contact-grid{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:16px;
-      margin-top:18px;
-    }
-
-    .contact-item{
-      background:#f7fafc;
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:18px;
-    }
-
-    .contact-item strong{
-      display:block;
-      margin-bottom:8px;
-      color:var(--primary);
-      font-size:1rem;
-    }
-
-    .contact-item span{
-      color:var(--muted);
-      line-height:1.65;
-      font-size:.96rem;
-    }
-
-    /* FOOTER */
-    footer{
-      position:sticky;
-      bottom:0;
-      background:var(--footer);
-      border-top:1px solid var(--line);
-      z-index:700;
-    }
-
-    .foot{
-      max-width:1180px;
-      margin:0 auto;
-      padding:12px 16px;
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:space-between;
-      gap:14px;
-      align-items:center;
-      color:var(--muted);
-      font-size:.95rem;
-    }
-
-    .legal{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-    }
-
-    .legal a{
-      color:var(--muted);
-    }
-
-    .legal a:hover{
-      color:var(--primary);
-    }
-
-    /* FLOATING BUTTON */
-    .floating-cta{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      z-index:1050;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      background:linear-gradient(135deg,var(--primary),var(--accent));
-      color:#fff;
-      padding:14px 20px;
-      border-radius:999px;
-      font-weight:700;
-      box-shadow:0 12px 28px rgba(18,55,97,.26);
-      transition:opacity .3s ease, transform .2s ease, box-shadow .2s ease;
-      opacity:0;
-      pointer-events:none;
-    }
-
-    .floating-cta.visible{
-      opacity:1;
-      pointer-events:auto;
-    }
-
-    .floating-cta:hover{
-      transform:translateY(-3px);
-      box-shadow:0 16px 34px rgba(18,55,97,.34);
-    }
-
-    .floating-cta::after{
-      content:"";
-      position:absolute;
-      inset:-6px;
-      border-radius:999px;
-      border:2px solid rgba(18,55,97,.24);
-      animation:pulseRing 2.5s infinite;
-      pointer-events:none;
-    }
-
-    .floating-icon{
-      background:rgba(255,255,255,.18);
-      width:28px;
-      height:28px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:14px;
-      flex-shrink:0;
-    }
-
-    @keyframes pulseRing{
-      0%{
-        transform:scale(1);
-        opacity:.7;
-      }
-      70%{
-        transform:scale(1.35);
-        opacity:0;
-      }
-      100%{
-        opacity:0;
-      }
+    footer {
+      background: white;
+      padding: 30px 20px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      color: var(--muted);
     }
 
     /* RESPONSIVE */
-    @media (max-width:1024px){
-      .hero-card,
-      .service-grid,
-      .contact-grid,
-      .highlight-grid{
-        grid-template-columns:1fr 1fr;
-      }
-    }
-
-    @media (max-width:760px){
-      .top-contact{
-        display:none;
-      }
-
-      .header-inner{
-        min-height:72px;
-      }
-
-      .brand-sub{
-        display:none;
-      }
-
-      .desktop-cta{
-        display:none;
-      }
-
-      .hero{
-        margin-top:16px;
-      }
-
-      .hero-card,
-      .service-grid,
-      .contact-grid,
-      .highlight-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero-card{
-        padding:24px;
-      }
-
-      .hero-copy h1{
-        font-size:2.2rem;
-      }
-
-      .service-body p{
-        min-height:auto;
-      }
-
-      .menu-overlay a{
-        font-size:1.16rem;
-      }
-
-      .floating-cta{
-        right:14px;
-        bottom:14px;
-        padding:12px 16px;
-        font-size:.94rem;
-      }
+    @media (max-width: 900px) {
+      .hero-card { grid-template-columns: 1fr; padding: 30px; }
+      .service-grid { grid-template-columns: 1fr; }
+      .hero-card h1 { font-size: 2.2rem; }
+      .header-inner { height: 70px; }
+      .logo { height: 45px; }
+      .brand-sub { display: none; }
+      .btn-secondary { margin-left: 0; margin-top: 10px; width: 100%; text-align: center; }
+      .btn-primary { width: 100%; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <div id="splash" aria-label="Intro">
-    <img src="logo1.png" alt="Firmenlogo">
-    <h2>Herzlich Willkommen bei<br>Wielo Wärmetechnik</h2>
-    <div id="arrow" aria-label="Weiter zur Website" title="Weiter">↓</div>
-  </div>
-
-  <div class="top-contact">
-    <div class="top-contact-inner">
-      <div class="top-contact-left">
-        <span>Wärmepumpen</span>
-        <span>Klimaanlagen</span>
-        <span>Lüftung</span>
-        <span>Sanitär</span>
-      </div>
-      <div class="top-contact-right">
-        <span>Service & Wartung</span>
-        <span>Jetzt Anfrage stellen</span>
-      </div>
-    </div>
+  <div id="splash">
+    <img src="logo.png" alt="Hünig Logo">
+    <h2>Hünig Wärme- und Kältetechnik</h2>
+    <div id="arrow">↓</div>
   </div>
 
   <header>
     <div class="header-inner">
-      <a href="index.html" class="brand" aria-label="Startseite">
-        <img src="logo1.png" alt="Firmenlogo" class="logo">
+      <a href="index.html" class="brand">
+        <img src="logo.png" alt="Hünig Logo" class="logo">
         <div class="brand-text">
-          <p class="brand-title">Wielo Wärmetechnik</p>
-          <p class="brand-sub">Moderne Wärme- und Gebäudetechnik</p>
+          <p class="brand-title">Hünig</p>
+          <p class="brand-sub">Wärme- und Kältetechnik</p>
         </div>
       </a>
-
-      <div class="header-actions">
+      
+      <div style="display: flex; align-items: center; gap: 15px;">
         <a href="kontakt.html" class="desktop-cta">Jetzt anfragen</a>
-        <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen">
+        <button class="menu-btn" id="menuBtn">
           <span class="bar"></span>
         </button>
       </div>
     </div>
   </header>
 
-  <nav class="menu-overlay" id="menuOverlay" aria-label="Hauptmenü">
+  <nav class="menu-overlay" id="menuOverlay">
     <a href="index.html">Startseite</a>
     <a href="waermepumpen.html">Wärmepumpen</a>
     <a href="klimaanlagen.html">Klimaanlagen</a>
-    <a href="lueftung.html">Lüftung</a>
-    <a href="trinkwasserinstallationen.html">Trinkwasser</a>
-    <a href="referenzen.html">Referenzen</a>
-    <a href="service.html">Service</a>
+    <a href="service.html">Service & Wartung</a>
     <a href="ueber-uns.html">Über uns</a>
-    <a href="kontakt.html">Anfrage</a>
-    <a href="impressum.html">Impressum</a>
-    <a href="datenschutz.html">Datenschutz</a>
-    <a href="agb.html">AGB</a>
+    <a href="kontakt.html">Kontakt</a>
   </nav>
 
   <main id="content">
-
     <section class="hero">
       <div class="hero-card">
         <div class="hero-copy">
-          <div class="hero-eyebrow">Fachbetrieb für moderne Gebäudetechnik</div>
-          <h1>Effiziente Lösungen für Wärme, Klima und Komfort</h1>
+          <span class="hero-eyebrow">Meisterbetrieb seit Generationen</span>
+          <h1>Nachhaltige Wärme. Perfekte Kälte.</h1>
           <p>
-            Wielo Wärmetechnik steht für moderne und zuverlässige Lösungen rund um
-            Wärmepumpen, Klimaanlagen, Lüftung, Sanitär sowie Service und Wartung.
-            Von der ersten Beratung bis zur fachgerechten Umsetzung begleiten wir
-            unsere Kunden strukturiert und praxisnah.
+            Willkommen bei Hünig Wärme- und Kältetechnik. Wir bieten Ihnen moderne Lösungen für ein perfektes Raumklima – von effizienten Wärmepumpen bis hin zu professionellen Klimaanlagen für Ihr Zuhause oder Gewerbe.
           </p>
-
           <div class="hero-actions">
-            <a href="kontakt.html" class="btn btn-primary">Jetzt anfragen</a>
-            <a href="waermepumpen.html" class="btn btn-secondary">Wärmepumpen ansehen</a>
+            <a href="kontakt.html" class="btn btn-primary">Beratungstermin vereinbaren</a>
+            <a href="service.html" class="btn btn-secondary">Unsere Leistungen</a>
           </div>
         </div>
-
-        <div class="hero-side">
-          <div class="hero-info-box">
-            <strong>Wärmepumpen</strong>
-            <span>Moderne Heiztechnik für Neubau, Sanierung und zukunftssichere Gebäudekonzepte.</span>
-          </div>
-          <div class="hero-info-box">
-            <strong>Klimaanlagen & Lüftung</strong>
-            <span>Komfortables Raumklima für Wohnräume, Büros und passende Gewerbebereiche.</span>
-          </div>
-          <div class="hero-info-box">
-            <strong>Service & Wartung</strong>
-            <span>Betreuung, Instandhaltung und langfristige Unterstützung aus einer Hand.</span>
-          </div>
+        <div class="hero-image" style="background: #eef3f8; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: 700;">
+          [Hier ein Bild von einer Wärmepumpe oder Klimaanlage]
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-head">
-        <h2>Unsere Leistungen</h2>
-        <p>
-          Damit Besucher direkt verstehen, was angeboten wird, sollte die Startseite die
-          wichtigsten Themen klar und sichtbar strukturieren. Genau dafür sind diese
-          Leistungsbereiche gedacht.
-        </p>
-      </div>
-
       <div class="service-grid">
-        <article class="service-card">
-          <div class="service-top"></div>
-          <div class="service-body">
-            <h3>Wärmepumpen</h3>
-            <p>
-              Effiziente Heizlösungen für Neubau und Sanierung – von der Beratung über
-              die Planung bis zur fachgerechten Installation.
-            </p>
-            <a href="waermepumpen.html" class="service-link">Mehr erfahren →</a>
-          </div>
-        </article>
-
-        <article class="service-card">
-          <div class="service-top"></div>
-          <div class="service-body">
-            <h3>Klimaanlagen</h3>
-            <p>
-              Moderne Klimasysteme für angenehme Temperaturen, hohen Komfort und saubere
-              Integration in Wohn- und Arbeitsbereiche.
-            </p>
-            <a href="klimaanlagen.html" class="service-link">Mehr erfahren →</a>
-          </div>
-        </article>
-
-        <article class="service-card">
-          <div class="service-top"></div>
-          <div class="service-body">
-            <h3>Service & Wartung</h3>
-            <p>
-              Regelmäßige Wartung, technische Betreuung und schnelle Unterstützung für
-              bestehende Anlagen und neue Projekte.
-            </p>
-            <a href="service.html" class="service-link">Mehr erfahren →</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="highlight-band">
-        <h2>Technik, Service und saubere Lösungen aus einer Hand</h2>
-        <p>
-          Eine starke Startseite soll nicht nur gut aussehen, sondern Vertrauen aufbauen.
-          Deshalb verbindet dieses Design eine klare Farblinie mit strukturierter
-          Darstellung, direkter Anfrageführung und einer ruhigen, professionellen Optik.
-        </p>
-
-        <div class="highlight-grid">
-          <div class="highlight-item">Planung & Beratung</div>
-          <div class="highlight-item">Montage & Umsetzung</div>
-          <div class="highlight-item">Service & Betreuung</div>
-          <div class="highlight-item">Anfrage ohne Umwege</div>
+        <div class="service-card">
+          <h3>Wärmepumpen</h3>
+          <p>Heizen Sie effizient und umweltfreundlich mit modernster Luft- oder Erdwärmetechnik.</p>
+          <a href="waermepumpen.html" style="color: var(--primary); font-weight: 700;">Mehr erfahren →</a>
+        </div>
+        <div class="service-card">
+          <h3>Klimaanlagen</h3>
+          <p>Behalten Sie einen kühlen Kopf. Wir planen und installieren Split-Klimageräte für höchsten Komfort.</p>
+          <a href="klimaanlagen.html" style="color: var(--accent); font-weight: 700;">Mehr erfahren →</a>
+        </div>
+        <div class="service-card">
+          <h3>Service & Wartung</h3>
+          <p>Langlebigkeit durch regelmäßige Checks. Wir warten Ihre Anlagen herstellerunabhängig.</p>
+          <a href="service.html" style="color: var(--primary); font-weight: 700;">Mehr erfahren →</a>
         </div>
       </div>
     </section>
-
-    <section class="section">
-      <div class="contact-box">
-        <div class="section-head" style="margin-bottom:0;max-width:none;">
-          <h2>Direkt zum passenden Anliegen</h2>
-          <p>
-            Über den Anfragebereich können Interessenten gezielt Neubau, Erneuerung,
-            Service, Wartung oder andere Anliegen auswählen und strukturiert anfragen.
-          </p>
-        </div>
-
-        <div class="contact-grid">
-          <div class="contact-item">
-            <strong>Neuanfrage</strong>
-            <span>Ideal für Wärmepumpen, Klimaanlagen, Lüftung oder neue Projekte im Bestand und Neubau.</span>
-          </div>
-          <div class="contact-item">
-            <strong>Service</strong>
-            <span>Für bestehende Anlagen, technische Anliegen oder gewünschte Betreuung im laufenden Betrieb.</span>
-          </div>
-          <div class="contact-item">
-            <strong>Beratung</strong>
-            <span>Für Kunden, die sich zunächst einen Überblick verschaffen und das passende System finden möchten.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
   </main>
 
-  <a href="kontakt.html" class="floating-cta" id="floatingCta" aria-label="Jetzt anfragen">
-    <span class="floating-icon">✉</span>
-    Jetzt anfragen
+  <a href="kontakt.html" class="floating-cta" id="floatingCta">
+    <span>✉</span> Jetzt anfragen
   </a>
 
   <footer>
-    <div class="foot">
-      <div>© <span id="y"></span> Wielo Wärmetechnik</div>
-      <div class="legal" aria-label="Rechtliche Links">
-        <a href="kontakt.html">Anfrage</a>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
-        <a href="agb.html">AGB</a>
-      </div>
-    </div>
+    <p>© <span id="y"></span> Hünig Wärme- und Kältetechnik | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
   </footer>
 
   <script>
@@ -972,44 +446,28 @@
     const menuBtn = document.getElementById('menuBtn');
     const overlay = document.getElementById('menuOverlay');
 
-    let splashHidden = false;
-
-    function showCta(){
-      cta.classList.add('visible');
-
-      setTimeout(() => {
-        cta.style.transform = 'scale(1.08)';
-        setTimeout(() => {
-          cta.style.transform = 'scale(1)';
-        }, 300);
-      }, 600);
-    }
-
-    function hideSplash(){
-      if (splashHidden) return;
-      splashHidden = true;
-
+    // Splash Screen Logik
+    function hideSplash() {
       splash.style.opacity = 0;
-
       setTimeout(() => {
         splash.style.display = 'none';
         content.style.display = 'block';
-        showCta();
-        window.scrollTo({ top: 0, behavior: 'auto' });
+        cta.classList.add('visible');
       }, 800);
     }
 
     arrow.addEventListener('click', hideSplash);
-    setTimeout(hideSplash, 5000);
+    // Automatisches Ausblenden nach 4 Sekunden (optional)
+    setTimeout(hideSplash, 4000);
 
+    // Menü Logik
     menuBtn.addEventListener('click', () => {
       overlay.classList.toggle('open');
+      menuBtn.classList.toggle('active');
     });
 
     overlay.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        overlay.classList.remove('open');
-      });
+      link.addEventListener('click', () => overlay.classList.remove('open'));
     });
   </script>
 </body>
