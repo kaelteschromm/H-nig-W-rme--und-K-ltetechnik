@@ -4,36 +4,31 @@
   <meta charset="UTF-8">
   <title>Hünig Wärme- und Kältetechnik</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Hünig Wärme- und Kältetechnik – Exzellenz in Wärme, Klima und Kälte.">
-
   <style>
     :root {
-      /* Moderne, gedeckte Farbpalette */
-      --primary: #0f172a;       /* Deep Slate - für Text und Tiefe */
-      --brand-blue: #1e40af;    /* Seriöses Royal Blue */
-      --brand-red: #be123c;     /* Edles Weinrot statt Signalrot */
-      --bg-light: #f8fafc;      /* Softes Off-White */
-      --text-main: #334155;     /* Angenehmes Grau für Fließtext */
+      /* Klare, technische Kontraste */
+      --primary-blue: #2175b5;   /* Das Blau aus deinem Logo */
+      --primary-red: #ef4423;    /* Das Rot aus deinem Logo */
+      --dark: #1a1a1a;           /* Fast Schwarz für maximale Lesbarkeit */
+      --gray: #f4f4f4;           /* Hellgrau für Hintergründe */
+      --text: #333333;
       --white: #ffffff;
-      --glass: rgba(255, 255, 255, 0.8);
-      --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
     }
 
     * {
       box-sizing: border-box;
-      -webkit-font-smoothing: antialiased;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     }
 
-    html, body {
+    body {
       margin: 0;
       padding: 0;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      color: var(--text-main);
-      background-color: var(--bg-light);
-      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--white);
+      line-height: 1.5;
     }
 
-    /* SPLASH SCREEN (Dezent & Schnell) */
+    /* SPLASH SCREEN (Schnell & Funktional) */
     #splash {
       position: fixed;
       inset: 0;
@@ -43,18 +38,19 @@
       align-items: center;
       justify-content: center;
       z-index: 2000;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 0.5s ease;
     }
 
     #splash img {
       max-width: 300px;
-      width: 70vw;
-      margin-bottom: 30px;
+      width: 60vw;
+      height: auto;
     }
 
     #arrow {
-      font-size: 2rem;
-      color: var(--brand-blue);
+      margin-top: 30px;
+      font-size: 2.5rem;
+      color: var(--primary-blue);
       cursor: pointer;
       animation: bounce 2s infinite;
     }
@@ -69,23 +65,22 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: var(--glass);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+      background: var(--white);
+      border-bottom: 2px solid var(--gray);
     }
 
     .header-inner {
       max-width: 1200px;
       margin: 0 auto;
-      height: 90px;
+      height: 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 24px;
+      padding: 0 20px;
     }
 
     .brand img {
-      height: 65px; /* Logo pur */
+      height: 55px;
       width: auto;
     }
 
@@ -95,149 +90,150 @@
       gap: 20px;
     }
 
-    /* DER EINZIGE BUTTON */
+    /* EINZIGER BUTTON */
     .cta-button {
-      background: var(--brand-red);
+      background: var(--primary-red);
       color: var(--white);
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 6px -1px rgba(190, 18, 60, 0.2);
+      padding: 12px 24px;
+      border-radius: 4px; /* Eckiger = technischer/seriöser */
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background 0.2s;
     }
 
     .cta-button:hover {
-      background: #9f1239;
-      transform: translateY(-1px);
-      box-shadow: 0 10px 15px -3px rgba(190, 18, 60, 0.3);
+      background: #d13a1d;
     }
 
+    /* HAMBURGER MENÜ (3 Striche) */
     .menu-btn {
-      background: #f1f5f9;
+      background: none;
       border: none;
-      width: 48px;
-      height: 48px;
-      border-radius: 8px;
       cursor: pointer;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
       gap: 5px;
+      padding: 10px;
     }
 
     .menu-btn span {
       display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--primary);
+      width: 28px;
+      height: 3px;
+      background: var(--dark);
       border-radius: 2px;
-    }
-
-    /* HERO SECTION */
-    .hero {
-      padding: 80px 24px;
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      color: var(--primary);
-      line-height: 1.1;
-      margin: 0 0 24px;
-      font-weight: 850;
-      letter-spacing: -0.02em;
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      max-width: 700px;
-      margin: 0 auto 40px;
-      color: var(--text-main);
-    }
-
-    /* SERVICES (Modern Cards) */
-    .services {
-      max-width: 1200px;
-      margin: 0 auto 100px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      padding: 0 24px;
-    }
-
-    .card {
-      background: var(--white);
-      padding: 40px;
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s ease;
-      border: 1px solid rgba(0,0,0,0.03);
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card h3 {
-      font-size: 1.5rem;
-      color: var(--primary);
-      margin-top: 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .card h3::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--brand-blue);
-      display: inline-block;
     }
 
     /* MENU OVERLAY */
     .menu-overlay {
       position: fixed;
       inset: 0;
-      background: var(--primary);
+      background: var(--dark);
       z-index: 1500;
-      display: flex;
+      display: none;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 25px;
-      transform: translateX(100%);
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      gap: 20px;
     }
 
-    .menu-overlay.open { transform: translateX(0); }
-    .menu-overlay a { color: white; font-size: 2rem; font-weight: 700; text-decoration: none; opacity: 0.8; }
-    .menu-overlay a:hover { opacity: 1; color: var(--brand-blue); }
+    .menu-overlay.open {
+      display: flex;
+    }
+
+    .menu-overlay a {
+      color: var(--white);
+      font-size: 1.4rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .menu-overlay a:hover {
+      color: var(--primary-blue);
+    }
+
+    .close-menu {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* MAIN CONTENT */
+    main {
+      display: none; /* Wird nach Splash sichtbar */
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .hero {
+      padding: 40px 0;
+      border-bottom: 1px solid var(--gray);
+      margin-bottom: 40px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      color: var(--dark);
+      margin: 0 0 10px 0;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text);
+      margin: 0;
+    }
+
+    /* LEISTUNGEN GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--gray);
+      padding: 30px;
+      border-left: 5px solid var(--primary-blue);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--dark);
+    }
 
     footer {
+      margin-top: 60px;
+      padding: 40px 20px;
+      background: var(--gray);
       text-align: center;
-      padding: 60px 24px;
       font-size: 0.9rem;
-      border-top: 1px solid rgba(0,0,0,0.05);
-      background: white;
     }
 
-    @media (max-width: 768px) {
-      .hero { padding: 60px 20px; }
-      .header-inner { height: 75px; }
-      .cta-button { display: none; } /* Auf Mobile nur Menü für mehr Platz */
+    footer a {
+      margin: 0 10px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .cta-button { display: none; } /* Platzmangel auf Mobile */
+      .hero h1 { font-size: 1.8rem; }
     }
   </style>
 </head>
 <body>
 
   <div id="splash">
-    <img src="logo.png" alt="Hünig Logo">
+    <img src="logo.png" alt="Hünig Wärme- und Kältetechnik Logo">
     <div id="arrow">↓</div>
   </div>
 
@@ -248,8 +244,9 @@
       </a>
       
       <div class="header-right">
-        <a href="kontakt.html" class="cta-button">Jetzt anfragen</a>
+        <a href="kontakt.html" class="cta-button">Anfrage stellen</a>
         <button class="menu-btn" id="menuBtn">
+          <span></span>
           <span></span>
           <span></span>
         </button>
@@ -258,36 +255,46 @@
   </header>
 
   <nav class="menu-overlay" id="menuOverlay">
+    <div class="close-menu" id="closeMenu">✕</div>
     <a href="index.html">Startseite</a>
     <a href="waermepumpen.html">Wärmepumpen</a>
     <a href="klimaanlagen.html">Klimaanlagen</a>
     <a href="service.html">Service & Wartung</a>
-    <a href="kontakt.html">Anfrage</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+    <a href="agb.html">AGB</a>
   </nav>
 
-  <main id="content" style="display:none;">
+  <main id="content">
     <section class="hero">
-      <h1>Premium-Technik für Ihr Klima.</h1>
-      <p>Hünig Wärme- und Kältetechnik vereint meisterhafte Präzision mit nachhaltiger Innovation. Für ein Zuhause, das atmet.</p>
+      <h1>Hünig Wärme- und Kältetechnik</h1>
+      <p>Ihr Fachbetrieb für moderne Gebäudetechnik, Heizsysteme und Klimatisierung.</p>
     </section>
 
-    <section class="services">
+    <section class="grid">
       <div class="card">
         <h3>Wärmepumpen</h3>
-        <p>Hocheffiziente Heizsysteme der nächsten Generation. Reduzieren Sie Ihre Kosten und Ihren CO2-Fußabdruck nachhaltig.</p>
+        <p>Planung, Installation und Optimierung moderner Heizsysteme für Bestandsgebäude und Neubauten.</p>
       </div>
       <div class="card">
         <h3>Kältetechnik</h3>
-        <p>Präzise Kühlung für Wohnraum und Gewerbe. Wir planen Systeme, die leise, unsichtbar und extrem leistungsstark sind.</p>
+        <p>Klimatisierungslösungen für Privaträume und gewerbliche Objekte. Effizient und zuverlässig.</p>
       </div>
       <div class="card">
-        <h3>Meisterservice</h3>
-        <p>Wartung und Support auf höchstem Niveau. Wir lassen Sie nicht im Kalten stehen – versprochen.</p>
+        <h3>Wartung & Service</h3>
+        <p>Regelmäßige Überprüfung und Instandhaltung Ihrer Anlagen zur Sicherung der Langlebigkeit.</p>
       </div>
     </section>
 
     <footer>
-      <p>© <span id="y"></span> Hünig Wärme- und Kältetechnik | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
+      <p>© <span id="y"></span> Hünig Wärme- und Kältetechnik</p>
+      <p>
+        <a href="kontakt.html">Kontakt</a> | 
+        <a href="impressum.html">Impressum</a> | 
+        <a href="datenschutz.html">Datenschutz</a> | 
+        <a href="agb.html">AGB</a>
+      </p>
     </footer>
   </main>
 
@@ -297,18 +304,28 @@
     const splash = document.getElementById('splash');
     const content = document.getElementById('content');
     const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
     const overlay = document.getElementById('menuOverlay');
 
     function hideSplash() {
-      splash.style.transform = 'translateY(-100%)';
-      content.style.display = 'block';
+      splash.style.opacity = 0;
+      setTimeout(() => {
+        splash.style.display = 'none';
+        content.style.display = 'block';
+      }, 500);
     }
 
     document.getElementById('arrow').addEventListener('click', hideSplash);
-    setTimeout(hideSplash, 3000);
+    setTimeout(hideSplash, 2500);
 
     menuBtn.addEventListener('click', () => {
-      overlay.classList.toggle('open');
+      overlay.style.display = 'flex';
+      setTimeout(() => overlay.classList.add('open'), 10);
+    });
+
+    closeMenu.addEventListener('click', () => {
+      overlay.classList.remove('open');
+      setTimeout(() => overlay.style.display = 'none', 500);
     });
   </script>
 </body>
