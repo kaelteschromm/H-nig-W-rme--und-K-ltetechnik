@@ -1191,3 +1191,15 @@ h1, h2, h3 { overflow-wrap: break-word; -webkit-hyphens: auto; hyphens: auto; }
   .booking-foot .btn { width: 100%; }
 }
 .booking-dialog:focus { outline: none; }
+
+/* ---------- Google-Terminbuchung: Fenster weiß statt durchsichtig ----------
+   Googles Popup nutzt Farbvariablen, die es nur auf Google-Seiten gibt. */
+:root {
+  --gm3-sys-color-surface: #ffffff;
+  --gm3-sys-color-on-primary: #ffffff;
+}
+.hur54b iframe, .mmGMM { background-color: #ffffff !important; }
+@media (max-width: 640px) {
+  .hur54b { padding: 64px 8px 8px !important; }
+  .Xfsokf { top: 14px !important; right: 12px !important; }
+}
