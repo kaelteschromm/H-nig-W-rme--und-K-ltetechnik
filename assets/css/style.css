@@ -1078,3 +1078,43 @@ h1, h2, h3 { overflow-wrap: break-word; -webkit-hyphens: auto; hyphens: auto; }
 @media (max-width: 640px) {
   .page-hero h1 { font-size: clamp(1.8rem, 8.4vw, 2.4rem); }
 }
+
+/* ---------- Kompaktere Formularfelder ---------- */
+.field { gap: 5px; margin-top: 14px; }
+.field label { font-size: .9rem; }
+.field input, .field textarea, .field select { padding: 10px 13px; border-radius: 10px; font-size: 1rem; line-height: 1.4; }
+.field textarea { min-height: 88px; }
+.opt-hint { font-weight: 450; color: var(--muted); font-size: .82rem; margin-left: 2px; }
+.q-sm { font-size: .95rem; margin: 16px 0 8px !important; }
+.options-sm { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; }
+.options-sm .opt { min-height: 44px; padding: 10px 14px; font-size: .95rem; }
+.options-sm .opt.selected::after, .options-sm .opt[aria-pressed="true"]::after { top: 50%; transform: translateY(-50%); }
+
+.fieldset { border: 0; padding: 0; margin: 22px 0 0; min-width: 0; }
+.fieldset + .fieldset { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); }
+.fieldset legend {
+  padding: 0; margin-bottom: 2px;
+  font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue-strong);
+}
+
+/* Eingebetteter Buchungskalender */
+.calendar-embed { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); min-height: 320px; display: flex; }
+.calendar-frame { width: 100%; height: 720px; border: 0; }
+
+@media (max-width: 640px) {
+  .field { margin-top: 12px; }
+  .field input, .field textarea { padding: 9px 12px; }   /* Schrift bleibt 16px: verhindert Auto-Zoom auf dem iPhone */
+  .flow .card h3 { font-size: 1.1rem; }
+  .flow { gap: 14px; }
+  .options-sm { grid-template-columns: 1fr 1fr; }
+  .calendar-frame { height: 640px; }
+}
+.flow .form-card { margin-inline: 0; width: 100%; }
+.fieldset legend { float: left; width: 100%; }
+.fieldset legend + * { clear: both; }
+.fieldset .row { gap: 0 16px; }
+@media (max-width: 640px) {
+  .row { gap: 0; }
+}
+/* Obere Infoleiste auf Tablets ausblenden (bricht sonst in zwei Zeilen um) */
+@media (max-width: 900px) { .topbar { display: none; } }
