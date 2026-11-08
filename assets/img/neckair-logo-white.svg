@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 178" role="img" aria-label="Neckair"><title>Neckair</title>
+  <defs>
+    <linearGradient id="gBlue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5cb6f2"/><stop offset="1" stop-color="#1e88e5"/>
+    </linearGradient>
+    <linearGradient id="gOrange" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f9a24c"/><stop offset="1" stop-color="#f07e26"/>
+    </linearGradient>
+    <clipPath id="capClip"><rect x="300" y="35" width="820" height="100"/></clipPath>
+  </defs>
+  <g class="mark">
+    <rect x="12" y="66" width="48" height="104" rx="3" fill="#ffffff"/>
+    <rect x="222" y="8" width="48" height="106" rx="3" fill="#ffffff"/>
+    <g stroke="#0b2239" stroke-width="7" stroke-linejoin="round" paint-order="stroke">
+      <path fill="url(#gOrange)" d="M38 66 C92 58 126 80 152 106 C182 136 216 150 274 144 C236 176 188 172 152 142 C122 116 92 86 38 66 Z"/>
+      <path fill="#ffffff" d="M2 64 C42 44 96 40 128 62 C162 86 190 126 236 142 C194 144 162 114 134 88 C104 62 62 54 2 64 Z"/>
+      <path fill="url(#gBlue)" d="M14 14 C70 0 132 8 172 54 C202 88 236 116 286 120 C240 140 196 126 162 96 C128 64 80 42 14 50 Z"/>
+    </g>
+  </g>
+  <g fill="none" stroke-width="26" stroke-linejoin="miter" stroke-miterlimit="10" clip-path="url(#capClip)">
+    <g stroke="#ffffff">
+      <path d="M437 48 H338 V122 H437 M338 85 H425"/>
+      <path d="M570 61 A52 37 0 1 0 570 109"/>
+      <path d="M613 30 V140 M748 24 L624 85 L748 146"/>
+    </g>
+    <g stroke="#1e88e5">
+      <path d="M750 152 L820 22 L890 152"/>
+      <path d="M929 30 V140"/>
+      <path d="M983 140 V48 H1050 A18.5 18.5 0 0 1 1050 85 H994 M1036 85 L1094 143"/>
+    </g>
+  </g>
+</svg>

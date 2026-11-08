@@ -1,1220 +1,537 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="no-js">
 <head>
-  <meta charset="UTF-8" />
-  <title>Anfrage | Wielo Wärmetechnik</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Service, Wartung, Störung, Erneuerung oder Neubau anfragen – strukturiert, modern und direkt online.">
-
-  <style>
-    :root{
-      --primary:#123761;
-      --primary-dark:#0b2745;
-      --accent:#1e4c7d;
-      --cool:#3e6fa3;
-      --bg:#f4f7fb;
-      --card:rgba(255,255,255,0.97);
-      --card-soft:#f8fbfd;
-      --text:#172435;
-      --muted:#5f6f82;
-      --line:#d9e1ea;
-      --ok:#1f8b62;
-      --warn:#c34848;
-      --shadow:0 10px 28px rgba(12,28,52,.10);
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(30,76,125,.10), transparent 28%),
-        radial-gradient(circle at left center, rgba(62,111,163,.08), transparent 18%),
-        var(--bg);
-      color:var(--text);
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-    }
-
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-
-    .top-contact{
-      background:var(--primary-dark);
-      color:#fff;
-      font-size:.92rem;
-    }
-
-    .top-contact-inner{
-      max-width:1180px;
-      margin:0 auto;
-      padding:10px 16px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px 24px;
-      align-items:center;
-      justify-content:space-between;
-    }
-
-    .top-contact-left,
-    .top-contact-right{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px 20px;
-      align-items:center;
-    }
-
-    header{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:rgba(255,255,255,.97);
-      backdrop-filter:blur(8px);
-      border-bottom:1px solid rgba(217,225,234,.85);
-      box-shadow:0 2px 8px rgba(0,0,0,.05);
-    }
-
-    .header-inner{
-      max-width:1180px;
-      margin:0 auto;
-      min-height:78px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:0 16px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      min-width:0;
-    }
-
-    .logo{
-      height:52px;
-      width:auto;
-      flex-shrink:0;
-    }
-
-    .brand-text{min-width:0}
-
-    .brand-title{
-      margin:0;
-      color:var(--primary);
-      font-size:1.15rem;
-      font-weight:800;
-      line-height:1.1;
-      letter-spacing:.01em;
-    }
-
-    .brand-sub{
-      margin:4px 0 0;
-      color:var(--muted);
-      font-size:.9rem;
-      line-height:1.3;
-    }
-
-    .header-actions{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      flex-shrink:0;
-    }
-
-    .desktop-cta{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 18px;
-      border-radius:999px;
-      background:linear-gradient(135deg,var(--primary),var(--accent));
-      color:#fff;
-      font-weight:700;
-      box-shadow:0 10px 24px rgba(18,55,97,.20);
-      transition:transform .2s ease, box-shadow .2s ease;
-    }
-
-    .desktop-cta:hover{
-      transform:translateY(-2px);
-      box-shadow:0 14px 30px rgba(18,55,97,.28);
-    }
-
-    .menu-btn{
-      border:none;
-      background:transparent;
-      cursor:pointer;
-      padding:10px;
-      width:46px;
-      height:46px;
-      border-radius:12px;
-    }
-
-    .menu-btn:hover{background:#eef3f8}
-
-    .menu-btn .bar,
-    .menu-btn .bar::before,
-    .menu-btn .bar::after{
-      content:"";
-      display:block;
-      height:3px;
-      width:24px;
-      background:var(--primary);
-      border-radius:2px;
-      position:relative;
-      transition:.25s;
-      margin:0 auto;
-    }
-
-    .menu-btn .bar::before{
-      position:absolute;
-      top:-8px;
-      left:0;
-    }
-
-    .menu-btn .bar::after{
-      position:absolute;
-      top:8px;
-      left:0;
-    }
-
-    .menu-overlay{
-      position:fixed;
-      inset:0;
-      background:rgba(18,55,97,.97);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      gap:14px;
-      opacity:0;
-      pointer-events:none;
-      transform:translateX(100%);
-      transition:all .45s ease;
-      z-index:1100;
-      padding:28px 20px;
-    }
-
-    .menu-overlay.open{
-      opacity:1;
-      pointer-events:auto;
-      transform:translateX(0);
-    }
-
-    .menu-overlay a{
-      color:#fff;
-      font-size:1.28rem;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.03em;
-      opacity:0;
-      transform:translateX(70px);
-    }
-
-    .menu-overlay.open a{animation:slideIn .45s forwards}
-    .menu-overlay a:nth-child(1){animation-delay:.04s}
-    .menu-overlay a:nth-child(2){animation-delay:.08s}
-    .menu-overlay a:nth-child(3){animation-delay:.12s}
-    .menu-overlay a:nth-child(4){animation-delay:.16s}
-    .menu-overlay a:nth-child(5){animation-delay:.20s}
-    .menu-overlay a:nth-child(6){animation-delay:.24s}
-    .menu-overlay a:nth-child(7){animation-delay:.28s}
-    .menu-overlay a:nth-child(8){animation-delay:.32s}
-    .menu-overlay a:nth-child(9){animation-delay:.36s}
-    .menu-overlay a:nth-child(10){animation-delay:.40s}
-    .menu-overlay a:nth-child(11){animation-delay:.44s}
-    .menu-overlay a:nth-child(12){animation-delay:.48s}
-
-    @keyframes slideIn{
-      to{
-        transform:translateX(0);
-        opacity:1;
-      }
-    }
-
-    .wrap{
-      width:min(980px, calc(100% - 32px));
-      margin:0 auto;
-    }
-
-    main{padding:28px 0 70px}
-
-    .hero{margin-bottom:20px}
-
-    .hero-box{
-      background:linear-gradient(135deg, rgba(255,255,255,.98), rgba(255,255,255,.94));
-      border:1px solid rgba(217,225,234,.85);
-      border-radius:28px;
-      box-shadow:var(--shadow);
-      padding:30px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .hero-box::after{
-      content:"";
-      position:absolute;
-      top:-80px;
-      right:-80px;
-      width:220px;
-      height:220px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(30,76,125,.10), transparent 70%);
-      pointer-events:none;
-    }
-
-    .eyebrow{
-      display:inline-block;
-      margin-bottom:14px;
-      padding:8px 14px;
-      border-radius:999px;
-      background:#edf3f8;
-      color:var(--primary);
-      font-size:.9rem;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.04em;
-    }
-
-    h1{
-      margin:0 0 10px;
-      color:var(--primary);
-      font-size:clamp(2rem, 5vw, 3rem);
-      line-height:1.04;
-      letter-spacing:-.03em;
-    }
-
-    .sub{
-      color:var(--muted);
-      margin:0;
-      line-height:1.75;
-      font-size:1rem;
-      max-width:780px;
-    }
-
-    .card{
-      background:var(--card);
-      border:1px solid rgba(217,225,234,.85);
-      border-radius:24px;
-      box-shadow:var(--shadow);
-      padding:24px;
-      transition:opacity .35s ease, transform .35s ease;
-    }
-
-    .card.hide-on-send{
-      opacity:0;
-      transform:translateY(10px);
-      pointer-events:none;
-    }
-
-    h2{
-      margin:0 0 12px;
-      color:var(--primary);
-      font-size:1.5rem;
-    }
-
-    .progress{
-      height:10px;
-      background:#dfe7f0;
-      border-radius:999px;
-      overflow:hidden;
-      margin:18px 0 24px;
-    }
-
-    .bar{
-      height:100%;
-      width:0;
-      background:linear-gradient(90deg,var(--primary),var(--accent));
-      transition:width .25s;
-    }
-
-    .step{display:none}
-    .step.active{display:block}
-
-    .q{
-      font-weight:700;
-      margin:8px 0 14px;
-      color:var(--primary);
-      font-size:1.05rem;
-    }
-
-    .options{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-    }
-
-    .opt{
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:16px;
-      cursor:pointer;
-      background:#fff;
-      text-align:center;
-      user-select:none;
-      transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
-      font:inherit;
-      color:var(--text);
-      box-shadow:0 4px 12px rgba(12,28,52,.04);
-    }
-
-    .opt:hover{
-      transform:translateY(-2px);
-      border-color:#b9c9da;
-      box-shadow:0 10px 22px rgba(12,28,52,.08);
-    }
-
-    .opt.selected{
-      border-color:var(--primary);
-      box-shadow:0 0 0 3px rgba(18,55,97,.12);
-      background:#f7fbff;
-    }
-
-    .opt small{
-      display:block;
-      color:var(--muted);
-      font-size:.9rem;
-      margin-top:6px;
-      line-height:1.45;
-    }
-
-    .row{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-    }
-
-    .field{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-      margin:10px 0;
-    }
-
-    label{
-      font-size:.95rem;
-      color:var(--primary);
-      font-weight:600;
-    }
-
-    input,select,textarea{
-      border:1px solid #d5deea;
-      border-radius:14px;
-      padding:12px 14px;
-      font-size:1rem;
-      font-family:inherit;
-      background:#fff;
-      color:var(--text);
-      transition:border-color .18s ease, box-shadow .18s ease;
-    }
-
-    input:focus,select:focus,textarea:focus{
-      outline:none;
-      border-color:var(--primary);
-      box-shadow:0 0 0 3px rgba(18,55,97,.10);
-    }
-
-    textarea{
-      min-height:130px;
-      resize:vertical;
-    }
-
-    .hidden{
-      display:none !important;
-    }
-
-    .navbtns{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      margin-top:18px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 18px;
-      border-radius:999px;
-      border:0;
-      cursor:pointer;
-      font-weight:700;
-      font-family:inherit;
-      font-size:.98rem;
-      transition:transform .2s ease, box-shadow .2s ease, background .2s ease, opacity .2s ease;
-      text-decoration:none;
-    }
-
-    .btn:hover{transform:translateY(-2px)}
-
-    .btn.primary{
-      background:linear-gradient(135deg,var(--primary),var(--accent));
-      color:#fff;
-      box-shadow:0 10px 24px rgba(18,55,97,.18);
-    }
-
-    .btn.secondary{
-      background:#eef3f8;
-      color:var(--primary);
-      border:1px solid var(--line);
-    }
-
-    .btn.success{
-      background:linear-gradient(135deg,var(--ok),#2f9d76);
-      color:#fff;
-      box-shadow:0 10px 24px rgba(31,139,98,.18);
-    }
-
-    .btn.loading{
-      opacity:.8;
-      cursor:not-allowed;
-      pointer-events:none;
-    }
-
-    .hint{
-      color:var(--muted);
-      font-size:.95rem;
-      line-height:1.6;
-    }
-
-    .warn{
-      color:var(--warn);
-      font-size:.95rem;
-      line-height:1.5;
-    }
-
-    .sum{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-    }
-
-    .sum div{
-      background:var(--card-soft);
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:14px;
-      line-height:1.55;
-    }
-
-    .sum b{color:var(--primary)}
-
-    hr{
-      border:none;
-      border-top:1px solid var(--line);
-      margin:18px 0;
-    }
-
-    .success-screen{
-      display:none;
-      margin-top:22px;
-      background:linear-gradient(135deg, rgba(255,255,255,.98), rgba(255,255,255,.95));
-      border:1px solid rgba(217,225,234,.85);
-      border-radius:24px;
-      box-shadow:var(--shadow);
-      padding:42px 24px;
-      text-align:center;
-    }
-
-    .success-screen.show{
-      display:block;
-      animation:fadeInUp .5s ease forwards;
-    }
-
-    .success-spinner-wrap{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding:30px 0 10px;
-    }
-
-    .success-spinner{
-      width:58px;
-      height:58px;
-      border-radius:50%;
-      border:4px solid rgba(18,55,97,.12);
-      border-top-color:var(--primary);
-      animation:spin .8s linear infinite;
-    }
-
-    .success-check{
-      width:74px;
-      height:74px;
-      border-radius:50%;
-      background:linear-gradient(135deg,var(--ok),#2f9d76);
-      color:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin:0 auto 18px;
-      font-size:2rem;
-      box-shadow:0 12px 24px rgba(31,139,98,.18);
-    }
-
-    .success-screen h3{
-      margin:0 0 10px;
-      color:var(--primary);
-      font-size:1.55rem;
-    }
-
-    .success-screen p{
-      margin:0 auto;
-      max-width:620px;
-      color:var(--muted);
-      line-height:1.7;
-      font-size:1rem;
-    }
-
-    @keyframes spin{
-      to{transform:rotate(360deg)}
-    }
-
-    @keyframes fadeInUp{
-      from{
-        opacity:0;
-        transform:translateY(14px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
-    .honeypot{
-      position:absolute !important;
-      left:-9999px !important;
-      width:1px !important;
-      height:1px !important;
-      overflow:hidden !important;
-      opacity:0 !important;
-      pointer-events:none !important;
-    }
-
-    footer{
-      margin-top:auto;
-      border-top:1px solid var(--line);
-      background:rgba(255,255,255,.97);
-    }
-
-    .foot{
-      width:min(1180px, calc(100% - 32px));
-      margin:0 auto;
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      align-items:center;
-      justify-content:space-between;
-      padding:14px 0;
-      color:var(--muted);
-      font-size:.95rem;
-    }
-
-    .legal{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      align-items:center;
-    }
-
-    .legal a{
-      color:var(--muted);
-      text-decoration:none;
-    }
-
-    .legal a:hover{color:var(--primary)}
-
-    @media (max-width:760px){
-      .top-contact{display:none}
-      .header-inner{min-height:72px}
-      .brand-sub{display:none}
-      .desktop-cta{display:none}
-      .options,.row,.sum{grid-template-columns:1fr}
-      .hero-box,.card,.success-screen{padding:20px}
-      .menu-overlay a{font-size:1.16rem}
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anfrage | Neckair</title>
+  <meta name="description" content="Digitale Anfrage bei Neckair – Service, Wartung, Störung, Erneuerung oder Neubau Schritt für Schritt anfragen.">
+  <meta name="theme-color" content="#0b2239">
+  <meta property="og:title" content="Anfrage | Neckair">
+  <meta property="og:description" content="Digitale Anfrage bei Neckair – Service, Wartung, Störung, Erneuerung oder Neubau Schritt für Schritt anfragen.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="Haus%20am%20Wald.webp">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <noscript><style>#splash{display:none}.reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
 
-  <div class="top-contact">
-    <div class="top-contact-inner">
-      <div class="top-contact-left">
-        <span>Wärmepumpen</span>
-        <span>Klimaanlagen</span>
-        <span>Lüftung</span>
-        <span>Sanitär</span>
-      </div>
-      <div class="top-contact-right">
-        <span>Service & Wartung</span>
-        <span>Digitale Anfrage</span>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <div class="topbar">
+    <div class="container">
+      <nav aria-label="Leistungen">
+        <a href="waermepumpen.html">Wärmepumpen</a>
+        <a href="klimaanlagen.html">Klimaanlagen</a>
+        <a href="trinkwasserinstallationen.html">Trinkwasser &amp; Sanitär</a>
+        <a href="service.html">Service &amp; Wartung</a>
+      </nav>
+      <div class="topbar-right">
+        <span><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Service &amp; Wartung</span>
+        <span><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Persönliche Beratung</span>
       </div>
     </div>
   </div>
 
-  <header>
-    <div class="header-inner">
-      <a href="index.html" class="brand" aria-label="Startseite">
-        <img src="logo1.png" alt="Firmenlogo" class="logo">
-        <div class="brand-text">
-          <p class="brand-title">Wielo Wärmetechnik</p>
-          <p class="brand-sub">Moderne Wärme- und Gebäudetechnik</p>
-        </div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="Neckair – zur Startseite">
+        <img src="assets/img/neckair-logo.svg" alt="Neckair" width="1100" height="178">
       </a>
 
+      <nav class="main-nav" aria-label="Hauptnavigation">
+        <ul>
+          <li><a href="waermepumpen.html">Wärmepumpen</a></li>
+          <li><a href="klimaanlagen.html">Klimaanlagen</a></li>
+          <li><a href="trinkwasserinstallationen.html">Trinkwasser</a></li>
+          <li><a href="service.html">Service</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+        </ul>
+      </nav>
+
       <div class="header-actions">
-        <a href="kontakt.html" class="desktop-cta">Jetzt anfragen</a>
-        <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen"><span class="bar"></span></button>
+        <a href="kontakt.html" class="btn btn-primary btn-sm header-cta">Anfrage stellen</a>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menuOverlay">
+          <span class="bars"></span>
+        </button>
       </div>
     </div>
   </header>
 
-  <nav class="menu-overlay" id="menuOverlay" aria-label="Hauptmenü">
-    <a href="index.html">Startseite</a>
-    <a href="waermepumpen.html">Wärmepumpen</a>
-    <a href="klimaanlagen.html">Klimaanlagen</a>
-    <a href="lueftung.html">Lüftung</a>
-    <a href="trinkwasserinstallationen.html">Trinkwasser</a>
-    <a href="referenzen.html">Referenzen</a>
-    <a href="service.html">Service</a>
-    <a href="ueber-uns.html">Über uns</a>
-    <a href="kontakt.html">Anfrage</a>
-    <a href="impressum.html">Impressum</a>
-    <a href="datenschutz.html">Datenschutz</a>
-    <a href="agb.html">AGB</a>
+  <nav class="menu-overlay" id="menuOverlay" aria-label="Hauptmenü" aria-hidden="true">
+    <div class="container menu-overlay-head">
+      <span class="label">Menü</span>
+      <button class="menu-close" id="closeMenu" type="button" aria-label="Menü schließen">✕</button>
+    </div>
+    <div class="container menu-grid">
+      <div class="menu-primary">
+        <a href="index.html">Startseite <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="waermepumpen.html">Wärmepumpen <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="klimaanlagen.html">Klimaanlagen <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="trinkwasserinstallationen.html">Trinkwasser <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="service.html">Service & Wartung <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="ueber-uns.html">Über uns <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="kontakt.html" aria-current="page">Kontakt / Anfrage <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+      <div class="menu-side">
+        <div>
+          <h4>Schnell erledigt</h4>
+          <a href="wartung.html">Wartung anfragen</a>
+          <a href="stoerung.html">Störung melden</a>
+          <a href="kontakt.html" class="btn btn-primary">Anfrage stellen <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+        <div>
+          <h4>Rechtliches</h4>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+          <a href="agb.html">AGB</a>
+          <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+        </div>
+      </div>
+    </div>
   </nav>
 
-  <main class="wrap">
-    <section class="hero">
-      <div class="hero-box">
+  <main id="inhalt">
+
+    <section class="page-hero compact">
+      <div class="container">
         <div class="eyebrow">Digitale Anfrage</div>
         <h1>Was dürfen wir für Sie tun?</h1>
-        <p class="sub">
-          Wählen Sie Ihr Anliegen aus und führen Sie die Anfrage Schritt für Schritt durch.
-          Service, Wartung und Störung können direkt ausgewählt werden. Für Erneuerung und
-          Neubau startet anschließend der Assistent mit den passenden Abfragen.
-        </p>
+        <p class="lead">Wählen Sie Ihr Anliegen aus und führen Sie die Anfrage Schritt für Schritt durch. Service, Wartung und Störung können direkt ausgewählt werden. Für Erneuerung und Neubau startet anschließend der Assistent mit den passenden Abfragen.</p>
       </div>
     </section>
 
-    <div class="card" id="formCard">
-      <h2>Anfrage starten</h2>
+    <section class="section tight">
+      <div class="container">
+      <div class="card form-card" id="formCard">
+        <h2>Anfrage starten</h2>
+        <div class="progress-wrap">
+          <div class="progress-meta"><span id="stepLabel">Schritt 1</span><span id="stepName">Anliegen</span></div>
+          <div class="progress" role="progressbar" aria-label="Fortschritt" aria-valuemin="0" aria-valuemax="100" id="progressBar"><div class="bar" id="bar"></div></div>
+        </div>
 
-      <div class="progress" aria-label="Fortschritt">
-        <div class="bar" id="bar"></div>
+        <section class="step active" data-step="1" data-name="Anliegen" id="step1">
+          <div class="q">Worum geht es?</div>
+          <div class="options" aria-label="Anliegen wählen" id="anliegenOptions">
+            <button type="button" class="opt" data-key="anliegen" data-value="Service" aria-pressed="false">Service <small>Termin anfragen</small></button>
+            <button type="button" class="opt" data-key="anliegen" data-value="Wartung" aria-pressed="false">Wartung <small>regelmäßige Inspektion</small></button>
+            <button type="button" class="opt" data-key="anliegen" data-value="Störung" aria-pressed="false">Störung <small>Gerät funktioniert nicht</small></button>
+            <button type="button" class="opt" data-key="anliegen" data-value="Erneuerung" aria-pressed="false">Erneuerung <small>Altanlage ersetzen</small></button>
+            <button type="button" class="opt" data-key="anliegen" data-value="Neubau" aria-pressed="false">Neubau <small>Erstanlage planen</small></button>
+          </div>
+          <p class="hint" id="anliegenHint" aria-live="polite"></p>
+
+          <p class="form-error" role="alert"></p>
+          <div class="navbtns">
+            <span></span>
+            <button type="button" class="btn btn-blue" data-next>Nächster Schritt <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+          </div>
+        </section>
+
+        <section class="step" data-step="2" data-name="Objekt">
+          <div class="q">Objektart</div>
+          <div class="options">
+            <button type="button" class="opt" data-key="objekt" data-value="Wohnung" aria-pressed="false">Wohnung</button>
+            <button type="button" class="opt" data-key="objekt" data-value="Einfamilienhaus" aria-pressed="false">Einfamilienhaus</button>
+            <button type="button" class="opt" data-key="objekt" data-value="Mehrfamilienhaus" aria-pressed="false">Mehrfamilienhaus</button>
+            <button type="button" class="opt" data-key="objekt" data-value="Gewerbe" aria-pressed="false">Gewerbe</button>
+          </div>
+          <div class="row">
+            <div class="field"><label for="flaeche">Wohn-/Nutzfläche (m²) *</label><input id="flaeche" type="number" min="1" inputmode="numeric" placeholder="z. B. 120"></div>
+            <div class="field"><label for="baujahr">Baujahr *</label><input id="baujahr" type="number" min="1800" max="2100" inputmode="numeric" placeholder="z. B. 1998"></div>
+          </div>
+
+          <p class="form-error" role="alert"></p>
+          <div class="navbtns">
+            <button type="button" class="btn btn-secondary" data-prev>Zurück</button>
+            <button type="button" class="btn btn-blue" data-next>Nächster Schritt <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+          </div>
+        </section>
+
+        <section class="step" data-step="3" data-name="Bestand">
+          <div class="q">Sanierungsstand *</div>
+          <div class="options">
+            <button type="button" class="opt" data-key="sanierung" data-value="keine" aria-pressed="false">Keine</button>
+            <button type="button" class="opt" data-key="sanierung" data-value="teilweise" aria-pressed="false">Teilweise <small>Fenster/Dämmung</small></button>
+            <button type="button" class="opt" data-key="sanierung" data-value="umfassend" aria-pressed="false">Umfassend</button>
+          </div>
+          <div class="q">Wärmeabgabe *</div>
+          <div class="options">
+            <button type="button" class="opt" data-key="abgabe" data-value="Heizkörper" aria-pressed="false">Heizkörper</button>
+            <button type="button" class="opt" data-key="abgabe" data-value="Fußbodenheizung" aria-pressed="false">Fußbodenheizung</button>
+            <button type="button" class="opt" data-key="abgabe" data-value="Beides" aria-pressed="false">Beides</button>
+          </div>
+          <div class="q">Bisherige Heizart *</div>
+          <div class="options">
+            <button type="button" class="opt" data-key="altanlage" data-value="Gas" aria-pressed="false">Gas</button>
+            <button type="button" class="opt" data-key="altanlage" data-value="Öl" aria-pressed="false">Öl</button>
+            <button type="button" class="opt" data-key="altanlage" data-value="Pellet" aria-pressed="false">Pellet</button>
+            <button type="button" class="opt" data-key="altanlage" data-value="Nachtspeicher" aria-pressed="false">Nachtspeicher</button>
+            <button type="button" class="opt" data-key="altanlage" data-value="Fernwärme" aria-pressed="false">Fernwärme</button>
+            <button type="button" class="opt" data-key="altanlage" data-value="Keine/Neu" aria-pressed="false">Keine / Neu</button>
+            <button type="button" class="opt" data-key="altanlage" data-value="Andere" aria-pressed="false">Andere</button>
+          </div>
+          <div id="verbrauchWrapper" class="hidden">
+            <div class="field"><label for="verbrauch">Aktueller Verbrauch *</label><input id="verbrauch" placeholder="z. B. 28000 kWh Gas pro Jahr oder 2500 Liter Öl pro Jahr"></div>
+          </div>
+
+          <p class="form-error" role="alert"></p>
+          <div class="navbtns">
+            <button type="button" class="btn btn-secondary" data-prev>Zurück</button>
+            <button type="button" class="btn btn-blue" data-next>Nächster Schritt <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+          </div>
+        </section>
+
+        <section class="step" data-step="4" data-name="Wunsch">
+          <div class="q">Was ist gewünscht?</div>
+          <div class="options">
+            <button type="button" class="opt" data-key="wunsch" data-value="Wärmepumpe" aria-pressed="false">Wärmepumpe</button>
+            <button type="button" class="opt" data-key="wunsch" data-value="Klimaanlage" aria-pressed="false">Klimaanlage</button>
+            <button type="button" class="opt" data-key="wunsch" data-value="Lüftung" aria-pressed="false">Lüftung</button>
+            <button type="button" class="opt" data-key="wunsch" data-value="Trinkwasser" aria-pressed="false">Trinkwasser</button>
+          </div>
+          <div class="q">Wie schnell soll es gehen?</div>
+          <div class="options">
+            <button type="button" class="opt" data-key="zeit" data-value="sofort" aria-pressed="false">Sofort / dringend</button>
+            <button type="button" class="opt" data-key="zeit" data-value="3monate" aria-pressed="false">In den nächsten 3 Monaten</button>
+            <button type="button" class="opt" data-key="zeit" data-value="6monate" aria-pressed="false">In 3–6 Monaten</button>
+            <button type="button" class="opt" data-key="zeit" data-value="flexibel" aria-pressed="false">Flexibel / nach Absprache</button>
+          </div>
+          <div class="field"><label for="bemerkung">Zusatzinfo (optional)</label><textarea id="bemerkung" placeholder="z. B. gewünschte Marke, aktuelle Probleme, besondere Hinweise oder Fotos folgen per Mail"></textarea></div>
+
+          <p class="form-error" role="alert"></p>
+          <div class="navbtns">
+            <button type="button" class="btn btn-secondary" data-prev>Zurück</button>
+            <button type="button" class="btn btn-blue" data-next>Nächster Schritt <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+          </div>
+        </section>
+
+        <section class="step" data-step="5" data-name="Adresse">
+          <div class="q">Wo befindet sich das Objekt?</div>
+          <div class="row">
+            <div class="field"><label for="plz">PLZ / Ort *</label><input id="plz" autocomplete="postal-code" placeholder="z. B. 68753 Waghäusel"></div>
+            <div class="field" id="bewohnerField"><label for="bewohner">Anzahl Bewohner <span id="bewohnerReq">*</span></label><input type="number" id="bewohner" min="1" inputmode="numeric" placeholder="z. B. 3"></div>
+          </div>
+          <div class="field"><label for="adresse">Straße &amp; Hausnummer *</label><input id="adresse" autocomplete="street-address" placeholder="z. B. Musterstraße 12"></div>
+
+          <p class="form-error" role="alert"></p>
+          <div class="navbtns">
+            <button type="button" class="btn btn-secondary" data-prev>Zurück</button>
+            <button type="button" class="btn btn-blue" data-next>Nächster Schritt <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+          </div>
+        </section>
+
+        <section class="step" data-step="6" data-name="Kontakt">
+          <div class="q">Ihre Angaben im Überblick</div>
+          <div class="sum" id="summary"></div>
+          <hr>
+          <div class="row">
+            <div class="field"><label for="nameB">Ihr Name *</label><input id="nameB" autocomplete="name" required placeholder="Vor- und Nachname"></div>
+            <div class="field"><label for="emailB">E-Mail *</label><input id="emailB" type="email" autocomplete="email" required placeholder="ihre.email@beispiel.de"></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="telefonB">Telefon</label><input id="telefonB" type="tel" autocomplete="tel" placeholder="+49 …"></div>
+            <div></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="datumVon">Wunschtermin von</label><input id="datumVon" type="date"></div>
+            <div class="field"><label for="datumBis">Wunschtermin bis</label><input id="datumBis" type="date"></div>
+          </div>
+          <div class="field"><label for="nachrichtB">Nachricht (optional)</label><textarea id="nachrichtB" placeholder="Weitere Hinweise, Erreichbarkeit oder ergänzende Informationen"></textarea></div>
+          <div class="honeypot" aria-hidden="true">
+            <label for="website">Bitte dieses Feld leer lassen</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <p class="hint">Nach dem Absenden wird Ihre Anfrage direkt übermittelt. Hinweise zur Verarbeitung Ihrer Daten finden Sie in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+
+          <p class="form-error" role="alert"></p>
+          <div class="navbtns">
+            <button type="button" class="btn btn-secondary" data-prev>Zurück</button>
+            <button type="button" class="btn btn-primary" id="sendBtnB">Anfrage absenden <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+          </div>
+        </section>
       </div>
 
-      <section class="step active" data-step="1" id="step1">
-        <div class="q">Worum geht es?</div>
-        <div class="options" role="listbox" aria-label="Anliegen wählen" id="anliegenOptions">
-          <button type="button" class="opt" data-key="anliegen" data-value="Service">Service <small>Termin anfragen</small></button>
-          <button type="button" class="opt" data-key="anliegen" data-value="Wartung">Wartung <small>regelmäßige Inspektion</small></button>
-          <button type="button" class="opt" data-key="anliegen" data-value="Störung">Störung <small>Gerät funktioniert nicht</small></button>
-          <button type="button" class="opt" data-key="anliegen" data-value="Erneuerung">Erneuerung <small>Altanlage ersetzen</small></button>
-          <button type="button" class="opt" data-key="anliegen" data-value="Neubau">Neubau <small>Erstanlage planen</small></button>
-        </div>
-
-        <div class="navbtns">
-          <span></span>
-          <button type="button" class="btn primary" data-next>Nächster Schritt</button>
-        </div>
-      </section>
-
-      <section class="step" data-step="2">
-        <div class="q">Objektart</div>
-        <div class="options">
-          <button type="button" class="opt" data-key="objekt" data-value="Wohnung">Wohnung</button>
-          <button type="button" class="opt" data-key="objekt" data-value="Einfamilienhaus">Einfamilienhaus</button>
-          <button type="button" class="opt" data-key="objekt" data-value="Mehrfamilienhaus">Mehrfamilienhaus</button>
-          <button type="button" class="opt" data-key="objekt" data-value="Gewerbe">Gewerbe</button>
-        </div>
-
-        <div class="row">
-          <div class="field">
-            <label for="flaeche">Wohn-/Nutzfläche (m²) *</label>
-            <input type="number" id="flaeche" min="1" placeholder="z. B. 120" />
-          </div>
-          <div class="field">
-            <label for="baujahr">Baujahr *</label>
-            <input type="number" id="baujahr" min="1800" max="2100" placeholder="z. B. 1998" />
-          </div>
-        </div>
-
-        <div class="navbtns">
-          <button type="button" class="btn secondary" data-prev>Zurück</button>
-          <button type="button" class="btn primary" data-next>Nächster Schritt</button>
-        </div>
-      </section>
-
-      <section class="step" data-step="3">
-        <div class="q">Sanierungsstand *</div>
-        <div class="options">
-          <button type="button" class="opt" data-key="sanierung" data-value="keine">Keine</button>
-          <button type="button" class="opt" data-key="sanierung" data-value="teilweise">Teilweise (Fenster/Dämmung)</button>
-          <button type="button" class="opt" data-key="sanierung" data-value="umfassend">Umfassend</button>
-        </div>
-
-        <div class="q" style="margin-top:16px">Wärmeabgabe *</div>
-        <div class="options">
-          <button type="button" class="opt" data-key="abgabe" data-value="Heizkörper">Heizkörper</button>
-          <button type="button" class="opt" data-key="abgabe" data-value="Fußbodenheizung">Fußbodenheizung</button>
-          <button type="button" class="opt" data-key="abgabe" data-value="Beides">Beides</button>
-        </div>
-
-        <div class="q" style="margin-top:16px">Bisherige Heizart *</div>
-        <div class="options">
-          <button type="button" class="opt" data-key="altanlage" data-value="Gas">Gas</button>
-          <button type="button" class="opt" data-key="altanlage" data-value="Öl">Öl</button>
-          <button type="button" class="opt" data-key="altanlage" data-value="Pellet">Pellet</button>
-          <button type="button" class="opt" data-key="altanlage" data-value="Nachtspeicher">Nachtspeicher</button>
-          <button type="button" class="opt" data-key="altanlage" data-value="Fernwärme">Fernwärme</button>
-          <button type="button" class="opt" data-key="altanlage" data-value="Keine/Neu">Keine / Neu</button>
-          <button type="button" class="opt" data-key="altanlage" data-value="Andere">Andere</button>
-        </div>
-
-        <div id="verbrauchWrapper" class="hidden">
-          <div class="field">
-            <label for="verbrauch">Aktueller Verbrauch *</label>
-            <input id="verbrauch" placeholder="z. B. 28000 kWh Gas pro Jahr oder 2500 Liter Öl pro Jahr">
-          </div>
-        </div>
-
-        <div class="navbtns">
-          <button type="button" class="btn secondary" data-prev>Zurück</button>
-          <button type="button" class="btn primary" data-next>Nächster Schritt</button>
-        </div>
-      </section>
-
-      <section class="step" data-step="4">
-        <div class="q">Was ist gewünscht?</div>
-        <div class="options">
-          <button type="button" class="opt" data-key="wunsch" data-value="Wärmepumpe">Wärmepumpe</button>
-          <button type="button" class="opt" data-key="wunsch" data-value="Klimaanlage">Klimaanlage</button>
-          <button type="button" class="opt" data-key="wunsch" data-value="Lüftung">Lüftung</button>
-          <button type="button" class="opt" data-key="wunsch" data-value="Trinkwasser">Trinkwasser</button>
-        </div>
-
-        <div class="q" style="margin-top:16px">Wie schnell soll es gehen?</div>
-        <div class="options">
-          <button type="button" class="opt" data-key="zeit" data-value="sofort">Sofort / dringend</button>
-          <button type="button" class="opt" data-key="zeit" data-value="3monate">In den nächsten 3 Monaten</button>
-          <button type="button" class="opt" data-key="zeit" data-value="6monate">In 3–6 Monaten</button>
-          <button type="button" class="opt" data-key="zeit" data-value="flexibel">Flexibel / nach Absprache</button>
-        </div>
-
-        <div class="field">
-          <label for="bemerkung">Zusatzinfo (optional)</label>
-          <textarea id="bemerkung" placeholder="z. B. gewünschte Marke, aktuelle Probleme, besondere Hinweise oder Fotos folgen per Mail"></textarea>
-        </div>
-
-        <div class="navbtns">
-          <button type="button" class="btn secondary" data-prev>Zurück</button>
-          <button type="button" class="btn primary" data-next>Nächster Schritt</button>
-        </div>
-      </section>
-
-      <section class="step" data-step="5">
-        <div class="row">
-          <div class="field">
-            <label for="plz">PLZ / Ort *</label>
-            <input id="plz" placeholder="z. B. 69120 Heidelberg" />
-          </div>
-          <div class="field">
-            <label for="bewohner">Anzahl Bewohner *</label>
-            <input type="number" id="bewohner" min="1" placeholder="z. B. 3" />
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="adresse">Straße & Hausnummer *</label>
-          <input id="adresse" placeholder="z. B. Musterstraße 12" />
-        </div>
-
-        <div class="navbtns">
-          <button type="button" class="btn secondary" data-prev>Zurück</button>
-          <button type="button" class="btn primary" data-next>Nächster Schritt</button>
-        </div>
-      </section>
-
-      <section class="step" data-step="6">
-        <div class="q">Ihre Angaben im Überblick</div>
-        <div class="sum" id="summary"></div>
-
-        <hr>
-
-        <div class="row">
-          <div class="field">
-            <label for="nameB">Ihr Name *</label>
-            <input id="nameB" required placeholder="Vor- und Nachname" />
-          </div>
-          <div class="field">
-            <label for="emailB">E-Mail *</label>
-            <input type="email" id="emailB" required placeholder="ihre.email@beispiel.de" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="field">
-            <label for="telefonB">Telefon</label>
-            <input id="telefonB" placeholder="+49 ..." />
-          </div>
-          <div class="field">
-            <label for="datumVon">Wunschtermin von</label>
-            <input type="date" id="datumVon" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="field">
-            <label for="datumBis">Wunschtermin bis</label>
-            <input type="date" id="datumBis" />
-          </div>
-          <div class="field">
-            <label for="nachrichtB">Nachricht (optional)</label>
-            <textarea id="nachrichtB" placeholder="Weitere Hinweise, Erreichbarkeit oder ergänzende Informationen"></textarea>
-          </div>
-        </div>
-
-        <div class="honeypot" aria-hidden="true">
-          <label for="website">Bitte dieses Feld leer lassen</label>
-          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-        </div>
-
-        <p class="hint">
-          Nach dem Absenden wird Ihre Anfrage direkt übermittelt.
-        </p>
-
-        <p class="warn" id="errB" style="display:none">
-          Bitte füllen Sie mindestens Name, E-Mail und die Pflichtfelder aus.
-        </p>
-
-        <div class="navbtns">
-          <button type="button" class="btn secondary" data-prev>Zurück</button>
-          <button type="button" class="btn success" id="sendBtnB">Anfrage absenden</button>
-        </div>
-      </section>
-    </div>
-
-    <div class="success-screen" id="successScreen">
-      <div class="success-spinner-wrap" id="successSpinnerWrap">
-        <div class="success-spinner"></div>
+      <div class="success-screen" id="successScreen" role="status" aria-live="polite">
+        <div id="successSpinnerWrap"><div class="success-spinner"></div><p class="hint">Wird gesendet …</p></div>
+        <div class="success-check hidden" id="successCheck">✓</div>
+        <h2 id="successTitle" class="hidden">Vielen Dank für Ihre Anfrage.</h2>
+        <p id="successText" class="hidden lead" style="margin-inline:auto">Ihre Anfrage wurde erfolgreich versendet. Wir melden uns schnellstmöglich bei Ihnen.</p>
+        <p id="successBack" class="hidden" style="margin-top:24px"><a href="index.html" class="btn btn-secondary">Zur Startseite</a></p>
       </div>
-      <div class="success-check hidden" id="successCheck">✓</div>
-      <h3 id="successTitle" class="hidden">Vielen Dank für Ihre Anfrage.</h3>
-      <p id="successText" class="hidden">Ihre Anfrage wurde erfolgreich versendet. Wir melden uns schnellstmöglich bei Ihnen.</p>
-    </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer>
-    <div class="foot">
-      <div>© <span id="y"></span> Wielo Wärmetechnik</div>
-      <div class="legal" aria-label="Rechtliche Links">
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/img/neckair-logo-white.svg" alt="Neckair" width="1100" height="178" loading="lazy">
+        <p class="footer-tagline">Kälte<i>•</i>Klima<i>•</i>Wärmepumpen<i>•</i>Sanitär</p>
+        <p>Ihr Fachbetrieb für moderne Gebäudetechnik, Heizsysteme und Klimatisierung.</p>
+      </div>
+      <div>
+        <h4>Leistungen</h4>
+        <ul>
+          <li><a href="waermepumpen.html">Wärmepumpen</a></li>
+          <li><a href="klimaanlagen.html">Klimaanlagen</a></li>
+          <li><a href="trinkwasserinstallationen.html">Trinkwasser</a></li>
+          <li><a href="service.html">Service &amp; Wartung</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="kontakt.html">Anfrage stellen</a></li>
+          <li><a href="wartung.html">Wartung anfragen</a></li>
+          <li><a href="stoerung.html">Störung melden</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+          <li><a href="agb.html">AGB</a></li>
+          <li><a href="nutzungsbedingungen.html">Nutzungsbedingungen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div>© <span id="y"></span> Neckair</div>
+      <nav aria-label="Rechtliche Links">
+        <a href="kontakt.html">Kontakt</a>
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Datenschutz</a>
         <a href="agb.html">AGB</a>
-        <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
-        <a href="kontakt.html">Anfrage</a>
-      </div>
+      </nav>
     </div>
   </footer>
 
+  <script src="assets/js/main.js"></script>
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    const menuBtn  = document.getElementById('menuBtn');
-    const overlay  = document.getElementById('menuOverlay');
-    menuBtn.addEventListener('click', ()=> overlay.classList.toggle('open'));
-    overlay.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> overlay.classList.remove('open')));
-
-    const steps = Array.from(document.querySelectorAll('.step'));
-    const bar = document.getElementById('bar');
-    let current = 0;
-    const data = {};
+  (function(){
     const SEND_TO = 'https://formspree.io/f/xaqpnnqp';
-
-    const verbrauchWrapper = document.getElementById('verbrauchWrapper');
-    const verbrauchInput = document.getElementById('verbrauch');
-
-    function updateProgress(){
-      const visible = steps.filter(s => s.style.display !== 'none' || s.classList.contains('active'));
-      const idx = visible.indexOf(steps[current]);
-      const total = visible.length;
-      const pct = Math.max(0, ((idx + 1) / total) * 100);
-      bar.style.width = pct + '%';
+    const $ = (id) => document.getElementById(id);
+    const val = (id) => ($(id) ? $(id).value.trim() : '');
+    const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const isEmail = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
+    function markInvalid(ids){
+      document.querySelectorAll('[aria-invalid="true"]').forEach(el => el.removeAttribute('aria-invalid'));
+      ids.forEach(id => { if ($(id)) $(id).setAttribute('aria-invalid', 'true'); });
+      if (ids.length && $(ids[0])) $(ids[0]).focus();
     }
-
-    function showStep(i){
-      steps.forEach((s, idx)=> s.classList.toggle('active', idx === i));
-      current = i;
-      updateProgress();
-      if (steps[i].dataset.step === '6') renderSummary();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    function showError(scope, msg){
+      const box = scope.querySelector('.form-error');
+      if (!box) return;
+      box.textContent = msg || '';
+      box.classList.toggle('show', !!msg);
     }
-
-    function updateVerbrauchField(){
-      const needsVerbrauch = data.altanlage === 'Gas' || data.altanlage === 'Öl';
-      verbrauchWrapper.classList.toggle('hidden', !needsVerbrauch);
-      if (!needsVerbrauch) {
-        verbrauchInput.value = '';
-        data.verbrauch = '';
-      }
-    }
-
-    updateProgress();
-
-    document.getElementById('anliegenOptions').addEventListener('click', (e)=>{
-      const btn = e.target.closest('.opt');
-      if(!btn) return;
-      document.querySelectorAll('#anliegenOptions .opt').forEach(o=>o.classList.remove('selected'));
-      btn.classList.add('selected');
-      data.anliegen = btn.dataset.value;
-    });
-
-    document.getElementById('anliegenOptions').addEventListener('dblclick', (e)=>{
-      const btn = e.target.closest('.opt');
-      if(!btn) return;
-      const val = btn.dataset.value;
-      data.anliegen = val;
-
-      if (val === 'Service')   { window.location.href = 'service.html'; return; }
-      if (val === 'Wartung')   { window.location.href = 'wartung.html'; return; }
-      if (val === 'Störung')   { window.location.href = 'stoerung.html'; return; }
-
-      showStep(1);
-    });
-
-    document.querySelectorAll('[data-next]').forEach(b=>{
-      b.addEventListener('click', ()=>{
-        const stepId = steps[current].dataset.step;
-
-        if (stepId === '1'){
-          if (!data.anliegen) return alert('Bitte Anliegen auswählen.');
-          if (['Service','Wartung','Störung'].includes(data.anliegen)) return;
-        }
-
-        if (stepId === '2'){
-          if (!data.objekt) return alert('Bitte Objektart wählen.');
-          const fl = document.getElementById('flaeche').value.trim();
-          const bj = document.getElementById('baujahr').value.trim();
-          if (!fl || !bj) return alert('Bitte Fläche und Baujahr eintragen.');
-          data.flaeche = fl;
-          data.baujahr = bj;
-        }
-
-        if (stepId === '3'){
-          if (!data.sanierung) return alert('Bitte Sanierungsstand wählen.');
-          if (!data.abgabe) return alert('Bitte Wärmeabgabe wählen.');
-          if (!data.altanlage) return alert('Bitte bisherige Heizart wählen.');
-          if ((data.altanlage === 'Gas' || data.altanlage === 'Öl') && !verbrauchInput.value.trim()) {
-            return alert('Bitte den aktuellen Gas- oder Ölverbrauch angeben.');
-          }
-          data.verbrauch = verbrauchInput.value.trim();
-        }
-
-        if (stepId === '4'){
-          if (!data.wunsch) return alert('Bitte Wunsch auswählen.');
-          if (!data.zeit) return alert('Bitte Zeitrahmen wählen.');
-          data.bemerkung = document.getElementById('bemerkung').value.trim();
-        }
-
-        if (stepId === '5'){
-          const plz = document.getElementById('plz').value.trim();
-          const adr = document.getElementById('adresse').value.trim();
-          const bew = document.getElementById('bewohner').value.trim();
-          if (!plz || !adr || !bew) return alert('Bitte PLZ/Ort, Straße und Anzahl Bewohner angeben.');
-          data.plz = plz;
-          data.adresse = adr;
-          data.bewohner = bew;
-        }
-
-        if (current < steps.length - 1) showStep(current + 1);
-      });
-    });
-
-    document.querySelectorAll('[data-prev]').forEach(b=>{
-      b.addEventListener('click', ()=> showStep(Math.max(0, current - 1)));
-    });
-
-    document.querySelectorAll('.options').forEach(group=>{
-      group.addEventListener('click', (e)=>{
-        const btn = e.target.closest('.opt');
-        if(!btn) return;
-        group.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
-        btn.classList.add('selected');
-        const key = btn.dataset.key;
-        const value = btn.dataset.value;
-        if (key) data[key] = value;
-        if (key === 'altanlage') updateVerbrauchField();
-      });
-
-      group.addEventListener('dblclick', (e)=>{
-        const btn = e.target.closest('.opt');
-        if(!btn) return;
-        const key = btn.dataset.key;
-        const value = btn.dataset.value;
-        if (key) data[key] = value;
-        if (key === 'altanlage') updateVerbrauchField();
-
-        const stepEl = group.closest('.step');
-        if (stepEl && stepEl.dataset.step !== '1'){
-          document.querySelector('.step.active [data-next]')?.click();
-        }
-      });
-    });
-
-    function renderSummary(){
-      const datumVon = document.getElementById('datumVon').value;
-      const datumBis = document.getElementById('datumBis').value;
-      const wunschterminText = datumVon || datumBis ? `${datumVon || '-'} bis ${datumBis || '-'}` : '-';
-
-      const el = document.getElementById('summary');
-      el.innerHTML = `
-        <div><b>Anliegen:</b><br>${data.anliegen || '-'}</div>
-        <div><b>Objekt:</b><br>${data.objekt || '-'}</div>
-        <div><b>Fläche (m²):</b><br>${data.flaeche || '-'}</div>
-        <div><b>Baujahr:</b><br>${data.baujahr || '-'}</div>
-        <div><b>Sanierung:</b><br>${data.sanierung || '-'}</div>
-        <div><b>Wärmeabgabe:</b><br>${data.abgabe || '-'}</div>
-        <div><b>Bisherige Heizart:</b><br>${data.altanlage || '-'}</div>
-        <div><b>Aktueller Verbrauch:</b><br>${data.verbrauch || '-'}</div>
-        <div><b>Wunsch:</b><br>${data.wunsch || '-'}</div>
-        <div><b>Zeitrahmen:</b><br>${data.zeit || '-'}</div>
-        <div><b>PLZ/Ort:</b><br>${data.plz || '-'}</div>
-        <div><b>Straße:</b><br>${data.adresse || '-'}</div>
-        <div><b>Bewohner:</b><br>${data.bewohner || '-'}</div>
-        <div><b>Wunschtermin:</b><br>${wunschterminText}</div>
-        <div style="grid-column:1/-1"><b>Zusatzinfo:</b><br>${(data.bemerkung || '').replace(/\n/g,'<br>') || '-'}</div>
-      `;
-    }
-
-    async function sendToFormspree(payload){
-      try{
+    async function send(payload){
+      try {
         const res = await fetch(SEND_TO, {
-          method:'POST',
-          headers:{
-            'Accept':'application/json',
-            'Content-Type':'application/json'
-          },
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
         return res.ok;
-      }catch(e){
-        return false;
-      }
+      } catch (e) { return false; }
+    }
+    function showSuccess(formCard){
+      formCard.classList.add('hide-on-send');
+      $('successScreen').classList.add('show');
+      window.scrollTo({ top: $('successScreen').offsetTop - 120, behavior: 'smooth' });
+    }
+    function finishSuccess(){
+      setTimeout(() => {
+        $('successSpinnerWrap').classList.add('hidden');
+        ['successCheck','successTitle','successText','successBack'].forEach(id => $(id).classList.remove('hidden'));
+      }, 700);
+    }
+    function failSuccess(formCard){
+      $('successScreen').classList.remove('show');
+      formCard.classList.remove('hide-on-send');
+    }
+    /* Auswahl-Buttons */
+    function bindOptions(data, onChange){
+      document.querySelectorAll('.options').forEach(group => {
+        group.addEventListener('click', (e) => {
+          const btn = e.target.closest('.opt');
+          if (!btn) return;
+          group.querySelectorAll('.opt').forEach(o => { o.classList.remove('selected'); o.setAttribute('aria-pressed','false'); });
+          btn.classList.add('selected');
+          btn.setAttribute('aria-pressed','true');
+          data[btn.dataset.key] = btn.dataset.value;
+          if (onChange) onChange(btn.dataset.key, btn.dataset.value, group);
+        });
+      });
     }
 
-    const sendBtn = document.getElementById('sendBtnB');
-    const errBox = document.getElementById('errB');
-    const formCard = document.getElementById('formCard');
-    const successScreen = document.getElementById('successScreen');
-    const successSpinnerWrap = document.getElementById('successSpinnerWrap');
-    const successCheck = document.getElementById('successCheck');
-    const successTitle = document.getElementById('successTitle');
-    const successText = document.getElementById('successText');
+    const steps = Array.from(document.querySelectorAll('.step'));
+    const bar = $('bar');
+    const data = {};
+    let current = 0;
 
-    sendBtn.addEventListener('click', async ()=>{
-      errBox.style.display = 'none';
+    const REDIRECT = { 'Wartung': 'wartung.html', 'Störung': 'stoerung.html' };
+    /* Service: direkt zu Adresse + Kontakt. Erneuerung/Neubau: kompletter Assistent. */
+    function path(){
+      if (data.anliegen === 'Service') return [0, 4, 5];
+      return [0, 1, 2, 3, 4, 5];
+    }
 
-      const name = document.getElementById('nameB').value.trim();
-      const email = document.getElementById('emailB').value.trim();
-      const honeypot = document.getElementById('website').value.trim();
-      const datumVon = document.getElementById('datumVon').value;
-      const datumBis = document.getElementById('datumBis').value;
+    function updateProgress(){
+      const p = path();
+      const idx = Math.max(0, p.indexOf(current));
+      const pct = ((idx + 1) / p.length) * 100;
+      bar.style.width = pct + '%';
+      $('progressBar').setAttribute('aria-valuenow', Math.round(pct));
+      $('stepLabel').textContent = 'Schritt ' + (idx + 1) + ' von ' + p.length;
+      $('stepName').textContent = steps[current].dataset.name;
+    }
 
-      if (honeypot) return;
+    function showStep(i){
+      steps.forEach((s, idx) => s.classList.toggle('active', idx === i));
+      current = i;
+      updateProgress();
+      if (steps[i].dataset.step === '6') renderSummary();
+      const card = $('formCard');
+      if (card.getBoundingClientRect().top < 0) window.scrollTo({ top: card.offsetTop - 100, behavior: 'smooth' });
+    }
 
-      if (!name || !email || !data.anliegen || !data.plz || !data.adresse || !data.bewohner) {
-        errBox.style.display = 'block';
-        return;
+    const verbrauchWrapper = $('verbrauchWrapper');
+    const verbrauchInput = $('verbrauch');
+    function updateVerbrauchField(){
+      const needs = data.altanlage === 'Gas' || data.altanlage === 'Öl';
+      verbrauchWrapper.classList.toggle('hidden', !needs);
+      if (!needs) { verbrauchInput.value = ''; data.verbrauch = ''; }
+    }
+
+    bindOptions(data, (key, value) => {
+      showError(steps[current], '');
+      if (key === 'altanlage') updateVerbrauchField();
+      if (key === 'anliegen') {
+        const hint = $('anliegenHint');
+        hint.textContent = REDIRECT[value] ? 'Sie werden zur passenden Seite für „' + value + '“ weitergeleitet.' : '';
+        $('bewohnerReq').textContent = value === 'Service' ? '(optional)' : '*';
+        updateProgress();
       }
+    });
 
-      if ((data.altanlage === 'Gas' || data.altanlage === 'Öl') && !verbrauchInput.value.trim()) {
-        errBox.textContent = 'Bitte den aktuellen Gas- oder Ölverbrauch angeben.';
-        errBox.style.display = 'block';
-        return;
+    /* Doppelklick auf eine Option = auswählen und weiter */
+    document.querySelectorAll('.options').forEach(group => {
+      group.addEventListener('dblclick', (e) => {
+        if (!e.target.closest('.opt')) return;
+        const next = group.closest('.step').querySelector('[data-next]');
+        if (next) next.click();
+      });
+    });
+
+    function validate(stepId){
+      const err = (msg, ids) => { showError(steps[current], msg); markInvalid(ids || []); return false; };
+      if (stepId === '1' && !data.anliegen) return err('Bitte wählen Sie Ihr Anliegen aus.');
+      if (stepId === '2') {
+        if (!data.objekt) return err('Bitte wählen Sie die Objektart.');
+        const miss = ['flaeche','baujahr'].filter(id => !val(id));
+        if (miss.length) return err('Bitte Fläche und Baujahr eintragen.', miss);
+        data.flaeche = val('flaeche'); data.baujahr = val('baujahr');
       }
+      if (stepId === '3') {
+        if (!data.sanierung) return err('Bitte wählen Sie den Sanierungsstand.');
+        if (!data.abgabe) return err('Bitte wählen Sie die Art der Wärmeabgabe.');
+        if (!data.altanlage) return err('Bitte wählen Sie die bisherige Heizart.');
+        if ((data.altanlage === 'Gas' || data.altanlage === 'Öl') && !val('verbrauch')) return err('Bitte den aktuellen Gas- oder Ölverbrauch angeben.', ['verbrauch']);
+        data.verbrauch = val('verbrauch');
+      }
+      if (stepId === '4') {
+        if (!data.wunsch) return err('Bitte wählen Sie, was gewünscht ist.');
+        if (!data.zeit) return err('Bitte wählen Sie einen Zeitrahmen.');
+        data.bemerkung = val('bemerkung');
+      }
+      if (stepId === '5') {
+        const req = data.anliegen === 'Service' ? ['plz','adresse'] : ['plz','adresse','bewohner'];
+        const miss = req.filter(id => !val(id));
+        if (miss.length) return err(data.anliegen === 'Service' ? 'Bitte PLZ/Ort und Straße angeben.' : 'Bitte PLZ/Ort, Straße und Anzahl Bewohner angeben.', miss);
+        data.plz = val('plz'); data.adresse = val('adresse'); data.bewohner = val('bewohner');
+      }
+      showError(steps[current], ''); markInvalid([]);
+      return true;
+    }
 
-      const wunschterminText = datumVon || datumBis ? `${datumVon || '-'} bis ${datumBis || '-'}` : '';
+    document.querySelectorAll('[data-next]').forEach(b => b.addEventListener('click', () => {
+      const stepId = steps[current].dataset.step;
+      if (!validate(stepId)) return;
+      if (stepId === '1' && REDIRECT[data.anliegen]) { window.location.href = REDIRECT[data.anliegen]; return; }
+      const p = path();
+      const next = p[p.indexOf(current) + 1];
+      if (next !== undefined) showStep(next);
+    }));
+    document.querySelectorAll('[data-prev]').forEach(b => b.addEventListener('click', () => {
+      const p = path();
+      showStep(p[Math.max(0, p.indexOf(current) - 1)]);
+    }));
 
-      const summaryText = `
-Anliegen: ${data.anliegen || '-'}
-Objekt: ${data.objekt || '-'}
-Fläche (m²): ${data.flaeche || '-'}
-Baujahr: ${data.baujahr || '-'}
-Sanierung: ${data.sanierung || '-'}
-Wärmeabgabe: ${data.abgabe || '-'}
-Bisherige Heizart: ${data.altanlage || '-'}
-Aktueller Verbrauch: ${verbrauchInput.value.trim() || '-'}
-Wunsch: ${data.wunsch || '-'}
-Zeitrahmen: ${data.zeit || '-'}
-PLZ/Ort: ${data.plz || '-'}
-Straße: ${data.adresse || '-'}
-Bewohner: ${data.bewohner || '-'}
-Wunschtermin: ${wunschterminText || '-'}
-Zusatzinfo: ${data.bemerkung || ''}
-      `.trim();
+    function wunschtermin(){
+      const v = $('datumVon').value, b = $('datumBis').value;
+      return v || b ? (v || '-') + ' bis ' + (b || '-') : '';
+    }
+
+    const FIELDS = [
+      ['Anliegen','anliegen'],['Objekt','objekt'],['Fläche (m²)','flaeche'],['Baujahr','baujahr'],
+      ['Sanierung','sanierung'],['Wärmeabgabe','abgabe'],['Bisherige Heizart','altanlage'],['Aktueller Verbrauch','verbrauch'],
+      ['Wunsch','wunsch'],['Zeitrahmen','zeit'],['PLZ/Ort','plz'],['Straße','adresse'],['Bewohner','bewohner']
+    ];
+
+    function renderSummary(){
+      const rows = FIELDS.filter(([, k]) => data[k]).map(([l, k]) => '<div><b>' + l + '</b><br>' + esc(data[k]) + '</div>');
+      if (data.bemerkung) rows.push('<div style="grid-column:1/-1"><b>Zusatzinfo</b><br>' + esc(data.bemerkung).replace(/\n/g, '<br>') + '</div>');
+      $('summary').innerHTML = rows.join('');
+    }
+
+    const sendBtn = $('sendBtnB');
+    const formCard = $('formCard');
+    sendBtn.addEventListener('click', async () => {
+      const step = steps[current];
+      const name = val('nameB'), email = val('emailB');
+      if (val('website')) return;
+      const miss = [];
+      if (!name) miss.push('nameB');
+      if (!email || !isEmail(email)) miss.push('emailB');
+      if (miss.length) { showError(step, !email || isEmail(email) ? 'Bitte füllen Sie Name und E-Mail aus.' : 'Bitte geben Sie eine gültige E-Mail-Adresse an.'); markInvalid(miss); return; }
+      showError(step, '');
+
+      const summaryText = FIELDS.map(([l, k]) => l + ': ' + (data[k] || '-')).join('\n')
+        + '\nWunschtermin: ' + (wunschtermin() || '-') + '\nZusatzinfo: ' + (data.bemerkung || '');
 
       const payload = {
-        _subject: 'Neue Anfrage über die Website',
-        name: name,
-        email: email,
-        telefon: document.getElementById('telefonB').value.trim(),
-        wunschtermin_von: datumVon,
-        wunschtermin_bis: datumBis,
-        wunschtermin: wunschterminText,
-        nachricht: document.getElementById('nachrichtB').value.trim(),
-        anliegen: data.anliegen || '',
-        objekt: data.objekt || '',
-        flaeche: data.flaeche || '',
-        baujahr: data.baujahr || '',
-        sanierung: data.sanierung || '',
-        abgabe: data.abgabe || '',
-        altanlage: data.altanlage || '',
-        verbrauch: verbrauchInput.value.trim() || '',
-        wunsch: data.wunsch || '',
-        zeit: data.zeit || '',
-        plz_ort: data.plz || '',
-        adresse: data.adresse || '',
-        bewohner: data.bewohner || '',
-        zusatzinfo: data.bemerkung || '',
+        _subject: 'Neue Anfrage über die Website (' + (data.anliegen || '-') + ')',
+        name, email,
+        telefon: val('telefonB'),
+        wunschtermin_von: $('datumVon').value,
+        wunschtermin_bis: $('datumBis').value,
+        wunschtermin: wunschtermin(),
+        nachricht: val('nachrichtB'),
+        anliegen: data.anliegen || '', objekt: data.objekt || '', flaeche: data.flaeche || '', baujahr: data.baujahr || '',
+        sanierung: data.sanierung || '', abgabe: data.abgabe || '', altanlage: data.altanlage || '', verbrauch: data.verbrauch || '',
+        wunsch: data.wunsch || '', zeit: data.zeit || '', plz_ort: data.plz || '', adresse: data.adresse || '',
+        bewohner: data.bewohner || '', zusatzinfo: data.bemerkung || '',
         zusammenfassung: summaryText
       };
 
       sendBtn.disabled = true;
-      sendBtn.classList.add('loading');
-      sendBtn.textContent = 'Wird gesendet...';
-
-      formCard.classList.add('hide-on-send');
-      successScreen.classList.add('show');
-      successSpinnerWrap.classList.remove('hidden');
-      successCheck.classList.add('hidden');
-      successTitle.classList.add('hidden');
-      successText.classList.add('hidden');
-
-      window.scrollTo({ top: successScreen.offsetTop - 40, behavior: 'smooth' });
-
-      const ok = await sendToFormspree(payload);
-
-      if (ok) {
-        setTimeout(() => {
-          successSpinnerWrap.classList.add('hidden');
-          successCheck.classList.remove('hidden');
-          successTitle.classList.remove('hidden');
-          successText.classList.remove('hidden');
-        }, 1100);
-      } else {
-        successScreen.classList.remove('show');
-        formCard.classList.remove('hide-on-send');
+      showSuccess(formCard);
+      const ok = await send(payload);
+      if (ok) { finishSuccess(); }
+      else {
+        failSuccess(formCard);
         sendBtn.disabled = false;
-        sendBtn.classList.remove('loading');
-        sendBtn.textContent = 'Anfrage absenden';
-        errBox.textContent = 'Senden fehlgeschlagen. Bitte später erneut versuchen oder direkt per E-Mail melden.';
-        errBox.style.display = 'block';
+        showError(step, 'Senden fehlgeschlagen. Bitte später erneut versuchen oder direkt per E-Mail melden.');
       }
     });
+
+    updateProgress();
+  })();
   </script>
 </body>
 </html>

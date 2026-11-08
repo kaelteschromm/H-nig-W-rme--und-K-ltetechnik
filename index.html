@@ -1,332 +1,254 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <title>Hünig Wärme- und Kältetechnik</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    :root {
-      /* Klare, technische Kontraste */
-      --primary-blue: #2175b5;   /* Das Blau aus deinem Logo */
-      --primary-red: #ef4423;    /* Das Rot aus deinem Logo */
-      --dark: #1a1a1a;           /* Fast Schwarz für maximale Lesbarkeit */
-      --gray: #f4f4f4;           /* Hellgrau für Hintergründe */
-      --text: #333333;
-      --white: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      color: var(--text);
-      background-color: var(--white);
-      line-height: 1.5;
-    }
-
-    /* SPLASH SCREEN (Schnell & Funktional) */
-    #splash {
-      position: fixed;
-      inset: 0;
-      background: var(--white);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-      transition: opacity 0.5s ease;
-    }
-
-    #splash img {
-      max-width: 300px;
-      width: 60vw;
-      height: auto;
-    }
-
-    #arrow {
-      margin-top: 30px;
-      font-size: 2.5rem;
-      color: var(--primary-blue);
-      cursor: pointer;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-10px); }
-    }
-
-    /* HEADER */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: var(--white);
-      border-bottom: 2px solid var(--gray);
-    }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 20px;
-    }
-
-    .brand img {
-      height: 55px;
-      width: auto;
-    }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    /* EINZIGER BUTTON */
-    .cta-button {
-      background: var(--primary-red);
-      color: var(--white);
-      padding: 12px 24px;
-      border-radius: 4px; /* Eckiger = technischer/seriöser */
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: background 0.2s;
-    }
-
-    .cta-button:hover {
-      background: #d13a1d;
-    }
-
-    /* HAMBURGER MENÜ (3 Striche) */
-    .menu-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      padding: 10px;
-    }
-
-    .menu-btn span {
-      display: block;
-      width: 28px;
-      height: 3px;
-      background: var(--dark);
-      border-radius: 2px;
-    }
-
-    /* MENU OVERLAY */
-    .menu-overlay {
-      position: fixed;
-      inset: 0;
-      background: var(--dark);
-      z-index: 1500;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .menu-overlay.open {
-      display: flex;
-    }
-
-    .menu-overlay a {
-      color: var(--white);
-      font-size: 1.4rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .menu-overlay a:hover {
-      color: var(--primary-blue);
-    }
-
-    .close-menu {
-      position: absolute;
-      top: 25px;
-      right: 25px;
-      color: white;
-      font-size: 2rem;
-      cursor: pointer;
-    }
-
-    /* MAIN CONTENT */
-    main {
-      display: none; /* Wird nach Splash sichtbar */
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    .hero {
-      padding: 40px 0;
-      border-bottom: 1px solid var(--gray);
-      margin-bottom: 40px;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      color: var(--dark);
-      margin: 0 0 10px 0;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      color: var(--text);
-      margin: 0;
-    }
-
-    /* LEISTUNGEN GRID */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: var(--gray);
-      padding: 30px;
-      border-left: 5px solid var(--primary-blue);
-    }
-
-    .card h3 {
-      margin-top: 0;
-      color: var(--dark);
-    }
-
-    footer {
-      margin-top: 60px;
-      padding: 40px 20px;
-      background: var(--gray);
-      text-align: center;
-      font-size: 0.9rem;
-    }
-
-    footer a {
-      margin: 0 10px;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 600px) {
-      .cta-button { display: none; } /* Platzmangel auf Mobile */
-      .hero h1 { font-size: 1.8rem; }
-    }
-  </style>
+  <title>Neckair – Wärmepumpen, Klimaanlagen &amp; Service</title>
+  <meta name="description" content="Neckair – Ihr Fachbetrieb für Wärmepumpen, Klimaanlagen, Trinkwasserinstallationen sowie Service und Wartung.">
+  <meta name="theme-color" content="#0b2239">
+  <meta property="og:title" content="Neckair – Wärmepumpen, Klimaanlagen &amp; Service">
+  <meta property="og:description" content="Neckair – Ihr Fachbetrieb für Wärmepumpen, Klimaanlagen, Trinkwasserinstallationen sowie Service und Wartung.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="Haus%20am%20Wald.webp">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <noscript><style>#splash{display:none}.reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
 
-  <div id="splash">
-    <img src="logo.png" alt="Hünig Wärme- und Kältetechnik Logo">
-    <div id="arrow">↓</div>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <div class="topbar">
+    <div class="container">
+      <nav aria-label="Leistungen">
+        <a href="waermepumpen.html">Wärmepumpen</a>
+        <a href="klimaanlagen.html">Klimaanlagen</a>
+        <a href="trinkwasserinstallationen.html">Trinkwasser &amp; Sanitär</a>
+        <a href="service.html">Service &amp; Wartung</a>
+      </nav>
+      <div class="topbar-right">
+        <span><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Service &amp; Wartung</span>
+        <span><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Persönliche Beratung</span>
+      </div>
+    </div>
   </div>
 
-  <header>
-    <div class="header-inner">
-      <a href="index.html" class="brand">
-        <img src="logo.png" alt="Hünig Logo">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="Neckair – zur Startseite">
+        <img src="assets/img/neckair-logo.svg" alt="Neckair" width="1100" height="178">
       </a>
-      
-      <div class="header-right">
-        <a href="kontakt.html" class="cta-button">Anfrage stellen</a>
-        <button class="menu-btn" id="menuBtn">
-          <span></span>
-          <span></span>
-          <span></span>
+
+      <nav class="main-nav" aria-label="Hauptnavigation">
+        <ul>
+          <li><a href="waermepumpen.html">Wärmepumpen</a></li>
+          <li><a href="klimaanlagen.html">Klimaanlagen</a></li>
+          <li><a href="trinkwasserinstallationen.html">Trinkwasser</a></li>
+          <li><a href="service.html">Service</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="kontakt.html" class="btn btn-primary btn-sm header-cta">Anfrage stellen</a>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menuOverlay">
+          <span class="bars"></span>
         </button>
       </div>
     </div>
   </header>
 
-  <nav class="menu-overlay" id="menuOverlay">
-    <div class="close-menu" id="closeMenu">✕</div>
-    <a href="index.html">Startseite</a>
-    <a href="waermepumpen.html">Wärmepumpen</a>
-    <a href="klimaanlagen.html">Klimaanlagen</a>
-    <a href="service.html">Service & Wartung</a>
-    <a href="kontakt.html">Kontakt</a>
-    <a href="impressum.html">Impressum</a>
-    <a href="datenschutz.html">Datenschutz</a>
-    <a href="agb.html">AGB</a>
+  <nav class="menu-overlay" id="menuOverlay" aria-label="Hauptmenü" aria-hidden="true">
+    <div class="container menu-overlay-head">
+      <span class="label">Menü</span>
+      <button class="menu-close" id="closeMenu" type="button" aria-label="Menü schließen">✕</button>
+    </div>
+    <div class="container menu-grid">
+      <div class="menu-primary">
+        <a href="index.html" aria-current="page">Startseite <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="waermepumpen.html">Wärmepumpen <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="klimaanlagen.html">Klimaanlagen <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="trinkwasserinstallationen.html">Trinkwasser <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="service.html">Service & Wartung <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="ueber-uns.html">Über uns <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="kontakt.html">Kontakt / Anfrage <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+      <div class="menu-side">
+        <div>
+          <h4>Schnell erledigt</h4>
+          <a href="wartung.html">Wartung anfragen</a>
+          <a href="stoerung.html">Störung melden</a>
+          <a href="kontakt.html" class="btn btn-primary">Anfrage stellen <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+        <div>
+          <h4>Rechtliches</h4>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+          <a href="agb.html">AGB</a>
+          <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+        </div>
+      </div>
+    </div>
   </nav>
 
-  <main id="content">
-    <section class="hero">
-      <h1>Hünig Wärme- und Kältetechnik</h1>
-      <p>Ihr Fachbetrieb für moderne Gebäudetechnik, Heizsysteme und Klimatisierung.</p>
+  <main id="inhalt">
+
+    <div id="splash" aria-hidden="true">
+      <img src="assets/img/neckair-logo.svg" alt="">
+      <div class="splash-bar"></div>
+    </div>
+
+    <section class="page-hero has-media home-hero">
+      <div class="hero-media">
+        <img src="Haus%20am%20Wald.webp" alt="Einfamilienhaus mit Wärmepumpe und Photovoltaik am Waldrand" fetchpriority="high">
+      </div>
+      <div class="container">
+        <div class="hero-copy">
+          <div class="eyebrow">Kälte · Klima · Wärmepumpen · Sanitär</div>
+          <h1 class="hero-logo"><img src="assets/img/neckair-logo-white.svg" alt="Neckair" width="1100" height="178"></h1>
+          <p class="lead">Ihr Fachbetrieb für moderne Gebäudetechnik, Heizsysteme und Klimatisierung.</p>
+          <div class="hero-actions">
+            <a href="kontakt.html" class="btn btn-primary">Anfrage stellen <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <a href="#leistungen" class="btn btn-outline-light">Unsere Leistungen</a>
+          </div>
+          <ul class="trust-row">
+            <li><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Beratung &amp; Planung</li>
+            <li><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Fachgerechte Montage</li>
+            <li><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Service &amp; Wartung</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <section class="grid">
-      <div class="card">
-        <h3>Wärmepumpen</h3>
-        <p>Planung, Installation und Optimierung moderner Heizsysteme für Bestandsgebäude und Neubauten.</p>
-      </div>
-      <div class="card">
-        <h3>Kältetechnik</h3>
-        <p>Klimatisierungslösungen für Privaträume und gewerbliche Objekte. Effizient und zuverlässig.</p>
-      </div>
-      <div class="card">
-        <h3>Wartung & Service</h3>
-        <p>Regelmäßige Überprüfung und Instandhaltung Ihrer Anlagen zur Sicherung der Langlebigkeit.</p>
+    <section class="section" id="leistungen">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Leistungen</div>
+          <h2>Wärme, Kälte und Wasser – alles aus einer Hand</h2>
+          <p>Von der ersten Beratung über die Planung bis zur Wartung: Wir kümmern uns um die Technik, die Ihr Gebäude zuverlässig versorgt.</p>
+        </div>
+
+        <div class="grid-4">
+          <a href="waermepumpen.html" class="card accent-warm reveal">
+            <span class="icon-box warm"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span>
+            <h3>Wärmepumpen</h3>
+            <p>Planung, Installation und Optimierung moderner Heizsysteme für Bestandsgebäude und Neubauten.</p>
+            <span class="card-link">Mehr erfahren <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </a>
+          <a href="klimaanlagen.html" class="card accent-cool reveal">
+            <span class="icon-box"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="2" x2="22" y1="12" y2="12"/><line x1="12" x2="12" y1="2" y2="22"/><path d="m20 16-4-4 4-4"/><path d="m4 8 4 4-4 4"/><path d="m16 4-4 4-4-4"/><path d="m8 20 4-4 4 4"/></svg></span>
+            <h3>Kältetechnik</h3>
+            <p>Klimatisierungslösungen für Privaträume und gewerbliche Objekte. Effizient und zuverlässig.</p>
+            <span class="card-link">Mehr erfahren <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </a>
+          <a href="trinkwasserinstallationen.html" class="card accent-cool reveal">
+            <span class="icon-box"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></span>
+            <h3>Trinkwasser</h3>
+            <p>Hygienisch, normgerecht und langlebig – von der Planung über die Montage bis zur Wartung.</p>
+            <span class="card-link">Mehr erfahren <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </a>
+          <a href="service.html" class="card accent-brand reveal">
+            <span class="icon-box"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+            <h3>Wartung &amp; Service</h3>
+            <p>Regelmäßige Überprüfung und Instandhaltung Ihrer Anlagen zur Sicherung der Langlebigkeit.</p>
+            <span class="card-link">Zum Service <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </a>
+        </div>
       </div>
     </section>
 
-    <footer>
-      <p>© <span id="y"></span> Hünig Wärme- und Kältetechnik</p>
-      <p>
-        <a href="kontakt.html">Kontakt</a> | 
-        <a href="impressum.html">Impressum</a> | 
-        <a href="datenschutz.html">Datenschutz</a> | 
-        <a href="agb.html">AGB</a>
-      </p>
-    </footer>
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Schnell zum richtigen Ansprechpartner</div>
+          <h2>Wie können wir Ihnen helfen?</h2>
+        </div>
+        <div class="grid-3">
+          <a href="kontakt.html" class="card reveal">
+            <span class="icon-box"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+            <h3>Neubau oder Erneuerung</h3>
+            <p>Starten Sie unsere digitale Anfrage – Schritt für Schritt zu Ihrem Angebot.</p>
+            <span class="card-link">Anfrage starten <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </a>
+          <a href="wartung.html" class="card reveal">
+            <span class="icon-box"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+            <h3>Wartung planen</h3>
+            <p>Termin wählen und Anlage beschreiben – wir bereiten den Einsatz gezielt vor.</p>
+            <span class="card-link">Zur Wartung <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </a>
+          <a href="stoerung.html" class="card warn reveal">
+            <span class="icon-box"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+            <h3>Störung melden</h3>
+            <p>Ihre Anlage funktioniert nicht? Melden Sie die Störung mit wenigen Angaben.</p>
+            <span class="card-link">Störung melden <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="band reveal">
+          <div>
+            <h2>Sie planen ein Projekt?</h2>
+            <p>Nutzen Sie unseren Anfragebereich und teilen Sie uns Ihr Vorhaben mit. So können wir Ihr Projekt schneller einschätzen und gezielt auf Ihr Gebäude eingehen.</p>
+          </div>
+          <div class="band-actions">
+            <a href="kontakt.html" class="btn btn-light">Anfrage starten <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <a href="ueber-uns.html" class="btn btn-outline-light">Über uns</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/img/neckair-logo-white.svg" alt="Neckair" width="1100" height="178" loading="lazy">
+        <p class="footer-tagline">Kälte<i>•</i>Klima<i>•</i>Wärmepumpen<i>•</i>Sanitär</p>
+        <p>Ihr Fachbetrieb für moderne Gebäudetechnik, Heizsysteme und Klimatisierung.</p>
+      </div>
+      <div>
+        <h4>Leistungen</h4>
+        <ul>
+          <li><a href="waermepumpen.html">Wärmepumpen</a></li>
+          <li><a href="klimaanlagen.html">Klimaanlagen</a></li>
+          <li><a href="trinkwasserinstallationen.html">Trinkwasser</a></li>
+          <li><a href="service.html">Service &amp; Wartung</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="kontakt.html">Anfrage stellen</a></li>
+          <li><a href="wartung.html">Wartung anfragen</a></li>
+          <li><a href="stoerung.html">Störung melden</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+          <li><a href="agb.html">AGB</a></li>
+          <li><a href="nutzungsbedingungen.html">Nutzungsbedingungen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div>© <span id="y"></span> Neckair</div>
+      <nav aria-label="Rechtliche Links">
+        <a href="kontakt.html">Kontakt</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+      </nav>
+    </div>
+  </footer>
 
-    const splash = document.getElementById('splash');
-    const content = document.getElementById('content');
-    const menuBtn = document.getElementById('menuBtn');
-    const closeMenu = document.getElementById('closeMenu');
-    const overlay = document.getElementById('menuOverlay');
-
-    function hideSplash() {
-      splash.style.opacity = 0;
-      setTimeout(() => {
-        splash.style.display = 'none';
-        content.style.display = 'block';
-      }, 500);
-    }
-
-    document.getElementById('arrow').addEventListener('click', hideSplash);
-    setTimeout(hideSplash, 2500);
-
-    menuBtn.addEventListener('click', () => {
-      overlay.style.display = 'flex';
-      setTimeout(() => overlay.classList.add('open'), 10);
-    });
-
-    closeMenu.addEventListener('click', () => {
-      overlay.classList.remove('open');
-      setTimeout(() => overlay.style.display = 'none', 500);
-    });
-  </script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

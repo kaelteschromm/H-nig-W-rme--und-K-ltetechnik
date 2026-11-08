@@ -1,153 +1,227 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <title>Datenschutz | Hünig Wärme- und Kältetechnik</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Datenschutzerklärung von Hünig Wärme- und Kältetechnik.">
-  <style>
-    :root{
-      --text:#1a2433; --primary:#14365e; --muted:#5b6b82; --ring:rgba(0,0,0,.08);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:url("Wald Hintergrund.webp") no-repeat center center fixed;
-      background-size:cover;
-      color:var(--text);
-      display:flex;flex-direction:column;min-height:100vh;
-    }
-    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-    
-    /* Header */
-    header{
-      position:sticky;top:0;z-index:50;
-      background:rgba(255,255,255,0.9);
-      border-bottom:1px solid #e6e8eb;
-      display:flex;align-items:center;justify-content:space-between;
-      padding:0 16px;height:70px;
-    }
-    .brand img{height:60px;width:auto}
-    .menu-btn{border:none;background:transparent;cursor:pointer;padding:10px;width:48px;height:48px}
-    .menu-btn .bar,.menu-btn .bar::before,.menu-btn .bar::after{
-      content:"";display:block;height:3px;width:28px;background:var(--primary);
-      border-radius:2px;position:relative;transition:.25s;
-    }
-    .menu-btn .bar::before{position:absolute;top:-8px;left:0}
-    .menu-btn .bar::after{position:absolute;top:8px;left:0}
-    
-    /* Overlay-Menü */
-    .menu-overlay{
-      position:fixed;inset:0;background:rgba(20,54,94,.97);
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      opacity:0;pointer-events:none;transition:.35s;z-index:1000;
-    }
-    .menu-overlay.open{opacity:1;pointer-events:auto}
-    .menu-overlay a{color:#fff;font-size:1.5rem;margin:.7rem 0;text-decoration:none}
-    
-    /* Inhalt */
-    main{flex:1;padding:40px 20px}
-    h1{text-align:center;color:var(--primary);margin-bottom:24px}
-    .grid{display:grid;gap:20px}
-    @media(min-width:800px){.grid{grid-template-columns:1fr 1fr}}
-    
-    /* Karten */
-    .card{
-      background:rgba(255,255,255,0.9);
-      border-radius:16px;
-      box-shadow:0 6px 24px var(--ring);
-      padding:20px;
-    }
-    .card h2{color:var(--primary);margin:0 0 10px;font-size:1.2rem}
-    .card p,.card li{line-height:1.6;font-size:.95rem;margin-bottom:10px}
-    
-    /* Footer */
-    footer{background:rgba(255,255,255,0.9);border-top:1px solid #e6e8eb;margin-top:auto}
-    .foot{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;font-size:.95rem;color:var(--muted)}
-    .legal{display:flex;flex-wrap:wrap;gap:14px}
-    .legal a{color:var(--muted);text-decoration:none}
-    .legal a:hover{color:var(--primary)}
-  </style>
+  <title>Datenschutz | Neckair</title>
+  <meta name="description" content="Datenschutzerklärung von Neckair.">
+  <meta name="theme-color" content="#0b2239">
+  <meta property="og:title" content="Datenschutz | Neckair">
+  <meta property="og:description" content="Datenschutzerklärung von Neckair.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="Haus%20am%20Wald.webp">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <noscript><style>#splash{display:none}.reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
-  <header>
-    <a class="brand" href="index.html"><img src="logo.png" alt="Hünig Logo"></a>
-    <button class="menu-btn" id="menuBtn"><span class="bar"></span></button>
-  </header>
-  <div class="menu-overlay" id="menuOverlay">
-    <a href="index.html">Startseite</a><a href="waermepumpen.html">Wärmepumpen</a><a href="klimaanlagen.html">Klimaanlagen</a><a href="lueftung.html">Lüftung</a><a href="trinkwasserinstallationen.html">Trinkwasser</a><a href="referenzen.html">Referenzen</a><a href="service.html">Service & Wartung</a><a href="ueber-uns.html">Über uns</a><a href="kontakt.html">Kontakt</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="agb.html">AGB</a><a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
-  </div>
-  <main class="wrap">
-    <h1>Datenschutzerklärung</h1>
-    <div class="grid">
-      <div class="card">
-        <h2>1. Verantwortlicher</h2>
-        <p>Hünig Wärme- und Kältetechnik<br>68753 Waghäusel, Deutschland<br>E-Mail: <a href="mailto:kaelteschromm@gmail.com">kaelteschromm@gmail.com</a></p>
-      </div>
-      <div class="card">
-        <h2>2. Erhebung und Verarbeitung personenbezogener Daten</h2>
-        <p>Wir erheben personenbezogene Daten, wenn Sie unser Kontaktformular nutzen oder uns per E-Mail/Telefon kontaktieren. Die Verarbeitung erfolgt ausschließlich zweckgebunden.</p>
-      </div>
-      <div class="card">
-        <h2>3. Zwecke der Verarbeitung</h2>
-        <p>Daten werden zur Beantwortung von Anfragen, Angebotserstellung, Vertragsdurchführung, Wartung und Service genutzt.</p>
-      </div>
-      <div class="card">
-        <h2>4. Rechtsgrundlagen</h2>
-        <p>Rechtsgrundlagen sind Art. 6 Abs. 1 lit. b DSGVO (Vertrag), Art. 6 Abs. 1 lit. c DSGVO (gesetzliche Pflichten) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).</p>
-      </div>
-      <div class="card">
-        <h2>5. Weitergabe an Dritte</h2>
-        <p>Eine Weitergabe erfolgt nur, wenn dies zur Vertragserfüllung notwendig ist (z. B. Hersteller, Großhandel) oder gesetzliche Pflichten bestehen.</p>
-      </div>
-      <div class="card">
-        <h2>6. Speicherdauer</h2>
-        <p>Daten werden solange gespeichert, wie es für den jeweiligen Zweck erforderlich ist. Danach erfolgt eine Löschung entsprechend gesetzlicher Aufbewahrungsfristen.</p>
-      </div>
-      <div class="card">
-        <h2>7. Ihre Rechte</h2>
-        <ul>
-          <li>Auskunft über gespeicherte Daten</li>
-          <li>Berichtigung unrichtiger Daten</li>
-          <li>Löschung (Recht auf Vergessenwerden)</li>
-          <li>Einschränkung der Verarbeitung</li>
-          <li>Datenübertragbarkeit</li>
-          <li>Widerspruch gegen Verarbeitung</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>8. Cookies & Tracking</h2>
-        <p>Unsere Website verwendet keine Cookies oder Tracking-Tools, außer technisch notwendige für den Betrieb.</p>
-      </div>
-      <div class="card">
-        <h2>9. Datensicherheit</h2>
-        <p>Wir setzen technische und organisatorische Maßnahmen ein, um Ihre Daten vor Verlust, Missbrauch oder unbefugtem Zugriff zu schützen.</p>
-      </div>
-      <div class="card">
-        <h2>10. Beschwerderecht</h2>
-        <p>Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren, wenn Sie der Ansicht sind, dass Ihre Daten unrechtmäßig verarbeitet werden.</p>
+
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+  <div class="topbar">
+    <div class="container">
+      <nav aria-label="Leistungen">
+        <a href="waermepumpen.html">Wärmepumpen</a>
+        <a href="klimaanlagen.html">Klimaanlagen</a>
+        <a href="trinkwasserinstallationen.html">Trinkwasser &amp; Sanitär</a>
+        <a href="service.html">Service &amp; Wartung</a>
+      </nav>
+      <div class="topbar-right">
+        <span><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Service &amp; Wartung</span>
+        <span><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Persönliche Beratung</span>
       </div>
     </div>
-    <p style="margin-top:20px;font-size:.9rem;color:var(--muted)">Stand: Januar 2025</p>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="Neckair – zur Startseite">
+        <img src="assets/img/neckair-logo.svg" alt="Neckair" width="1100" height="178">
+      </a>
+
+      <nav class="main-nav" aria-label="Hauptnavigation">
+        <ul>
+          <li><a href="waermepumpen.html">Wärmepumpen</a></li>
+          <li><a href="klimaanlagen.html">Klimaanlagen</a></li>
+          <li><a href="trinkwasserinstallationen.html">Trinkwasser</a></li>
+          <li><a href="service.html">Service</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="kontakt.html" class="btn btn-primary btn-sm header-cta">Anfrage stellen</a>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menuOverlay">
+          <span class="bars"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="menu-overlay" id="menuOverlay" aria-label="Hauptmenü" aria-hidden="true">
+    <div class="container menu-overlay-head">
+      <span class="label">Menü</span>
+      <button class="menu-close" id="closeMenu" type="button" aria-label="Menü schließen">✕</button>
+    </div>
+    <div class="container menu-grid">
+      <div class="menu-primary">
+        <a href="index.html">Startseite <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="waermepumpen.html">Wärmepumpen <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="klimaanlagen.html">Klimaanlagen <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="trinkwasserinstallationen.html">Trinkwasser <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="service.html">Service & Wartung <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="ueber-uns.html">Über uns <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="kontakt.html">Kontakt / Anfrage <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+      <div class="menu-side">
+        <div>
+          <h4>Schnell erledigt</h4>
+          <a href="wartung.html">Wartung anfragen</a>
+          <a href="stoerung.html">Störung melden</a>
+          <a href="kontakt.html" class="btn btn-primary">Anfrage stellen <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+        <div>
+          <h4>Rechtliches</h4>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html" aria-current="page">Datenschutz</a>
+          <a href="agb.html">AGB</a>
+          <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main id="inhalt">
+
+    <section class="page-hero has-media compact">
+      <div class="hero-media"><img src="Wald%20Hintergrund.webp" alt=""></div>
+      <div class="container">
+        <div class="eyebrow">Rechtliches</div>
+        <h1>Datenschutzerklärung</h1>
+        
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="container legal-layout">
+        <aside class="legal-toc" aria-label="Inhalt">
+          <h4>Inhalt</h4>
+          <ol>
+            <li><a href="#1-verantwortlicher">1. Verantwortlicher</a></li>
+            <li><a href="#2-erhebung-und-verarbeitung-personenbezogener-daten">2. Erhebung und Verarbeitung personenbezogener Daten</a></li>
+            <li><a href="#3-zwecke-der-verarbeitung">3. Zwecke der Verarbeitung</a></li>
+            <li><a href="#4-rechtsgrundlagen">4. Rechtsgrundlagen</a></li>
+            <li><a href="#5-weitergabe-an-dritte">5. Weitergabe an Dritte</a></li>
+            <li><a href="#6-speicherdauer">6. Speicherdauer</a></li>
+            <li><a href="#7-ihre-rechte">7. Ihre Rechte</a></li>
+            <li><a href="#8-cookies-tracking">8. Cookies &amp; Tracking</a></li>
+            <li><a href="#9-datensicherheit">9. Datensicherheit</a></li>
+            <li><a href="#10-beschwerderecht">10. Beschwerderecht</a></li>
+          </ol>
+        </aside>
+        <div>
+          <div class="legal-list">
+            <article class="card" id="1-verantwortlicher">
+              <h2>1. Verantwortlicher</h2>
+              <p>Neckair<br>68753 Waghäusel, Deutschland<br>E-Mail: <a href="mailto:kaelteschromm@gmail.com">kaelteschromm@gmail.com</a></p>
+            </article>
+            <article class="card" id="2-erhebung-und-verarbeitung-personenbezogener-daten">
+              <h2>2. Erhebung und Verarbeitung personenbezogener Daten</h2>
+              <p>Wir erheben personenbezogene Daten, wenn Sie unser Kontaktformular nutzen oder uns per E-Mail/Telefon kontaktieren. Die Verarbeitung erfolgt ausschließlich zweckgebunden.</p>
+            </article>
+            <article class="card" id="3-zwecke-der-verarbeitung">
+              <h2>3. Zwecke der Verarbeitung</h2>
+              <p>Daten werden zur Beantwortung von Anfragen, Angebotserstellung, Vertragsdurchführung, Wartung und Service genutzt.</p>
+            </article>
+            <article class="card" id="4-rechtsgrundlagen">
+              <h2>4. Rechtsgrundlagen</h2>
+              <p>Rechtsgrundlagen sind Art. 6 Abs. 1 lit. b DSGVO (Vertrag), Art. 6 Abs. 1 lit. c DSGVO (gesetzliche Pflichten) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).</p>
+            </article>
+            <article class="card" id="5-weitergabe-an-dritte">
+              <h2>5. Weitergabe an Dritte</h2>
+              <p>Eine Weitergabe erfolgt nur, wenn dies zur Vertragserfüllung notwendig ist (z. B. Hersteller, Großhandel) oder gesetzliche Pflichten bestehen.</p>
+            </article>
+            <article class="card" id="6-speicherdauer">
+              <h2>6. Speicherdauer</h2>
+              <p>Daten werden solange gespeichert, wie es für den jeweiligen Zweck erforderlich ist. Danach erfolgt eine Löschung entsprechend gesetzlicher Aufbewahrungsfristen.</p>
+            </article>
+            <article class="card" id="7-ihre-rechte">
+              <h2>7. Ihre Rechte</h2>
+              <ul>
+                <li>Auskunft über gespeicherte Daten</li>
+                <li>Berichtigung unrichtiger Daten</li>
+                <li>Löschung (Recht auf Vergessenwerden)</li>
+                <li>Einschränkung der Verarbeitung</li>
+                <li>Datenübertragbarkeit</li>
+                <li>Widerspruch gegen Verarbeitung</li>
+              </ul>
+            </article>
+            <article class="card" id="8-cookies-tracking">
+              <h2>8. Cookies &amp; Tracking</h2>
+              <p>Unsere Website verwendet keine Cookies oder Tracking-Tools, außer technisch notwendige für den Betrieb.</p>
+            </article>
+            <article class="card" id="9-datensicherheit">
+              <h2>9. Datensicherheit</h2>
+              <p>Wir setzen technische und organisatorische Maßnahmen ein, um Ihre Daten vor Verlust, Missbrauch oder unbefugtem Zugriff zu schützen.</p>
+            </article>
+            <article class="card" id="10-beschwerderecht">
+              <h2>10. Beschwerderecht</h2>
+              <p>Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren, wenn Sie der Ansicht sind, dass Ihre Daten unrechtmäßig verarbeitet werden.</p>
+            </article>
+          </div>
+          <p class="legal-meta">Stand: Januar 2025</p>
+        </div>
+      </div>
+    </section>
+
   </main>
-  <footer>
-    <div class="foot">
-      <div>© <span id="y"></span> Hünig Wärme- und Kältetechnik</div>
-      <div class="legal">
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/img/neckair-logo-white.svg" alt="Neckair" width="1100" height="178" loading="lazy">
+        <p class="footer-tagline">Kälte<i>•</i>Klima<i>•</i>Wärmepumpen<i>•</i>Sanitär</p>
+        <p>Ihr Fachbetrieb für moderne Gebäudetechnik, Heizsysteme und Klimatisierung.</p>
+      </div>
+      <div>
+        <h4>Leistungen</h4>
+        <ul>
+          <li><a href="waermepumpen.html">Wärmepumpen</a></li>
+          <li><a href="klimaanlagen.html">Klimaanlagen</a></li>
+          <li><a href="trinkwasserinstallationen.html">Trinkwasser</a></li>
+          <li><a href="service.html">Service &amp; Wartung</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="kontakt.html">Anfrage stellen</a></li>
+          <li><a href="wartung.html">Wartung anfragen</a></li>
+          <li><a href="stoerung.html">Störung melden</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+          <li><a href="agb.html">AGB</a></li>
+          <li><a href="nutzungsbedingungen.html">Nutzungsbedingungen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div>© <span id="y"></span> Neckair</div>
+      <nav aria-label="Rechtliche Links">
+        <a href="kontakt.html">Kontakt</a>
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Datenschutz</a>
         <a href="agb.html">AGB</a>
-        <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
-        <a href="kontakt.html">Kontakt</a>
-      </div>
+      </nav>
     </div>
   </footer>
-  <script>
-    document.getElementById('y').textContent=new Date().getFullYear();
-    const btn=document.getElementById('menuBtn'),ov=document.getElementById('menuOverlay');
-    btn.addEventListener('click',()=>ov.classList.toggle('open'));
-    ov.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>ov.classList.remove('open')));
-  </script>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

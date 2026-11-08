@@ -1,232 +1,241 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <title>Trinkwasserinstallationen | Hünig Wärme- und Kältetechnik</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Trinkwasserinstallationen: Planung, Hygiene, Normen (DIN/DVGW), Montage, Spülen, Druckprobe, Dokumentation, Wartung.">
-  <style>
-    :root{ --text:#0f1a2a; --primary:#14365e; --muted:#5b6b82; --ring:rgba(0,0,0,.12); }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--text);
-      display:flex; flex-direction:column; min-height:100vh; overflow-x:hidden; background:#000;
-    }
-
-    /* Vollbild-Video-Hintergrund */
-    .bg-video{position:fixed; inset:0; z-index:-2; overflow:hidden}
-    .bg-video video{
-      position:absolute; top:50%; left:50%; min-width:100%; min-height:100%;
-      transform:translate(-50%, -50%); object-fit:cover;
-    }
-    /* Abdunklung für Lesbarkeit */
-    .shade{position:fixed; inset:0; z-index:-1; background:linear-gradient(180deg, rgba(0,20,40,.45), rgba(0,20,40,.35));}
-
-    /* Header */
-    header{
-      position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92);
-      border-bottom:1px solid #e6e8eb; display:flex; align-items:center; justify-content:space-between;
-      height:70px; padding:0 16px;
-    }
-    .brand{display:flex; align-items:center; text-decoration:none}
-    .brand img{height:60px; width:auto}
-
-    /* Burger-Menü */
-    .menu-btn{border:none; background:transparent; cursor:pointer; padding:10px; width:48px; height:48px}
-    .menu-btn .bar,.menu-btn .bar::before,.menu-btn .bar::after{
-      content:""; display:block; height:3px; width:28px; background:var(--primary);
-      border-radius:2px; position:relative; transition:.25s;
-    }
-    .menu-btn .bar::before{position:absolute; top:-8px; left:0}
-    .menu-btn .bar::after{position:absolute; top:8px; left:0}
-
-    .menu-overlay{
-      position:fixed; inset:0; background:rgba(20,54,94,.97);
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      opacity:0; pointer-events:none; transition:.35s; z-index:1000;
-    }
-    .menu-overlay.open{opacity:1; pointer-events:auto}
-    .menu-overlay a{color:#fff; font-size:1.5rem; margin:.7rem 0; text-decoration:none}
-
-    /* Inhalt */
-    main{flex:1; padding:40px 20px}
-    .wrap{max-width:1100px; margin:0 auto}
-    h1{color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.35); margin:0 0 18px}
-    .lead{color:#eaf4ff; text-shadow:0 1px 8px rgba(0,0,0,.35); margin:0 0 22px}
-
-    .grid{display:grid; gap:20px}
-    @media(min-width:900px){ .grid.cols-2{grid-template-columns:1fr 1fr} .grid.cols-3{grid-template-columns:repeat(3,1fr)} }
-
-    .card{
-      background:rgba(255,255,255,.92); border-radius:16px; box-shadow:0 6px 24px var(--ring); padding:20px;
-    }
-    .card h2{color:var(--primary); margin:0 0 10px; font-size:1.2rem}
-    .card p,.card li{line-height:1.6; margin-bottom:10px; font-size:.98rem}
-    ul{padding-left:20px}
-
-    .btn{display:inline-block; background:var(--primary); color:#fff; padding:10px 16px; border-radius:10px; text-decoration:none}
-    .btn.alt{background:linear-gradient(90deg,#2e7bd9,#1a9e68)}
-
-    /* Markenlaufband (optional) */
-    .brandbar{overflow:hidden; border-radius:12px; background:rgba(255,255,255,.92);
-      box-shadow:0 6px 24px var(--ring); padding:12px; margin-top:14px}
-    .marquee{display:flex; gap:48px; align-items:center; animation:marq 22s linear infinite; will-change:transform}
-    .marquee img{height:34px; filter:grayscale(100%); opacity:.9}
-    @keyframes marq{from{transform:translateX(0)} to{transform:translateX(-50%)}}
-
-    /* Footer */
-    footer{background:rgba(255,255,255,.92); border-top:1px solid #e6e8eb}
-    .foot{max-width:1100px; margin:0 auto; padding:14px 20px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; font-size:.95rem; color:var(--muted)}
-    .legal{display:flex; flex-wrap:wrap; gap:14px}
-    .legal a{color:var(--muted); text-decoration:none}
-    .legal a:hover{color:var(--primary)}
-  </style>
+  <title>Trinkwasserinstallationen | Neckair</title>
+  <meta name="description" content="Trinkwasserinstallationen – hygienisch, normgerecht und langlebig. Planung, Montage, Inbetriebnahme, Wartung und Dokumentation.">
+  <meta name="theme-color" content="#0b2239">
+  <meta property="og:title" content="Trinkwasserinstallationen | Neckair">
+  <meta property="og:description" content="Trinkwasserinstallationen – hygienisch, normgerecht und langlebig. Planung, Montage, Inbetriebnahme, Wartung und Dokumentation.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="Haus%20am%20Wald.webp">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <noscript><style>#splash{display:none}.reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
 
-  <!-- Hintergrund-Video -->
-  <div class="bg-video" aria-hidden="true">
-    <video autoplay muted loop playsinline preload="auto" poster="">
-      <source src="Wasser.mp4" type="video/mp4">
-      <!-- Optional:
-      <source src="Wasser.webm" type="video/webm">
-      -->
-    </video>
-  </div>
-  <div class="shade"></div>
+  <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
-  <!-- Header -->
-  <header>
-    <a class="brand" href="index.html"><img src="logo.png" alt="Hünig Logo"></a>
-    <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen"><span class="bar"></span></button>
+  <div class="topbar">
+    <div class="container">
+      <nav aria-label="Leistungen">
+        <a href="waermepumpen.html">Wärmepumpen</a>
+        <a href="klimaanlagen.html">Klimaanlagen</a>
+        <a href="trinkwasserinstallationen.html">Trinkwasser &amp; Sanitär</a>
+        <a href="service.html">Service &amp; Wartung</a>
+      </nav>
+      <div class="topbar-right">
+        <span><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Service &amp; Wartung</span>
+        <span><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Persönliche Beratung</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="Neckair – zur Startseite">
+        <img src="assets/img/neckair-logo.svg" alt="Neckair" width="1100" height="178">
+      </a>
+
+      <nav class="main-nav" aria-label="Hauptnavigation">
+        <ul>
+          <li><a href="waermepumpen.html">Wärmepumpen</a></li>
+          <li><a href="klimaanlagen.html">Klimaanlagen</a></li>
+          <li><a href="trinkwasserinstallationen.html" aria-current="page">Trinkwasser</a></li>
+          <li><a href="service.html">Service</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="kontakt.html" class="btn btn-primary btn-sm header-cta">Anfrage stellen</a>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menuOverlay">
+          <span class="bars"></span>
+        </button>
+      </div>
+    </div>
   </header>
 
-  <!-- Overlay-Menü -->
-  <nav class="menu-overlay" id="menuOverlay" aria-label="Hauptmenü">
-    <a href="index.html">Startseite</a>
-    <a href="waermepumpen.html">Wärmepumpen</a>
-    <a href="klimaanlagen.html">Klimaanlagen</a>
-    <a href="lueftung.html">Lüftung</a>
-    <a href="trinkwasserinstallationen.html">Trinkwasser</a>
-    <a href="referenzen.html">Referenzen</a>
-    <a href="service.html">Service & Wartung</a>
-    <a href="ueber-uns.html">Über uns</a>
-    <a href="kontakt.html">Kontakt</a>
-    <a href="impressum.html">Impressum</a>
-    <a href="datenschutz.html">Datenschutz</a>
-    <a href="agb.html">AGB</a>
-    <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
-  </nav>
-
-  <!-- Inhalt -->
-  <main>
-    <div class="wrap">
-      <h1>Trinkwasserinstallationen</h1>
-      <p class="lead">Hygienisch, normgerecht und langlebig – von der Planung über Montage bis zur Wartung inkl. Dokumentation.</p>
-
-      <div class="grid cols-3">
-        <div class="card">
-          <h2>Planung & Beratung</h2>
-          <p>Rohrnetzplanung, Dimensionierung, Materialwahl (Edelstahl, Kupfer, MSVR). Effiziente Zirkulation und Temperaturführung.</p>
-          <ul>
-            <li>Bestandsaufnahme / Neubau</li>
-            <li>Bedarfsermittlung & Auslegung</li>
-            <li>Hygienekonzept</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h2>Normen & Richtlinien</h2>
-          <p>Ausführung nach Stand der Technik: DIN EN 806, DIN 1988 (-200), DVGW-Arbeitsblätter, TrinkwV.</p>
-          <ul>
-            <li>Werkstoffgerechte Verarbeitung</li>
-            <li>Wärme-/Kältedämmung</li>
-            <li>Brandschutzdurchführungen</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h2>Montage</h2>
-          <p>Saubere Installation mit Press-, Schraub- oder Lötverbindungen, fachgerechte Leitungsführung und Befestigung.</p>
-          <ul>
-            <li>Filter, Druckminderer, Absperrungen</li>
-            <li>Systemtrenner / Rückflussverhinderer</li>
-            <li>Enthärtung / Entkalkung (optional)</li>
-          </ul>
-        </div>
+  <nav class="menu-overlay" id="menuOverlay" aria-label="Hauptmenü" aria-hidden="true">
+    <div class="container menu-overlay-head">
+      <span class="label">Menü</span>
+      <button class="menu-close" id="closeMenu" type="button" aria-label="Menü schließen">✕</button>
+    </div>
+    <div class="container menu-grid">
+      <div class="menu-primary">
+        <a href="index.html">Startseite <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="waermepumpen.html">Wärmepumpen <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="klimaanlagen.html">Klimaanlagen <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="trinkwasserinstallationen.html" aria-current="page">Trinkwasser <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="service.html">Service & Wartung <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="ueber-uns.html">Über uns <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="kontakt.html">Kontakt / Anfrage <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
       </div>
-
-      <div class="grid cols-3" style="margin-top:20px">
-        <div class="card">
-          <h2>Inbetriebnahme</h2>
-          <p>Spülung, Entlüftung, Dichtheits- & Druckprüfung mit Protokoll. Einstellung aller Armaturen.</p>
-          <ul>
-            <li>Funktionsprüfung</li>
-            <li>Übergabedokumentation</li>
-          </ul>
+      <div class="menu-side">
+        <div>
+          <h4>Schnell erledigt</h4>
+          <a href="wartung.html">Wartung anfragen</a>
+          <a href="stoerung.html">Störung melden</a>
+          <a href="kontakt.html" class="btn btn-primary">Anfrage stellen <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
-        <div class="card">
-          <h2>Hygiene & Legionellen</h2>
-          <p>Stagnationsvermeidung, Temperaturhaltung, regelmäßige Nutzung & Wartung. Optional Probenahme mit Fachlaboren.</p>
-          <ul>
-            <li>Zirkulationskonzept</li>
-            <li>Spül- & Prüfpläne</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h2>Service & Wartung</h2>
-          <p>Filterwechsel, Wartung von Enthärtungsanlagen, Sicherheitsarmaturencheck, jährlicher Inspektionsservice.</p>
-          <a class="btn" href="kontakt.html">Wartung / Service anfragen</a>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:20px">
-        <h2>Dokumentation</h2>
-        <p>Pläne, Prüfprotokolle, Herstellerunterlagen, Wartungsintervalle und Einweisung – vollständig und geordnet.</p>
-        <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
-          <a class="btn" href="kontakt.html">Angebot anfordern</a>
-          <a class="btn alt" href="kontakt.html">Neubau/Erneuerung planen</a>
-        </div>
-      </div>
-
-      <!-- Optional: Markenlaufband -->
-      <div class="brandbar">
-        <div class="marquee" aria-label="Systeme/Komponenten (Beispiele)">
-          <img src="assets/logo-dvgw.svg" alt="DVGW (Platzhalter)">
-          <img src="assets/logo-wilo.svg" alt="Wilo (Platzhalter)">
-          <img src="assets/logo-grundfos.svg" alt="Grundfos (Platzhalter)">
-          <img src="assets/logo-viega.svg" alt="Viega (Platzhalter)">
-          <img src="assets/logo-gebo.svg" alt="GEBO (Platzhalter)">
-          <!-- Duplikat für Loop -->
-          <img src="assets/logo-dvgw.svg" alt="DVGW (Platzhalter)">
-          <img src="assets/logo-wilo.svg" alt="Wilo (Platzhalter)">
-          <img src="assets/logo-grundfos.svg" alt="Grundfos (Platzhalter)">
-          <img src="assets/logo-viega.svg" alt="Viega (Platzhalter)">
-          <img src="assets/logo-gebo.svg" alt="GEBO (Platzhalter)">
+        <div>
+          <h4>Rechtliches</h4>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+          <a href="agb.html">AGB</a>
+          <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
         </div>
       </div>
     </div>
+  </nav>
+
+  <main id="inhalt">
+
+    <section class="page-hero has-media">
+      <div class="hero-media">
+        <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+          <source src="Wasser.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="container">
+        <div class="hero-copy" style="max-width:700px">
+          <div class="eyebrow">Trinkwasser &amp; Sanitär</div>
+          <h1>Trinkwasserinstallationen</h1>
+          <p class="lead">Hygienisch, normgerecht und langlebig – von der Planung über Montage bis zur Wartung inkl. Dokumentation.</p>
+          <div class="hero-actions">
+            <a href="kontakt.html" class="btn btn-primary">Angebot anfordern <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <a href="#leistungen" class="btn btn-outline-light">Leistungen ansehen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="leistungen">
+      <div class="container">
+        <div class="grid-3">
+          <article class="card hover reveal">
+            <span class="icon-box"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+            <h3>Planung &amp; Beratung</h3>
+            <p>Rohrnetzplanung, Dimensionierung, Materialwahl (Edelstahl, Kupfer, MSVR). Effiziente Zirkulation und Temperaturführung.</p>
+            <ul class="dot-list">
+              <li>Bestandsaufnahme / Neubau</li>
+              <li>Bedarfsermittlung &amp; Auslegung</li>
+              <li>Hygienekonzept</li>
+            </ul>
+          </article>
+          <article class="card hover reveal">
+            <span class="icon-box"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
+            <h3>Normen &amp; Richtlinien</h3>
+            <p>Ausführung nach Stand der Technik: DIN EN 806, DIN 1988 (-200), DVGW-Arbeitsblätter, TrinkwV.</p>
+            <ul class="dot-list">
+              <li>Werkstoffgerechte Verarbeitung</li>
+              <li>Wärme-/Kältedämmung</li>
+              <li>Brandschutzdurchführungen</li>
+            </ul>
+          </article>
+          <article class="card hover reveal">
+            <span class="icon-box"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+            <h3>Montage</h3>
+            <p>Saubere Installation mit Press-, Schraub- oder Lötverbindungen, fachgerechte Leitungsführung und Befestigung.</p>
+            <ul class="dot-list">
+              <li>Filter, Druckminderer, Absperrungen</li>
+              <li>Systemtrenner / Rückflussverhinderer</li>
+              <li>Enthärtung / Entkalkung (optional)</li>
+            </ul>
+          </article>
+          <article class="card hover reveal">
+            <span class="icon-box"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></span>
+            <h3>Inbetriebnahme</h3>
+            <p>Spülung, Entlüftung, Dichtheits- &amp; Druckprüfung mit Protokoll. Einstellung aller Armaturen.</p>
+            <ul class="dot-list">
+              <li>Funktionsprüfung</li>
+              <li>Übergabedokumentation</li>
+            </ul>
+          </article>
+          <article class="card hover reveal">
+            <span class="icon-box"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></span>
+            <h3>Hygiene &amp; Legionellen</h3>
+            <p>Stagnationsvermeidung, Temperaturhaltung, regelmäßige Nutzung &amp; Wartung. Optional Probenahme mit Fachlaboren.</p>
+            <ul class="dot-list">
+              <li>Zirkulationskonzept</li>
+              <li>Spül- &amp; Prüfpläne</li>
+            </ul>
+          </article>
+          <article class="card hover reveal">
+            <span class="icon-box"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+            <h3>Service &amp; Wartung</h3>
+            <p>Filterwechsel, Wartung von Enthärtungsanlagen, Sicherheitsarmaturencheck, jährlicher Inspektionsservice.</p>
+            <a class="card-link" href="kontakt.html">Wartung / Service anfragen <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="band reveal">
+          <div>
+            <h2>Dokumentation</h2>
+            <p>Pläne, Prüfprotokolle, Herstellerunterlagen, Wartungsintervalle und Einweisung – vollständig und geordnet.</p>
+          </div>
+          <div class="band-actions">
+            <a href="kontakt.html" class="btn btn-light">Angebot anfordern <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <a href="kontakt.html" class="btn btn-outline-light">Neubau/Erneuerung planen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="foot">
-      <div>© <span id="y"></span> Hünig Wärme- und Kältetechnik</div>
-      <div class="legal">
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/img/neckair-logo-white.svg" alt="Neckair" width="1100" height="178" loading="lazy">
+        <p class="footer-tagline">Kälte<i>•</i>Klima<i>•</i>Wärmepumpen<i>•</i>Sanitär</p>
+        <p>Ihr Fachbetrieb für moderne Gebäudetechnik, Heizsysteme und Klimatisierung.</p>
+      </div>
+      <div>
+        <h4>Leistungen</h4>
+        <ul>
+          <li><a href="waermepumpen.html">Wärmepumpen</a></li>
+          <li><a href="klimaanlagen.html">Klimaanlagen</a></li>
+          <li><a href="trinkwasserinstallationen.html">Trinkwasser</a></li>
+          <li><a href="service.html">Service &amp; Wartung</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="kontakt.html">Anfrage stellen</a></li>
+          <li><a href="wartung.html">Wartung anfragen</a></li>
+          <li><a href="stoerung.html">Störung melden</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+          <li><a href="agb.html">AGB</a></li>
+          <li><a href="nutzungsbedingungen.html">Nutzungsbedingungen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <div>© <span id="y"></span> Neckair</div>
+      <nav aria-label="Rechtliche Links">
+        <a href="kontakt.html">Kontakt</a>
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Datenschutz</a>
         <a href="agb.html">AGB</a>
-        <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
-        <a href="kontakt.html">Kontakt</a>
-      </div>
+      </nav>
     </div>
   </footer>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-    const btn = document.getElementById('menuBtn');
-    const overlay = document.getElementById('menuOverlay');
-    btn.addEventListener('click', ()=> overlay.classList.toggle('open'));
-    overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=> overlay.classList.remove('open')));
-  </script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
