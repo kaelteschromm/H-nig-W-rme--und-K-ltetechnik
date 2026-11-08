@@ -107,26 +107,30 @@
 
         <article class="card form-card" id="calendarCard" style="max-width:none">
           <h3><span class="num">1</span> Termin auswählen</h3>
-          <div id="calendarOn" class="hidden">
-            <div class="booking-cta" id="bookingCta">
-              <ul class="booking-points">
-                <li><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Nur freie Zeitfenster</li>
-                <li><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg> Bestätigung per E-Mail</li>
-                <li><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> In unter einer Minute</li>
-              </ul>
-              <button type="button" class="btn btn-primary" id="openBooking" aria-haspopup="dialog"><svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Freien Termin auswählen</button>
-              <p class="booking-note">Der Terminkalender wird von Google bereitgestellt und erst nach dem Klick geladen. Mehr dazu in der <a href="datenschutz.html#9-online-terminbuchung-google-kalender">Datenschutzerklärung</a>.</p>
+          <div id="calendarOn">
+            <p style="margin-bottom:14px">Wählen Sie direkt einen freien Termin aus – im Kalender sehen Sie nur noch verfügbare Zeitfenster. Die Bestätigung erhalten Sie per E-Mail.</p>
+            <div class="google-booking">
+              <!-- Google Calendar Appointment Scheduling begin -->
+              <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+              <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+              <script>
+              (function() {
+                var target = document.currentScript;
+                window.addEventListener('load', function() {
+                  calendar.schedulingButton.load({
+                    url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3WAFu6PQ3iuhuda1uh1SkaavT_P0iys19oEr77Db8CO_LABc3ejPOT0lzRXaPK3U7eDw-yWnh1?gv=true',
+                    color: '#039BE5',
+                    label: 'Termin eintragen',
+                    target,
+                  });
+                });
+              })();
+              </script>
+              <!-- end Google Calendar Appointment Scheduling -->
             </div>
-            <div class="booking-done hidden" id="bookingDoneState">
-              <span class="booking-check">✓</span>
-              <div>
-                <strong>Termin ausgewählt</strong>
-                <span>Die Bestätigung kommt per E-Mail. Bitte füllen Sie jetzt noch Schritt 2 aus.</span>
-              </div>
-              <button type="button" class="btn btn-secondary btn-sm" id="reopenBooking">Termin ändern</button>
-            </div>
+            <p class="booking-note" style="margin-top:14px">Danach füllen Sie bitte noch Schritt 2 aus. Der Terminkalender wird von Google bereitgestellt, mehr dazu in der <a href="datenschutz.html#9-online-terminbuchung-google-kalender">Datenschutzerklärung</a>.</p>
           </div>
-          <div id="calendarOff">
+          <div id="calendarOff" class="hidden">
             <p style="margin-bottom:6px">Wann passt es Ihnen? Wir melden uns mit einem konkreten Terminvorschlag.</p>
             <div class="row">
               <div class="field"><label for="datumVon">Frühestens am <span class="opt-hint">optional</span></label><input id="datumVon" type="date"></div>
@@ -182,19 +186,6 @@
         </article>
       </div>
 
-      <div class="booking-modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle" hidden>
-        <div class="booking-dialog" tabindex="-1">
-          <div class="booking-head">
-            <div><span class="eyebrow" style="margin:0">Schritt 1</span><strong id="bookingTitle">Wartungstermin auswählen</strong></div>
-            <button type="button" class="menu-close booking-close" id="closeBooking" aria-label="Kalender schließen">✕</button>
-          </div>
-          <div class="booking-body" id="bookingBody"><div class="success-spinner" aria-label="Kalender wird geladen"></div></div>
-          <div class="booking-foot">
-            <span>Termin gebucht? Dann geht es mit Ihren Angaben weiter.</span>
-            <button type="button" class="btn btn-primary btn-sm" id="bookingDone">Weiter zu Schritt 2 <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
-          </div>
-        </div>
-      </div>
 
       <div class="success-screen" id="successScreen" role="status" aria-live="polite">
         <div id="successSpinnerWrap"><div class="success-spinner"></div><p class="hint">Wird gesendet …</p></div>
@@ -313,48 +304,7 @@
       });
     }
 
-    /* Buchungskalender (Google Terminplan) im großen Overlay-Fenster */
     const CALENDAR_URL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3WAFu6PQ3iuhuda1uh1SkaavT_P0iys19oEr77Db8CO_LABc3ejPOT0lzRXaPK3U7eDw-yWnh1?gv=true";
-    let booked = false;
-    if (CALENDAR_URL) {
-      $('calendarOn').classList.remove('hidden');
-      $('calendarOff').classList.add('hidden');
-      const modal = $('bookingModal');
-      let lastFocus = null;
-      const openBooking = () => {
-        if (!$('bookingBody').querySelector('iframe')) {
-          const f = document.createElement('iframe');
-          f.src = CALENDAR_URL;
-          f.title = 'Freie Wartungstermine';
-          f.addEventListener('load', () => $('bookingBody').classList.add('loaded'));
-          $('bookingBody').appendChild(f);
-        }
-        lastFocus = document.activeElement;
-        modal.hidden = false;
-        requestAnimationFrame(() => modal.classList.add('open'));
-        document.body.classList.add('menu-open');
-        modal.querySelector('.booking-dialog').focus();
-      };
-      const closeBooking = () => {
-        modal.classList.remove('open');
-        document.body.classList.remove('menu-open');
-        setTimeout(() => { modal.hidden = true; }, 250);
-        if (lastFocus) lastFocus.focus();
-      };
-      $('openBooking').addEventListener('click', openBooking);
-      $('reopenBooking').addEventListener('click', openBooking);
-      $('closeBooking').addEventListener('click', closeBooking);
-      modal.addEventListener('click', (e) => { if (e.target === modal) closeBooking(); });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) closeBooking(); });
-      $('bookingDone').addEventListener('click', () => {
-        booked = true;
-        closeBooking();
-        $('bookingCta').classList.add('hidden');
-        $('bookingDoneState').classList.remove('hidden');
-        const step2 = $('sendBtn').closest('.card');
-        setTimeout(() => { window.scrollTo({ top: step2.getBoundingClientRect().top + window.scrollY - 90, behavior: 'smooth' }); }, 260);
-      });
-    }
 
     const data = {};
     bindOptions(data);
@@ -374,7 +324,7 @@
         _subject: 'Wartungsanfrage über die Website',
         name: val('name'), email: val('email'), phone: val('phone'), address: val('address'),
         customer: val('customer'), anlage: data.anlage || '', type: val('type'), message: val('message'),
-        wunschtermin: CALENDAR_URL ? (booked ? 'über Online-Kalender gebucht' : 'kein Online-Termin gewählt') : ((von || bis) ? (von || '-') + ' bis ' + (bis || '-') : ''),
+        wunschtermin: CALENDAR_URL ? 'siehe Google-Kalender (falls online gebucht)' : ((von || bis) ? (von || '-') + ' bis ' + (bis || '-') : ''),
         tageszeit: data.zeit || ''
       });
       if (ok) finishSuccess();
