@@ -68,6 +68,8 @@ body {
 body.menu-open { overflow: hidden; }
 
 img, video, svg, iframe { display: block; max-width: 100%; }
+/* Bilder nie verzerren: Höhe immer aus dem Seitenverhältnis berechnen */
+img { height: auto; }
 
 a { color: var(--blue-strong); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:hover { color: var(--ink); }
@@ -1005,7 +1007,7 @@ h1 .ph, h2 .ph, h3 .ph { font-weight: 700; color: var(--ink); }
   background: var(--bg-soft);
   position: relative;
 }
-.photo img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3; }
+.photo img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: center; }
 .photo figcaption {
   position: absolute;
   left: 14px; bottom: 14px;
@@ -1021,8 +1023,8 @@ h1 .ph, h2 .ph, h3 .ph { font-weight: 700; color: var(--ink); }
 
 /* Karte mit Bild oben */
 .card.has-media { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
-.card-media { aspect-ratio: 16 / 10; overflow: hidden; background: var(--bg-soft); }
-.card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.card-media { overflow: hidden; background: var(--bg-soft); }
+.card-media img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: center; transition: transform .6s var(--ease); }
 a.card:hover .card-media img { transform: scale(1.05); }
 .card-body { padding: clamp(20px, 2.6vw, 28px); display: flex; flex-direction: column; flex: 1; position: relative; }
 .card-body p { flex: 1; }
@@ -1059,4 +1061,20 @@ a.card:hover .card-media img { transform: scale(1.05); }
 }
 @media (max-width: 640px) {
   .gallery { grid-template-columns: 1fr; }
+}
+
+/* ---------- Startbild: auf jedem Gerät das Haus mit Wärmepumpe zeigen ---------- */
+.home-hero .hero-media img { object-position: 70% 55%; }
+@media (max-width: 640px) {
+  .home-hero { padding-bottom: 46vw; }
+  .home-hero .hero-media img { object-position: 78% 100%; }
+  .page-hero.home-hero::before {
+    background: linear-gradient(180deg, rgba(9, 18, 30, .86) 0%, rgba(9, 18, 30, .7) 55%, rgba(9, 18, 30, .05) 100%);
+  }
+}
+
+/* Lange deutsche Wörter auf dem Handy sauber trennen statt über den Rand laufen */
+h1, h2, h3 { overflow-wrap: break-word; -webkit-hyphens: auto; hyphens: auto; }
+@media (max-width: 640px) {
+  .page-hero h1 { font-size: clamp(1.8rem, 8.4vw, 2.4rem); }
 }
