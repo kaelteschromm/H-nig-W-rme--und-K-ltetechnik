@@ -11,11 +11,12 @@
   <g class="mark">
     <rect x="12" y="66" width="48" height="104" rx="3" fill="#ffffff"/>
     <rect x="222" y="8" width="48" height="106" rx="3" fill="#ffffff"/>
-    <g stroke="#0b2239" stroke-width="7" stroke-linejoin="round" paint-order="stroke">
-      <path fill="url(#gOrange)" d="M38 66 C92 58 126 80 152 106 C182 136 216 150 274 144 C236 176 188 172 152 142 C122 116 92 86 38 66 Z"/>
-      <path fill="#ffffff" d="M2 64 C42 44 96 40 128 62 C162 86 190 126 236 142 C194 144 162 114 134 88 C104 62 62 54 2 64 Z"/>
-      <path fill="url(#gBlue)" d="M14 14 C70 0 132 8 172 54 C202 88 236 116 286 120 C240 140 196 126 162 96 C128 64 80 42 14 50 Z"/>
+    <!-- Kontur nur um die Wellen als Ganzes: keine Linie zwischen Orange und Blau -->
+    <g fill="#0b2239" stroke="#0b2239" stroke-width="8" stroke-linejoin="round">
+      <path d="M26 50 C84 44 128 66 162 98 C196 128 238 140 282 124 C238 172 190 172 154 144 C122 118 90 76 26 50 Z"/><path d="M14 14 C70 0 132 8 172 54 C202 88 236 116 286 120 C240 140 196 126 162 96 C128 64 80 42 14 50 Z"/>
     </g>
+    <path fill="url(#gOrange)" d="M26 50 C84 44 128 66 162 98 C196 128 238 140 282 124 C238 172 190 172 154 144 C122 118 90 76 26 50 Z"/>
+    <path fill="url(#gBlue)" d="M14 14 C70 0 132 8 172 54 C202 88 236 116 286 120 C240 140 196 126 162 96 C128 64 80 42 14 50 Z"/>
   </g>
   <g fill="none" stroke-width="26" stroke-linejoin="miter" stroke-miterlimit="10" clip-path="url(#capClip)">
     <g stroke="#ffffff">
